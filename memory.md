@@ -68,8 +68,7 @@
 
 ## 7. açık işler / TODO
 
-- [ ] Aşama 3 değişikliklerini commit + push, Actions sonucunu ve canlı siteyi doğrula.
-- [ ] Açık tema ve ekip sayfasının ekran görüntüsü kontrolü (son adımda Bash kesildiği için yarım kaldı).
+- [x] Aşama 3 commit `c5d83f9` + push; Actions başarılı; canlıda 13 adres 200, araçlar çalışıyor. Açık tema, ekip ve mobil ekran görüntüleriyle doğrulandı (açık temada amblem-acik'in gri arka plan kutusu kaldırıldı).
 - [ ] Kullanıcıdan doğrulanacaklar: proje no 325K372, başlangıç tarihi, ekip listesinin yayımlanma onayı, kurumlar (Avşar, Arı, Demir), iletişim e-postası ve adres.
 - [ ] Temsili verileri resmi kaynaklarla değiştir: ETS yıllık ortalamaları (ICAP/EEX), SKDM varsayılan emisyon değerleri.
 - [ ] GTİP→NACE anahtarını Ek I alt pozisyon istisnalarıyla doğrula.
@@ -78,4 +77,4 @@
 
 ## 8. sıradaki adım
 
-Commit + push → Actions yeşil mi kontrol et → canlıda gece/açık/mobil görsel kontrol. Sonra kullanıcıdan doğrulama listesini (bölüm 7) iste; ardından İngilizce sürüm kararı.
+Kullanıcıdan doğrulama listesini (bölüm 7) al ve işle: proje no/başlangıç, ekip onayı ve kurumları, iletişim bilgileri. Ardından temsili verileri resmi kaynaklarla değiştir ve İngilizce sürüm kararını ver.
