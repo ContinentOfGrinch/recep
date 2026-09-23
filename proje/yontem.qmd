@@ -1,0 +1,77 @@
+---
+title: "yöntem özeti"
+description: "Hibrit girdi-çıktı modeli, ithalat talep esneklikleri ve mikro veri entegrasyonu ile dört aşamalı etki zinciri."
+order: 2
+---
+
+Proje, SKDM'nin etkilerini tekil bir boyutta değil, bütüncül bir etki zinciri olarak modeller:
+
+::: {.recep-status}
+[maliyet yükü]{} [talep düşüşü]{} [üretim kaybı]{} [sosyo-ekonomik sonuçlar]{}
+:::
+
+## etki zinciri
+
+```{mermaid}
+flowchart TD
+  A["senaryo girdileri<br/>AB ETS fiyatı · NDC · BAT"] --> B{"net maliyet şoku"}
+  B -- "fiyat geçişkenliği" --> C["ihracat fiyatlarında artış"]
+  C --> D["ekonometrik talep modeli<br/>İP3 · 2SLS esneklikler"]
+  D -- "miktar etkisi" --> E["AB pazarında ihracat düşüşü"]
+  E --> F["hibrit G-Ç modeli<br/>İP2 · İP4 · Leontief ters matrisi"]
+  F -- "üretim kaybı" --> G{"mikro veri entegrasyonu<br/>uydu hesaplar · firma tipolojileri"}
+  G --> H1["istihdam<br/>vasıflı / vasıfsız"]
+  G --> H2["ücret gelirleri"]
+  G --> H3["işletme artığı"]
+  G --> H4["kırılgan firma segmentleri"]
+```
+
+## 1 · gömülü emisyonlar ve skdm maliyeti
+
+Fiziksel üretim (TÜİK PRODCOM) ile IPCC teknik emisyon faktörleri eşleştirilerek firma ve ürün bazında emisyonlar aşağıdan-yukarıya hesaplanır:
+
+$$
+E_{j,i} = Q_{j,i} \times EF_i, \qquad i \in \Omega_{\text{SKDM}}
+$$
+
+Sektörel emisyon yoğunluk vektörü ($K_{GHG}$), Leontief ters matrisi ($L = (I-A)^{-1}$) ve AB'ye ihracat vektörü ($EX_{EU}$) ile gömülü emisyonlar ve SKDM maliyeti:
+
+$$
+GHG_{EU} = \operatorname{diag}(K_{GHG})\, L\, EX_{EU}, \qquad
+\text{Maliyet}_{\text{SKDM}} = GHG_{EU} \times P_{EU}
+$$
+
+## 2 · ithalat talep esneklikleri
+
+AB'nin Türk mallarına yönelik ithalat talebi, fiyatın içselliği nedeniyle araç değişkenlerle **iki aşamalı en küçük kareler (2SLS)** yöntemiyle tahmin edilir:
+
+$$
+\ln Q_{i,t} = \gamma_0 + \gamma_1 \widehat{\ln P_{i,t}} + \sum_{k=2}^{n} \gamma_k Z_{k,i,t} + u_{i,t}
+$$
+
+Araç değişkenler: ulaştırma, işgücü, teknik girdi ve enerji maliyetleri. Araç gücü (ilk aşama F > 10) ve aşırı tanımlama (Sargan–Hansen J) testleri uygulanır.
+
+## 3 · zincirleme etkiler ve fiyatlar
+
+Esneklikler ile güncellenen ihracat vektörü G-Ç modeline nihai talep şoku olarak girilir; tedarikçi sektörler dahil toplam üretim kaybı hesaplanır. Olası ulusal karbon fiyatının yurt içi fiyatlara yayılımı **Leontief fiyat modeli** ($P^* = v^* L$) ile incelenir.
+
+## 4 · ayrıştırılmış sosyo-ekonomik etkiler
+
+Sektörel üretim kayıpları, TÜİK mikro verilerinden türetilen **uydu hesap katsayıları** ile:
+
+- beceri düzeyine göre (ISCO-08) **istihdam** ve **ücret** etkilerine,
+- sektör bilançolarından türetilen kâr marjlarıyla **işletme artığı** etkilerine
+
+ayrıştırılır. Firma tipolojileri (AB'ye ihracat bağımlılığı, emisyon yoğunluğu, finansal kırılganlık, ölçek) ile "ortalama etki" yerine **dağılım etkisi** raporlanır.
+
+## yazılım
+
+| amaç | araç |
+|---|---|
+| talep esneklikleri (2SLS) | Stata |
+| G-Ç modeli ve senaryolar | Matlab |
+| veri hazırlama, görselleştirme, tekrarlanabilirlik | R, Python |
+
+## sınırlılıklar
+
+Model **karşılaştırmalı statik** bir çerçevedir: SKDM şokunun mevcut ekonomik yapı üzerindeki anlık ve zincirleme etkilerini ölçer; uzun vadeli dinamik genel denge uyarlamalarını modellemez. "Teknolojik dönüşüm", BAT referans belgelerinde tanımlanan verimlilik sınırına yakınsama olarak ele alınır.

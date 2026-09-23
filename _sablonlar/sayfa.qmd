@@ -1,0 +1,7 @@
+---
+title: "sayfa başlığı"
+description: "Tek cümlelik açıklama."
+order: 10                 # bölüm sidebar'ındaki sıra
+---
+
+## giriş

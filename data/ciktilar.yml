@@ -1,0 +1,23 @@
+# Proje çıktıları — ciktilar/ altındaki sayfalar bu dosyadan üretilir.
+# bolum: politika-notlari | tebligler-makaleler | sunumlar  (hangi alt sayfada görüneceği)
+# tur:   politika-notu | calisma-tebligi | makale | sunum | calistay  (etiket)
+# pdf / slayt: assets/ciktilar/ altına koyun → "../assets/ciktilar/dosya.pdf" ya da tam URL
+# Yeni kayıt eklemek için aşağıdaki örnek bloğun başındaki # işaretlerini kaldırıp doldurun.
+#
+# - baslik: "Başlık"
+#   yazarlar: "Durmaz, T., Güngör, V."
+#   yil: 2026
+#   tarih: 2026-10-01
+#   bolum: politika-notlari
+#   tur: politika-notu
+#   yayin_yeri: "RECEP Politika Notu No. 1"
+#   ozet: "Bir iki cümlelik özet."
+#   doi: ""
+#   pdf: ""
+#   slayt: ""
+#   kod: ""
+
+- baslik: "_yer-tutucu"
+  bolum: yok
+  tur: yok
+  yil: 0

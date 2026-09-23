@@ -1,0 +1,12 @@
+---
+title: "küçük harfle başlık"
+description: "Liste kartında görünecek bir cümlelik özet."
+date: 2026-01-01
+categories: [duyuru]      # duyuru | etkinlik | çalıştay
+image: kapak.webp         # isteğe bağlı; aynı klasöre koyun, 1200x630 önerilir
+draft: true               # yayınlamaya hazır olunca silin
+---
+
+Giriş paragrafı.
+
+## ilk bölüm

@@ -1,8 +1,10 @@
 /*-- scss:defaults --*/
-// Yalnızca palet; kurallar theme.scss'ten gelir.
-$recep-ink:     #ededed !default;
-$recep-paper:   #0a0a0a !default;
-$recep-muted:   #a1a1a1 !default;
-$recep-line:    #262626 !default;
-$recep-surface: #141414 !default;
-$recep-accent:  #2dd4bf !default;
+// Gece teması (varsayılan). Yalnızca palet; kurallar theme.scss'ten gelir.
+$recep-ink:      #E6EDF3 !default;
+$recep-paper:    #05080D !default;
+$recep-muted:    #8B98A5 !default;
+$recep-line:     #1C2633 !default;
+$recep-surface:  #0B111A !default;
+$recep-green:    #39FF14 !default;
+$recep-blue:     #00A3FF !default;
+$recep-on-green: #05080D !default;

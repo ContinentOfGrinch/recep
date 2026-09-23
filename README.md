@@ -1,6 +1,10 @@
+![recep](assets/marka/recep-yatay-koyu.png)
+
 # recep
 
-RECEP araştırma grubunun web sitesi — [Quarto](https://quarto.org) ile üretilir, GitHub Actions ile GitHub Pages'e yayımlanır.
+**Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu** web sitesi — TÜBİTAK 1001 destekli *AB Sınırda Karbon Düzenleme Mekanizmasının (SKDM) Türkiye ekonomisine etkileri* projesi.
+
+Site [Quarto](https://quarto.org) ile üretilir ve GitHub Actions ile GitHub Pages'e yayımlanır: <https://continentofgrinch.github.io/recep/>
 
 ## hızlı başlangıç
 
@@ -9,48 +13,50 @@ quarto preview        # canlı önizleme
 quarto render         # tam derleme -> _site/
 ```
 
-Gereksinimler: Quarto **1.10.18**, R ≥ 4.3 (yalnızca R kodu içeren sayfalar için; `plm`).
+Gereksinimler: Quarto **1.10.18** · R ≥ 4.3 (yalnızca R kodu içeren sayfalar için).
+
+## bölümler
+
+| menü | adres | kaynak |
+|---|---|---|
+| proje | `/proje/` | `proje/*.qmd` |
+| ekip | `/ekip/` | `data/ekip.yml` |
+| çıktılar | `/ciktilar/` | `data/ciktilar.yml` |
+| veri ve kod | `/veri-kod/` | `veri-kod/*.qmd`, `veri-kod/veri/` |
+| araçlar | `/araclar/` | `araclar/*.qmd` (Observable JS), `araclar/veri/` |
+| haberler | `/haberler/` | `haberler/posts/` |
+| iletişim | `/iletisim/` | `iletisim/index.qmd` |
 
 ## içerik ekleme
 
-| ne | nereye | şablon |
-|---|---|---|
-| blog yazısı | `blog/posts/YYYY-AA-GG-kisa-ad/index.qmd` | `_sablonlar/blog-yazisi.qmd` |
-| proje | `projeler/kisa-ad.qmd` | `_sablonlar/proje.qmd` |
-| rehber | `dokumantasyon/kisa-ad.qmd` | `_sablonlar/rehber.qmd` |
-| ekip üyesi | `data/ekip.yml` | dosyadaki örnek blok |
-| yayın | `data/yayinlar.yml` | dosyadaki örnek blok |
+| ne | nasıl |
+|---|---|
+| haber | `_sablonlar/haber.qmd` → `haberler/posts/YYYY-AA-GG-kisa-ad/index.qmd` |
+| ekip üyesi | `data/ekip.yml`'ye bir blok ekleyin (`rol`: yurutucu / arastirmaci / danisman / bursiyer) |
+| çıktı (not, makale, sunum) | `data/ciktilar.yml`'deki örnek bloğu kopyalayın; `bolum` alanı hangi alt sayfada görüneceğini belirler |
+| bölüm içi yeni sayfa | `_sablonlar/sayfa.qmd` → ilgili klasöre; sidebar'a otomatik eklenir (`order` ile sıralanır) |
 
-Yeni sayfalar menülere ve listelere otomatik eklenir. Başlıklar küçük harfle yazılır.
+Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yerelde `quarto render <dosya>` çalıştırıp oluşan `_freeze/` klasörünü de commit edin; CI R kurmaz.
 
-**R kodu içeren sayfa** eklediyseniz yerelde `quarto render <dosya>` çalıştırıp oluşan `_freeze/` klasörünü de commit edin. CI R kurmaz.
+## tasarım sistemi
 
-## yapı
-
-```
-_quarto.yml            site yapılandırması
-theme.scss             tasarım sistemi (açık tema + tüm kurallar)
-theme-dark.scss        koyu tema paleti
-assets/fonts.css       kendi sunucumuzdaki fontlar (Inter, JetBrains Mono, Roboto Condensed)
-data/                  ekip ve yayın verileri (YAML)
-_templates/            ekip/yayın liste şablonları (EJS)
-_sablonlar/            yeni içerik için kopyalanacak şablonlar
-_freeze/               dondurulmuş R çıktıları (commit edilir)
-.github/workflows/     derleme + link kontrolü + Pages dağıtımı
-```
+- `theme.scss` — açık tema paleti ve tüm kurallar; `theme-dark.scss` — gece paleti (varsayılan tema).
+- Gece: `#05080D` zemin, neon yeşil `#39FF14`, elektrik mavi `#00A3FF`. Açık: beyaz zemin, `#12A12F`, `#0077CC`.
+- Fontlar kendi sunucumuzda: Inter, JetBrains Mono, Roboto Condensed (`assets/fonts/`, SIL OFL 1.1).
+- Marka dosyaları: `assets/marka/` (animasyonlu amblemler, yatay logolar).
 
 ## yayın
 
-`main` dalına her push'ta site derlenir, iç linkler kontrol edilir ve GitHub Pages'e yüklenir. Pull request'lerde yalnızca derleme ve link kontrolü çalışır.
-
-İlk kurulum: **Settings → Pages → Source: GitHub Actions**.
+`main`'e her push'ta: derleme → iç link kontrolü → GitHub Pages. Pull request'lerde yalnızca derleme ve link kontrolü çalışır. Pages kaynağı: **Settings → Pages → Source: GitHub Actions**.
 
 ## devir (organizasyona taşıma)
 
 1. **Settings → General → Transfer ownership** ile repoyu hedef hesaba devredin.
-2. `_quarto.yml` içindeki `site-url`, `repo-url` ve GitHub linklerini yeni adrese göre güncelleyin.
+2. `_quarto.yml` içindeki `site-url`, `repo-url` ve GitHub bağlantılarını yeni adrese göre güncelleyin.
 3. Yeni repoda **Settings → Pages → Source: GitHub Actions** ayarını doğrulayın.
 
 ## lisans
 
-İçerik [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.tr), kod MIT. Fontlar SIL OFL 1.1 (`assets/fonts/`).
+İçerik ve veri ürünleri [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.tr), kod MIT. Fontlar SIL OFL 1.1.
+
+Bu çalışma, TÜBİTAK tarafından 325K372 numaralı proje kapsamında desteklenmektedir.

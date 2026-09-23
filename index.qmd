@@ -1,64 +1,133 @@
 ---
-pagetitle: "recep — iklim ekonomisi araştırma grubu"
+pagetitle: "recep — çevre, temiz enerji ve ekonomi politikaları araştırma grubu"
+description: "AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM) Türkiye ekonomisine etkilerini hibrit girdi-çıktı modeliyle inceleyen araştırma grubu."
 page-layout: full
 toc: false
 page-navigation: false
+repo-actions: false
 ---
 
-::: {.recep-hero}
+::::: {.recep-hero}
 
+:::: {}
 ::: {.recep-kicker}
-iklim · enerji · politika
+recep://skdm/türkiye
 :::
 
 # karbonun sınırlarını veriyle ölçüyoruz.
 
-[İklim ekonomisi, Sınırda Karbon Düzenleme Mekanizması (CBAM) ve dinamik panel veri yöntemleri üzerine açık, tekrarlanabilir ve politika odaklı araştırmalar.]{.lead}
+[Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu. AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM) Türkiye ekonomisi üzerindeki maliyet, fiyat ve sosyo-ekonomik etkilerini hibrit girdi-çıktı modeliyle analiz ediyoruz.]{.lead}
 
-::: {.recep-cta}
-[projeleri incele](projeler/index.qmd){.primary}
-[dokümantasyon](dokumantasyon/index.qmd)
-[blog](blog/index.qmd)
+::: {.recep-btns}
+[proje](proje/index.qmd){.birincil}
+[skdm hesaplayıcı](araclar/skdm-hesaplayici.qmd)
+[çıktılar](ciktilar/index.qmd)
+:::
+::::
+
+::: {.recep-hero-amblem}
+![](assets/marka/amblem-koyu.svg){.amblem-koyu fig-alt="recep amblemi"}
+![](assets/marka/amblem-acik.svg){.amblem-acik fig-alt="recep amblemi"}
 :::
 
+:::::
+
+::: {.recep-status}
+[tübitak 1001]{} [24 ay]{} [yıldız teknik üniversitesi]{} [ortak: tüik]{}
 :::
 
-::::: {.recep-grid}
+## araştırma eksenleri {.no-prefix}
+
+:::: {.recep-grid}
 
 ::: {.recep-card}
 [01]{.recep-index}
 
-### iklim ekonomisi {.unnumbered .unlisted .no-anchor}
+### maliyet ve talep kanalı {.unnumbered .unlisted .no-anchor}
 
-Karbon fiyatlaması, emisyon ticaret sistemleri ve iklim politikalarının makroekonomik etkileri.
+SKDM'nin sektörel maliyet yükü, ihracat fiyatlarına yansıması ve AB ithalat talebi üzerinden pazar kaybı.
 
-- Emisyon ticaret sistemleri (ETS)
-- Karbon kaçağı ve rekabetçilik
-- Enerji dönüşümü
+- Gömülü emisyonlar (Kapsam 1 + 2)
+- AB ETS fiyat senaryoları
+- İthalat talep esneklikleri (2SLS)
 :::
 
 ::: {.recep-card}
 [02]{.recep-index}
 
-### cbam {.unnumbered .unlisted .no-anchor}
+### sektörel kırılganlık {.unnumbered .unlisted .no-anchor}
 
-AB Sınırda Karbon Düzenleme Mekanizması'nın Türkiye ve ticaret ortakları üzerindeki etkileri.
+Üretim kayıplarının girdi-çıktı ağı üzerinden tedarik zincirine yayılımı ve sektörlerin kırılganlık sıralaması.
 
-- Sektörel maruziyet analizleri
-- Dış ticaret ve ihracat etkileri
-- Politika senaryoları
+- Leontief ters matrisi
+- Kırılganlık endeksi
+- BAT temelli teknolojik sınır
 :::
 
 ::: {.recep-card}
 [03]{.recep-index}
 
-### ekonometri {.unnumbered .unlisted .no-anchor}
+### sosyo-ekonomik sonuçlar {.unnumbered .unlisted .no-anchor}
 
-Dinamik panel veri modelleri ve Sistem GMM ile sağlam, tekrarlanabilir ampirik analiz.
+İstihdam, ücret ve işletme artığı üzerindeki ayrıştırılmış etkiler ile hafifletici politika senaryoları.
 
-- Sistem / Fark GMM
-- Açık R kodu ve veri
-- Tekrarlanabilir iş akışları
+- Beceri düzeyine göre istihdam
+- Faktör gelirleri
+- NDC ve TR ETS etkileşimi
 :::
 
-:::::
+::::
+
+## keşfet {.no-prefix}
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[/proje]{.recep-index}
+
+### [proje](proje/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+Amaç ve kapsam, yöntem özeti, iş paketleri ve takvim, TÜBİTAK destek bilgisi.
+:::
+
+::: {.recep-card}
+[/ekip]{.recep-index}
+
+### [ekip](ekip/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+Yürütücü, araştırmacılar, danışmanlar ve bursiyerler.
+:::
+
+::: {.recep-card}
+[/ciktilar]{.recep-index}
+
+### [çıktılar](ciktilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+Politika notları, çalışma tebliğleri ve makaleler, sunumlar ve çalıştay materyalleri.
+:::
+
+::: {.recep-card}
+[/veri-kod]{.recep-index}
+
+### [veri ve kod](veri-kod/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+NACE–ISCO–GTİP uyumlaştırma anahtarları, anonimleştirilmiş veri setleri, analiz kodları.
+:::
+
+::: {.recep-card}
+[/araclar]{.recep-index}
+
+### [araçlar](araclar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+SKDM maliyet hesaplayıcısı ve karbon fiyatı paneli.
+:::
+
+::: {.recep-card}
+[/haberler]{.recep-index}
+
+### [haberler](haberler/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+Duyurular, etkinlikler ve çalıştay haberleri.
+:::
+
+::::

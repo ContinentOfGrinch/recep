@@ -1,0 +1,36 @@
+---
+title: "iletişim"
+description: "E-posta, adres ve sosyal medya bağlantıları."
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[e-posta]{.recep-index}
+
+### yazışma {.unnumbered .unlisted .no-anchor}
+
+*belirlenecek*
+:::
+
+::: {.recep-card}
+[adres]{.recep-index}
+
+### yıldız teknik üniversitesi {.unnumbered .unlisted .no-anchor}
+
+*birim ve açık adres belirlenecek*
+:::
+
+::: {.recep-card}
+[bağlantılar]{.recep-index}
+
+### sosyal medya {.unnumbered .unlisted .no-anchor}
+
+- [github](https://github.com/ContinentOfGrinch/recep)
+- [rss](../haberler/index.xml)
+:::
+
+::::
+
+Basın ve iş birliği talepleri, çalıştay katılımı ve veri ürünleriyle ilgili sorularınız için bize e-posta ile ulaşabilirsiniz.

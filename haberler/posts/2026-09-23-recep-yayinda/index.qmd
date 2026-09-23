@@ -1,0 +1,10 @@
+---
+title: "recep web sitesi yayında"
+description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu'nun web sitesi açıldı."
+date: 2026-09-23
+categories: [duyuru]
+---
+
+RECEP web sitesi yayında. TÜBİTAK 1001 programı kapsamında desteklenen projemizin amacını, yöntemini ve iş paketlerini [proje](../../../proje/index.qmd) bölümünde; çıktılarımızı, veri ürünlerimizi ve etkileşimli araçlarımızı ilgili bölümlerde takip edebilirsiniz.
+
+İlk etkileşimli aracımız olan [SKDM maliyet hesaplayıcısı](../../../araclar/skdm-hesaplayici.qmd) ile farklı karbon fiyatı varsayımları altında SKDM'nin geçiş takvimi boyunca yaratacağı maliyeti inceleyebilirsiniz.

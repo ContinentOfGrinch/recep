@@ -3,12 +3,19 @@ project:
   output-dir: _site
   render:
     - "*.qmd"
-    - "projeler/*.qmd"
-    - "dokumantasyon/*.qmd"
-    - "blog/**/*.qmd"
+    - "proje/*.qmd"
+    - "ekip/*.qmd"
+    - "ciktilar/*.qmd"
+    - "veri-kod/*.qmd"
+    - "araclar/*.qmd"
+    - "haberler/**/*.qmd"
+    - "iletisim/*.qmd"
   resources:
     - ".nojekyll"
     - "assets/fonts/"
+    - "assets/marka/"
+    - "araclar/veri/"
+    - "veri-kod/veri/"
 
 lang: tr
 
@@ -17,7 +24,7 @@ execute:
 
 website:
   title: "recep"
-  description: "İklim ekonomisi, CBAM ve dinamik panel veri analizleri üzerine akademik araştırma grubu."
+  description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu — AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM/CBAM) Türkiye ekonomisine etkileri."
   site-url: "https://continentofgrinch.github.io/recep/"
   repo-url: "https://github.com/ContinentOfGrinch/recep"
   repo-actions: [edit, issue]
@@ -34,61 +41,81 @@ website:
     copy-button: true
 
   navbar:
-    background: light
+    background: dark
     pinned: true
     collapse-below: lg
+    logo: assets/marka/amblem-nav.svg
+    logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
+    title: "recep"
     left:
-      - text: "projeler"
-        href: projeler/index.qmd
-      - text: "yayınlar"
-        href: yayinlar.qmd
-      - text: "dokümantasyon"
-        href: dokumantasyon/index.qmd
-      - text: "blog"
-        href: blog/index.qmd
+      - text: "proje"
+        href: proje/index.qmd
       - text: "ekip"
-        href: ekip.qmd
+        href: ekip/index.qmd
+      - text: "çıktılar"
+        href: ciktilar/index.qmd
+      - text: "veri ve kod"
+        href: veri-kod/index.qmd
+      - text: "araçlar"
+        href: araclar/index.qmd
+      - text: "haberler"
+        href: haberler/index.qmd
+      - text: "iletişim"
+        href: iletisim/index.qmd
     tools:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"
         aria-label: GitHub
       - icon: rss
-        href: blog/index.xml
+        href: haberler/index.xml
         aria-label: RSS
 
   sidebar:
-    - id: projeler
-      title: "projeler"
+    - id: proje
+      title: "proje"
       style: floating
-      collapse-level: 2
       contents:
-        - auto: projeler
-
-    - id: dokumantasyon
-      title: "dokümantasyon"
+        - auto: proje
+    - id: ciktilar
+      title: "çıktılar"
       style: floating
-      collapse-level: 2
       contents:
-        - auto: dokumantasyon
+        - auto: ciktilar
+    - id: veri-kod
+      title: "veri ve kod"
+      style: floating
+      contents:
+        - auto: veri-kod
+    - id: araclar
+      title: "araçlar"
+      style: floating
+      contents:
+        - auto: araclar
 
   page-footer:
     border: true
-    left: "© 2026 RECEP · içerik [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.tr), kod MIT"
+    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · [tübitak 1001](/proje/tubitak.qmd) destekli"
     right:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"
         aria-label: GitHub
       - icon: rss
-        href: blog/index.xml
+        href: haberler/index.xml
         aria-label: RSS
+      - icon: envelope
+        href: iletisim/index.qmd
+        aria-label: İletişim
 
 format:
   html:
     theme:
+      dark: [theme.scss, theme-dark.scss]   # ilk sıradaki tema varsayılandır: gece
       light: [theme.scss]
-      dark: [theme.scss, theme-dark.scss]
-    respect-user-color-scheme: true
+    respect-user-color-scheme: false
     css: assets/fonts.css
+    include-in-header:
+      text: |
+        <meta name="theme-color" content="#05080D">
     toc: true
     toc-depth: 3
     toc-title: "bu sayfada"
@@ -97,12 +124,14 @@ format:
     code-copy: true
     code-overflow: wrap
     code-link: true
-    highlight-style: github
+    highlight-style:
+      light: github
+      dark: github-dark
     html-math-method: katex
     link-external-icon: false
     link-external-newwindow: true
     fig-responsive: true
     grid:
-      body-width: 820px
-      sidebar-width: 260px
-      margin-width: 240px
+      body-width: 860px
+      sidebar-width: 250px
+      margin-width: 230px

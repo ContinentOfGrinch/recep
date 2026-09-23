@@ -1,0 +1,30 @@
+```{=html}
+<%
+// Liste sayfası, front matter'daki `include` ile türe göre süzülmüş kayıtları alır.
+const turAdi = {
+  "politika-notu": "politika notu", "calisma-tebligi": "çalışma tebliği", "makale": "makale",
+  "sunum": "sunum", "calistay": "çalıştay"
+};
+const gercek = items.filter(i => i.tur in turAdi);
+const yillar = [...new Set(gercek.map(i => i.yil))].sort((a, b) => b - a);
+%>
+<% if (!gercek.length) { %>
+<div class="recep-bos">Bu başlık altında henüz yayımlanmış çıktı bulunmuyor. Çıktılar proje ilerledikçe burada paylaşılacaktır.</div>
+<% } %>
+<% for (const yil of yillar) { %>
+<section class="recep-pubs-year">
+<h2 class="anchored" id="y<%- yil %>"><%= yil %></h2>
+<ol class="recep-pubs">
+<% for (const p of gercek.filter(i => i.yil === yil)) { %>
+<li class="recep-pub">
+<span class="recep-tag"><%= turAdi[p.tur] %></span>
+<div class="recep-pub-title"><%= p.baslik %></div>
+<div class="recep-pub-meta"><%= p.yazarlar %><% if (p.yayin_yeri) { %> · <em><%= p.yayin_yeri %></em><% } %></div>
+<% if (p.ozet) { %><div class="recep-pub-meta"><%= p.ozet %></div><% } %>
+<div class="recep-pub-links"><% if (p.doi) { %><a href="https://doi.org/<%- p.doi %>">doi</a><% } %><% if (p.pdf) { %><a href="<%- p.pdf %>">pdf</a><% } %><% if (p.slayt) { %><a href="<%- p.slayt %>">slayt</a><% } %><% if (p.kod) { %><a href="<%- p.kod %>">kod</a><% } %></div>
+</li>
+<% } %>
+</ol>
+</section>
+<% } %>
+```

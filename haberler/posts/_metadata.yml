@@ -1,0 +1,6 @@
+# haberler için varsayılanlar — kategoriler: duyuru | etkinlik | çalıştay
+author: "recep"
+freeze: true
+title-block-banner: false
+toc: true
+date-format: "D MMMM YYYY"

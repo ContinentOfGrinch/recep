@@ -1,0 +1,15 @@
+---
+title: "çalışma tebliğleri ve makaleler"
+description: "Hakemli dergi makaleleri ve çalışma tebliğleri."
+order: 3
+toc: false
+listing:
+  id: liste
+  contents: ../data/ciktilar.yml
+  template: ../_templates/ciktilar.ejs
+  include:
+    bolum: "tebligler-makaleler"
+---
+
+::: {#liste}
+:::

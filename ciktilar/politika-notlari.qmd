@@ -1,0 +1,15 @@
+---
+title: "politika notları"
+description: "Proje bulgularına dayanan, karar vericilere yönelik kısa ve uygulanabilir politika notları."
+order: 2
+toc: false
+listing:
+  id: liste
+  contents: ../data/ciktilar.yml
+  template: ../_templates/ciktilar.ejs
+  include:
+    bolum: "politika-notlari"
+---
+
+::: {#liste}
+:::

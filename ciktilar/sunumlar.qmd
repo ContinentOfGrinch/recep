@@ -1,0 +1,15 @@
+---
+title: "sunumlar ve çalıştay materyalleri"
+description: "Konferans sunumları, çalıştay programları ve materyalleri."
+order: 4
+toc: false
+listing:
+  id: liste
+  contents: ../data/ciktilar.yml
+  template: ../_templates/ciktilar.ejs
+  include:
+    bolum: "sunumlar"
+---
+
+::: {#liste}
+:::

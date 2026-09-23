@@ -3,20 +3,19 @@ pagetitle: "404 — recep"
 toc: false
 page-navigation: false
 search: false
+repo-actions: false
 ---
 
-::: {.recep-hero}
 ::: {.recep-kicker}
-hata 404
+hata 404 · sayfa bulunamadı
 :::
 
-# sayfa bulunamadı.
+# sinyal kayboldu.
 
 [Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.]{.lead}
 
-::: {.recep-cta}
-[ana sayfa](/index.qmd){.primary}
-[projeler](/projeler/index.qmd)
-[dokümantasyon](/dokumantasyon/index.qmd)
-:::
+::: {.recep-btns}
+[ana sayfa](/index.qmd){.birincil}
+[proje](/proje/index.qmd)
+[araçlar](/araclar/index.qmd)
 :::
