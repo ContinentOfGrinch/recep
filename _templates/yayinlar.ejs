@@ -1,0 +1,28 @@
+```{=html}
+<%
+const turAdi = {
+  "makale": "makale", "calisma-raporu": "çalışma raporu", "bildiri": "bildiri",
+  "rapor": "rapor", "kitap-bolumu": "kitap bölümü"
+};
+const yillar = [...new Set(items.map(i => i.yil))].sort((a, b) => b - a);
+%>
+<% for (const yil of yillar) { %>
+<section class="recep-pubs-year">
+  <h2 class="anchored"><%= yil %></h2>
+  <ol class="recep-pubs">
+  <% for (const p of items.filter(i => i.yil === yil)) { %>
+    <li class="recep-pub">
+      <span class="recep-tag"><%= turAdi[p.tur] || p.tur %></span>
+      <div class="recep-pub-title"><%= p.baslik %></div>
+      <div class="recep-pub-meta"><%= p.yazarlar %><% if (p.yayin_yeri) { %> · <em><%= p.yayin_yeri %></em><% } %></div>
+      <div class="recep-pub-links">
+        <% if (p.doi) { %><a href="https://doi.org/<%- p.doi %>">doi</a><% } %>
+        <% if (p.pdf) { %><a href="<%- p.pdf %>">pdf</a><% } %>
+        <% if (p.kod) { %><a href="<%- p.kod %>">kod</a><% } %>
+      </div>
+    </li>
+  <% } %>
+  </ol>
+</section>
+<% } %>
+```

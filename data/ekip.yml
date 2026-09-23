@@ -1,0 +1,26 @@
+# Ekip üyeleri. Sıra: sira alanına göre (küçük önce).
+# rol: yurutucu | arastirmaci | asistan | mezun
+# foto: isteğe bağlı, assets/ekip/ altına kare görsel (ör. 400x400 .webp). Yoksa baş harfler gösterilir.
+- ad: "Doç. Dr. Tunç Durmaz"
+  unvan: "Proje Yürütücüsü"
+  rol: yurutucu
+  sira: 1
+  kurum: ""
+  alan: "İklim ekonomisi, enerji ekonomisi"
+  eposta: ""
+  orcid: ""
+  scholar: ""
+  web: ""
+  foto: ""
+
+- ad: "Araştırmacı Adı"
+  unvan: "Araştırmacı"
+  rol: arastirmaci
+  sira: 10
+  kurum: ""
+  alan: "Sistem GMM, panel veri"
+  eposta: ""
+  orcid: ""
+  scholar: ""
+  github: ""
+  foto: ""

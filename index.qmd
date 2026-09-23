@@ -1,0 +1,64 @@
+---
+pagetitle: "recep — iklim ekonomisi araştırma grubu"
+page-layout: full
+toc: false
+page-navigation: false
+---
+
+::: {.recep-hero}
+
+::: {.recep-kicker}
+iklim · enerji · politika
+:::
+
+# karbonun sınırlarını veriyle ölçüyoruz.
+
+[İklim ekonomisi, Sınırda Karbon Düzenleme Mekanizması (CBAM) ve dinamik panel veri yöntemleri üzerine açık, tekrarlanabilir ve politika odaklı araştırmalar.]{.lead}
+
+::: {.recep-cta}
+[projeleri incele](projeler/index.qmd){.primary}
+[dokümantasyon](dokumantasyon/index.qmd)
+[blog](blog/index.qmd)
+:::
+
+:::
+
+::::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### iklim ekonomisi {.unnumbered .unlisted .no-anchor}
+
+Karbon fiyatlaması, emisyon ticaret sistemleri ve iklim politikalarının makroekonomik etkileri.
+
+- Emisyon ticaret sistemleri (ETS)
+- Karbon kaçağı ve rekabetçilik
+- Enerji dönüşümü
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### cbam {.unnumbered .unlisted .no-anchor}
+
+AB Sınırda Karbon Düzenleme Mekanizması'nın Türkiye ve ticaret ortakları üzerindeki etkileri.
+
+- Sektörel maruziyet analizleri
+- Dış ticaret ve ihracat etkileri
+- Politika senaryoları
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### ekonometri {.unnumbered .unlisted .no-anchor}
+
+Dinamik panel veri modelleri ve Sistem GMM ile sağlam, tekrarlanabilir ampirik analiz.
+
+- Sistem / Fark GMM
+- Açık R kodu ve veri
+- Tekrarlanabilir iş akışları
+:::
+
+:::::

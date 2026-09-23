@@ -1,0 +1,8 @@
+---
+title: "recep yayında"
+description: "Araştırma grubumuzun web sitesi açıldı."
+date: 2026-09-23
+categories: [duyuru]
+---
+
+RECEP web sitesi yayında. Projelerimizi, dokümantasyonu ve güncel çalışmalarımızı buradan takip edebilirsiniz.

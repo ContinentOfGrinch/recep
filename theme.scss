@@ -1,0 +1,265 @@
+/*-- scss:defaults --*/
+
+// ---- palet (tek kaynak; karanlık tema theme-dark.scss içinde ezer) ----
+$recep-ink:     #0a0a0a !default;
+$recep-paper:   #ffffff !default;
+$recep-muted:   #666666 !default;
+$recep-line:    #eaeaea !default;
+$recep-surface: #fafafa !default;
+$recep-accent:  #0f766e !default;
+
+// ---- tipografi ----
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !default;
+$font-family-monospace:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !default;
+$headings-font-family:   "Roboto Condensed", "Arial Narrow", sans-serif !default;
+$headings-font-weight:   700 !default;
+$headings-line-height:   1.15 !default;
+$font-size-root:         16px !default;
+$line-height-base:       1.7 !default;
+
+// ---- bootstrap / quarto eşlemeleri ----
+$body-bg:            $recep-paper !default;
+$body-color:         $recep-ink !default;
+$body-secondary:     $recep-muted !default;
+$link-color:         $recep-accent !default;
+$link-decoration:    none !default;
+$border-color:       $recep-line !default;
+$border-radius:      8px !default;
+$border-radius-lg:   12px !default;
+
+$navbar-bg:          $recep-paper !default;
+$navbar-fg:          $recep-ink !default;
+$navbar-hl:          $recep-accent !default;
+$footer-bg:          $recep-paper !default;
+$footer-fg:          $recep-muted !default;
+$sidebar-bg:         $recep-paper !default;
+$sidebar-fg:         $recep-muted !default;
+$sidebar-hl:         $recep-ink !default;
+
+$code-color:         $recep-ink !default;
+$code-bg:            $recep-surface !default;
+$code-block-bg:      $recep-surface !default;
+$code-block-border-left: false !default;
+
+$input-bg:           $recep-paper !default;
+$input-color:        $recep-ink !default;
+$input-border-color: $recep-line !default;
+$input-group-addon-bg: $recep-surface !default;
+
+/*-- scss:rules --*/
+
+// ---- başlıklar: yalnızca küçük harf (lang="tr" sayesinde I → ı doğru dönüşür) ----
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.title, .quarto-title .title {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: -0.015em;
+}
+
+h2 { border-bottom: none; margin-top: 2.5rem; }
+
+// ---- navbar: beyaz, ince çizgi, cam efekti ----
+.navbar {
+  background-color: rgba($recep-paper, 0.82) !important;
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid $recep-line;
+  box-shadow: none;
+}
+
+.navbar .nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $recep-muted;
+  transition: color 0.15s ease;
+  &:hover, &.active { color: $recep-ink !important; }
+}
+
+// ---- logo: [recep] ----
+.navbar-brand .navbar-title {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  color: $recep-ink;
+  &::before { content: "["; color: $recep-accent; margin-right: 0.08em; }
+  &::after  { content: "]"; color: $recep-accent; margin-left: 0.08em; }
+}
+
+// ---- gövde ----
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+a { transition: color 0.15s ease; }
+main a:not(.nav-link):not(.btn):hover { text-decoration: underline; text-underline-offset: 3px; }
+
+code, pre, kbd { font-family: $font-family-monospace; font-size: 0.875em; }
+div.sourceCode { border: 1px solid $recep-line; border-radius: $border-radius; }
+
+.sidebar-navigation .sidebar-item-text { font-size: 0.9rem; }
+.sidebar-title { font-family: $headings-font-family; text-transform: lowercase; }
+
+// ---- ana sayfa ----
+.recep-hero {
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem);
+  max-width: 760px;
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin: 0 0 1.25rem;
+  }
+  p.lead { font-size: 1.15rem; color: $recep-muted; margin: 0; }
+}
+
+.recep-kicker {
+  font-family: $font-family-monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $recep-accent;
+  margin-bottom: 1rem;
+}
+
+.recep-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid $recep-line;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  margin: 1rem 0 4rem;
+}
+
+.recep-card {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid $recep-line;
+  transition: background-color 0.2s ease;
+  &:last-child { border-right: none; }
+  &:hover { background-color: $recep-surface; }
+
+  h3 { font-size: 1.35rem; margin: 0.25rem 0 0.75rem; }
+  p  { color: $recep-muted; font-size: 0.95rem; margin-bottom: 0.75rem; }
+  ul { padding-left: 1.1rem; margin: 0; color: $recep-muted; font-size: 0.9rem; }
+  .recep-index { font-family: $font-family-monospace; font-size: 0.8rem; color: $recep-accent; }
+}
+
+@media (max-width: 991.98px) {
+  .recep-grid { grid-template-columns: 1fr; }
+  .recep-card {
+    border-right: none;
+    border-bottom: 1px solid $recep-line;
+    &:last-child { border-bottom: none; }
+  }
+}
+
+.recep-cta {
+  display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem;
+  a {
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.9rem; font-weight: 500;
+    border: 1px solid $recep-line;
+    color: $recep-ink;
+    text-decoration: none !important;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    &:hover { border-color: $recep-ink; }
+    &.primary { background: $recep-ink; color: $recep-paper; border-color: $recep-ink; }
+    &.primary:hover { opacity: 0.88; }
+  }
+}
+
+// ---- blog kartları (listing) ----
+.quarto-grid-item.card {
+  border: 1px solid $recep-line;
+  border-radius: $border-radius-lg;
+  box-shadow: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  &:hover { border-color: $recep-ink; transform: translateY(-2px); }
+  .card-title { font-family: $headings-font-family; text-transform: lowercase; }
+}
+
+// ---- etiket ----
+.recep-tag {
+  display: inline-block;
+  font-family: $font-family-monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid $recep-line;
+  border-radius: 999px;
+  color: $recep-muted;
+  text-decoration: none !important;
+}
+
+// ---- ekip ----
+.recep-people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2.5rem;
+}
+.recep-person {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.25rem;
+  border: 1px solid $recep-line;
+  border-radius: $border-radius-lg;
+  transition: border-color 0.15s ease;
+  &:hover { border-color: $recep-muted; }
+}
+.recep-avatar {
+  flex: 0 0 72px; width: 72px; height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: grid; place-items: center;
+  background: $recep-surface;
+  border: 1px solid $recep-line;
+  font-family: $headings-font-family; font-weight: 700; font-size: 1.4rem;
+  color: $recep-accent;
+}
+.recep-person-name { font-weight: 600; line-height: 1.3; }
+.recep-person-role { font-size: 0.85rem; color: $recep-muted; }
+.recep-person-area { font-size: 0.85rem; margin-top: 0.35rem; }
+.recep-person-links {
+  display: flex; gap: 0.75rem; align-items: center; margin-top: 0.5rem;
+  a { color: $recep-muted; &:hover { color: $recep-ink; text-decoration: none; } }
+}
+
+// ---- yayınlar ----
+.recep-pubs { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
+.recep-pub {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid $recep-line;
+  &:first-child { border-top: 1px solid $recep-line; }
+}
+.recep-pub-title { font-weight: 600; margin: 0.4rem 0 0.2rem; line-height: 1.4; }
+.recep-pub-meta { font-size: 0.9rem; color: $recep-muted; }
+.recep-pub-links {
+  display: flex; gap: 1rem; margin-top: 0.35rem;
+  font-family: $font-family-monospace; font-size: 0.8rem;
+  &:empty { display: none; }
+}
+
+// ---- liste sayfaları (projeler / dokümantasyon) ----
+.quarto-listing-default .quarto-post {
+  border-bottom: 1px solid $recep-line;
+  .listing-title { font-family: $headings-font-family; text-transform: lowercase; }
+}
+
+.listing-category, .quarto-category,
+.quarto-grid-item .listing-categories .listing-category { text-transform: lowercase !important; letter-spacing: 0.02em; }
+.nav-footer { border-top: 1px solid $recep-line !important; }
+
+// ---- erişilebilirlik ----
+:focus-visible {
+  outline: 2px solid $recep-accent;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+::selection { background: rgba($recep-accent, 0.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
