@@ -1,0 +1,7 @@
+# blog yazıları için varsayılanlar
+author: "RECEP"
+freeze: true          # yazılar bir kez render edilir, sonra dondurulur
+title-block-banner: false
+toc: true
+citation: true
+date-format: "D MMMM YYYY"

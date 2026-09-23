@@ -1,0 +1,47 @@
+---
+title: "sistem gmm örneği"
+description: "plm paketiyle dinamik panel veri modeli: Blundell–Bond Sistem GMM tahmini."
+order: 2
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+Bu rehber, grubun ampirik çalışmalarında kullandığı Sistem GMM iş akışını `plm` paketindeki `EmplUK` veri setiyle gösterir. Sayfa yerelde render edilir; çıktılar `_freeze/` ile dondurulur.
+
+## model
+
+İstihdamın ($n_{it}$) kendi gecikmesi, ücretler ($w$), sermaye ($k$) ve çıktı ($ys$) ile açıklandığı dinamik model:
+
+$$
+n_{it} = \alpha\, n_{i,t-1} + \beta_1 w_{it} + \beta_2 k_{it} + \beta_3 ys_{it} + \eta_i + \varepsilon_{it}
+$$
+
+## tahmin
+
+```{r}
+library(plm)
+data("EmplUK", package = "plm")
+
+sgmm <- pgmm(
+  log(emp) ~ lag(log(emp), 1) + log(wage) + log(capital) + log(output) |
+    lag(log(emp), 2:99),
+  data = EmplUK,
+  effect = "twoways",
+  model = "twosteps",
+  transformation = "ld",   # "ld" = Sistem GMM (fark + düzey denklemleri)
+  collapse = TRUE
+)
+
+summary(sgmm, robust = TRUE)
+```
+
+## tanı testleri
+
+İyi bir Sistem GMM tahmininde AR(2) ve Hansen/Sargan testlerinin p-değerlerinin yüksek olması beklenir.
+
+```{r}
+mtest(sgmm, order = 2, vcov = vcovHC(sgmm))
+sargan(sgmm)
+```

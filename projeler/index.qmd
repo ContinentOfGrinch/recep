@@ -1,0 +1,15 @@
+---
+title: "projeler"
+description: "RECEP bünyesinde yürütülen araştırma projeleri."
+toc: false
+listing:
+  contents: "*.qmd"
+  type: default
+  sort: "title"
+  fields: [title, description, categories]
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---
+
+Grubumuzun yürüttüğü araştırma projeleri. Her proje sayfası amaç, yöntem, veri ve çıktıları içerir.

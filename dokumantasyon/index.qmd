@@ -1,0 +1,14 @@
+---
+title: "dokümantasyon"
+description: "Veri, kod ve iş akışlarımıza dair teknik rehberler."
+toc: false
+listing:
+  contents: "*.qmd"
+  type: table
+  sort: "order"
+  fields: [title, description]
+  sort-ui: false
+  filter-ui: false
+---
+
+Tekrarlanabilir araştırma altyapımıza ait teknik rehberler.

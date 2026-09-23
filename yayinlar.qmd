@@ -1,0 +1,12 @@
+---
+title: "yayınlar"
+description: "Makaleler, çalışma raporları ve bildiriler."
+toc: false
+listing:
+  id: yayinlar
+  contents: data/yayinlar.yml
+  template: _templates/yayinlar.ejs
+---
+
+::: {#yayinlar}
+:::

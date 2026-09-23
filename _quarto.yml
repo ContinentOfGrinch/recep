@@ -1,0 +1,108 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "projeler/*.qmd"
+    - "dokumantasyon/*.qmd"
+    - "blog/**/*.qmd"
+  resources:
+    - ".nojekyll"
+    - "assets/fonts/"
+
+lang: tr
+
+execute:
+  freeze: auto   # R çıktıları _freeze/ içine yazılır ve commit edilir; CI'da R gerekmez
+
+website:
+  title: "recep"
+  description: "İklim ekonomisi, CBAM ve dinamik panel veri analizleri üzerine akademik araştırma grubu."
+  site-url: "https://continentofgrinch.github.io/recep/"
+  repo-url: "https://github.com/ContinentOfGrinch/recep"
+  repo-actions: [edit, issue]
+  favicon: assets/favicon.svg
+  image: assets/og.png
+  open-graph: true
+  twitter-card: true
+  page-navigation: true
+  back-to-top-navigation: true
+  bread-crumbs: true
+  search:
+    location: navbar
+    type: overlay
+    copy-button: true
+
+  navbar:
+    background: light
+    pinned: true
+    collapse-below: lg
+    left:
+      - text: "projeler"
+        href: projeler/index.qmd
+      - text: "yayınlar"
+        href: yayinlar.qmd
+      - text: "dokümantasyon"
+        href: dokumantasyon/index.qmd
+      - text: "blog"
+        href: blog/index.qmd
+      - text: "ekip"
+        href: ekip.qmd
+    tools:
+      - icon: github
+        href: "https://github.com/ContinentOfGrinch/recep"
+        aria-label: GitHub
+      - icon: rss
+        href: blog/index.xml
+        aria-label: RSS
+
+  sidebar:
+    - id: projeler
+      title: "projeler"
+      style: floating
+      collapse-level: 2
+      contents:
+        - auto: projeler
+
+    - id: dokumantasyon
+      title: "dokümantasyon"
+      style: floating
+      collapse-level: 2
+      contents:
+        - auto: dokumantasyon
+
+  page-footer:
+    border: true
+    left: "© 2026 RECEP · içerik [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.tr), kod MIT"
+    right:
+      - icon: github
+        href: "https://github.com/ContinentOfGrinch/recep"
+        aria-label: GitHub
+      - icon: rss
+        href: blog/index.xml
+        aria-label: RSS
+
+format:
+  html:
+    theme:
+      light: [theme.scss]
+      dark: [theme.scss, theme-dark.scss]
+    respect-user-color-scheme: true
+    css: assets/fonts.css
+    toc: true
+    toc-depth: 3
+    toc-title: "bu sayfada"
+    smooth-scroll: true
+    anchor-sections: true
+    code-copy: true
+    code-overflow: wrap
+    code-link: true
+    highlight-style: github
+    html-math-method: katex
+    link-external-icon: false
+    link-external-newwindow: true
+    fig-responsive: true
+    grid:
+      body-width: 820px
+      sidebar-width: 260px
+      margin-width: 240px

@@ -1,0 +1,14 @@
+---
+title: "ekip"
+description: "RECEP araştırma grubu üyeleri."
+toc: false
+listing:
+  id: ekip
+  contents: data/ekip.yml
+  template: _templates/ekip.ejs
+---
+
+Ekip bilgileri `data/ekip.yml` dosyasından üretilir.
+
+::: {#ekip}
+:::
