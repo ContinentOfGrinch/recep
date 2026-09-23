@@ -70,11 +70,11 @@ README.md, LICENSE, .editorconfig, .gitattributes, .gitignore, .nojekyll
 ## 7. açık işler / TODO
 - [x] Yer tutucular dolduruldu (ContinentOfGrinch / recep). Repo adı değişirse `site-url` + 404 yolları da değişir.
 - [x] 2026-09-23 repo oluşturuldu (açıklama + topic'ler), Pages = Actions, ilk commit + push.
-- [ ] İlk Actions çalışmasının sonucunu ve canlı siteyi doğrula.
+- [x] İlk Actions çalışması başarılı (~1 dk). Canlı site doğrulandı: tüm sayfalar 200, fontlar font/woff2, RSS, sitemap, og:image, derin yolda 404 stilli çalışıyor.
 - [ ] Gerçek içerik: ekip (`data/ekip.yml`), yayınlar, proje sayfaları, blog yazıları.
 - [ ] Kalıcı logo/favicon tasarımı (şu an geçici `[r]` SVG).
 - [ ] R içeriği büyüdüğünde `renv` ile paket sürümlerini kilitle (şimdilik ertelendi; CI R kullanmadığı için acil değil).
 - [ ] İsteğe bağlı: iletişim bilgisi / e-posta, analitik (çerezsiz, ör. GoatCounter) kararı.
 
 ## 8. sıradaki adım
-Actions çalışması yeşilse canlı sitede görsel kontrol; kırmızıysa log'u incele. Ardından gerçek içerik girişi: ekip, yayınlar, projeler, blog.
+Gerçek içerik girişi: ekip (`data/ekip.yml`), yayınlar, proje sayfaları, blog. Kalıcı logo/favicon. Her push sonrası Actions sonucunu API ile kontrol et.

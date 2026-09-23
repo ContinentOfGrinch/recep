@@ -1,5 +1,4 @@
 ---
-title: "sayfa bulunamadı"
 pagetitle: "404 — recep"
 toc: false
 page-navigation: false
@@ -11,10 +10,13 @@ search: false
 hata 404
 :::
 
-Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.
+# sayfa bulunamadı.
+
+[Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.]{.lead}
 
 ::: {.recep-cta}
 [ana sayfa](/index.qmd){.primary}
 [projeler](/projeler/index.qmd)
+[dokümantasyon](/dokumantasyon/index.qmd)
 :::
 :::
