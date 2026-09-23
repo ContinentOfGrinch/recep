@@ -14,8 +14,7 @@ project:
     - ".nojekyll"
     - "assets/fonts/"
     - "assets/marka/"
-    - "araclar/veri/"
-    - "veri-kod/veri/"
+    - "assets/js/kure.js"
 
 lang: tr
 
@@ -43,17 +42,18 @@ website:
   navbar:
     background: dark
     pinned: true
-    collapse-below: lg
+    collapse-below: xl
     logo: assets/marka/amblem-nav.svg
     logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
     title: "recep"
-    left:
+    left:                                  # merkez logonun solu
       - text: "proje"
         href: proje/index.qmd
       - text: "ekip"
         href: ekip/index.qmd
       - text: "çıktılar"
         href: ciktilar/index.qmd
+    right:                                 # merkez logonun sağı
       - text: "veri ve kod"
         href: veri-kod/index.qmd
       - text: "araçlar"
@@ -66,9 +66,6 @@ website:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"
         aria-label: GitHub
-      - icon: rss
-        href: haberler/index.xml
-        aria-label: RSS
 
   sidebar:
     - id: proje
@@ -99,9 +96,6 @@ website:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"
         aria-label: GitHub
-      - icon: rss
-        href: haberler/index.xml
-        aria-label: RSS
       - icon: envelope
         href: iletisim/index.qmd
         aria-label: İletişim
@@ -116,6 +110,29 @@ format:
     include-in-header:
       text: |
         <meta name="theme-color" content="#05080D">
+        <script>
+          // Varsayılan gece teması: eski sürümlerden kalmış tema tercihini bir kez sıfırla
+          try {
+            if (localStorage.getItem("recep-tema") !== "v2") {
+              var eski = localStorage.getItem("quarto-color-scheme");
+              localStorage.removeItem("quarto-color-scheme");
+              localStorage.setItem("recep-tema", "v2");
+              if (eski) location.reload();
+            }
+          } catch (e) {}
+        </script>
+    include-after-body:
+      text: |
+        <script>
+          // dönen dünya küresi: sayfa derinliğinden bağımsız yükle
+          (function () {
+            var m = document.querySelector('meta[name="quarto:offset"]');
+            var s = document.createElement("script");
+            s.src = (m ? m.content : "./") + "assets/js/kure.js";
+            s.defer = true;
+            document.body.appendChild(s);
+          })();
+        </script>
     toc: true
     toc-depth: 3
     toc-title: "bu sayfada"

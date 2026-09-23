@@ -1,0 +1,40 @@
+---
+title: "veri ve kod"
+description: "Uyumlaştırma anahtarları, anonimleştirilmiş veri setleri ve analiz kodları — açık bilim ilkeleriyle."
+order: 1
+toc: false
+---
+
+Proje, tekrarlanabilirlik ve bilimsel şeffaflık ilkeleri doğrultusunda paylaşılabilir tüm veri ürünlerini ve analiz kodlarını açık erişimle yayımlar. TÜİK mikro verileri gizlilik kuralları gereği paylaşılmaz; yalnızca Veri Araştırma Merkezi (VAM) kurallarına uygun, toplulaştırılmış ve anonimleştirilmiş çıktılar sunulur.
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [uyumlaştırma anahtarları](uyumlastirma-anahtarlari.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+NACE Rev. 2 – ISCO-08 – GTİP arasında geçiş tabloları.
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [veri setleri](veri-setleri.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+Anonimleştirilmiş ve toplulaştırılmış veri ürünleri.
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [analiz kodları](analiz-kodlari.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+G-Ç modeli, esneklik tahminleri ve senaryo kodları.
+:::
+
+::::
+
+## lisans {.no-prefix}
+
+Kodlar **MIT**, veri ürünleri ve metinler **CC BY 4.0** lisansıyla paylaşılır. Kullanımda [TÜBİTAK teşekkür metni](../proje/tubitak.qmd) ile birlikte atıf yapılması rica olunur.

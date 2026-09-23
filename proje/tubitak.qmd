@@ -1,24 +1,8 @@
 ---
 title: "tübitak destek bilgisi"
-description: "Proje, TÜBİTAK 1001 Bilimsel ve Teknolojik Araştırma Projelerini Destekleme Programı kapsamında desteklenmektedir."
 order: 4
 ---
 
-| alan | bilgi |
-|---|---|
-| **program** | TÜBİTAK 1001 – Bilimsel ve Teknolojik Araştırma Projelerini Destekleme Programı |
-| **proje no** | 325K372 |
-| **proje başlığı** | AB Sınırda Karbon Düzenleme Mekanizmasının Türkiye Ekonomisine Etkileri: Sektörel Maliyet Yükü, Fiyat Etkileri ve Sosyo-Ekonomik Yansımaların Hibrit Girdi-Çıktı Modeli ile Analizi |
-| **proje yürütücüsü** | Doç. Dr. Tunç Durmaz |
-| **yürütücü kurum** | Yıldız Teknik Üniversitesi |
-| **iş birliği** | Türkiye İstatistik Kurumu (TÜİK) |
-| **süre** | 24 ay |
-| **başlangıç** | *belirlenecek* |
-
-## teşekkür metni
-
-Proje kapsamında üretilen yayın, sunum ve diğer çıktılarda aşağıdaki ifade kullanılır:
-
-> Bu çalışma, Türkiye Bilimsel ve Teknolojik Araştırma Kurumu (TÜBİTAK) tarafından 325K372 numaralı proje kapsamında desteklenmektedir. Çalışmada yer alan görüşler yazarlara aittir; TÜBİTAK'ın görüşlerini yansıtmaz.
-
-> *This study is supported by the Scientific and Technological Research Council of Türkiye (TÜBİTAK) under grant number 325K372. The views expressed are those of the authors and do not necessarily reflect those of TÜBİTAK.*
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

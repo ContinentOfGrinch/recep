@@ -1,6 +1,5 @@
 ---
 pagetitle: "recep — çevre, temiz enerji ve ekonomi politikaları araştırma grubu"
-description: "AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM) Türkiye ekonomisine etkilerini hibrit girdi-çıktı modeliyle inceleyen araştırma grubu."
 page-layout: full
 toc: false
 page-navigation: false
@@ -11,83 +10,40 @@ repo-actions: false
 
 :::: {}
 ::: {.recep-kicker}
-recep://skdm/türkiye
+recep://türkiye
 :::
 
-# karbonun sınırlarını veriyle ölçüyoruz.
-
-[Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu. AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM) Türkiye ekonomisi üzerindeki maliyet, fiyat ve sosyo-ekonomik etkilerini hibrit girdi-çıktı modeliyle analiz ediyoruz.]{.lead}
+# çevre, temiz enerji ve ekonomi politikaları araştırma grubu
 
 ::: {.recep-btns}
 [proje](proje/index.qmd){.birincil}
-[skdm hesaplayıcı](araclar/skdm-hesaplayici.qmd)
+[araçlar](araclar/index.qmd)
 [çıktılar](ciktilar/index.qmd)
 :::
 ::::
 
-::: {.recep-hero-amblem}
-![](assets/marka/amblem-koyu.svg){.amblem-koyu fig-alt="recep amblemi"}
-![](assets/marka/amblem-acik.svg){.amblem-acik fig-alt="recep amblemi"}
+::: {.recep-hero-kure}
+::: {.recep-kure data-hiz="0.006"}
+![](assets/marka/amblem-koyu.svg){fig-alt="dönen dünya küresi"}
+:::
+[lat 39.0 · lon 35.2 · **●** türkiye]{.recep-kure-etiket}
 :::
 
 :::::
 
-::: {.recep-status}
-[tübitak 1001]{} [24 ay]{} [yıldız teknik üniversitesi]{} [ortak: tüik]{}
-:::
+## bölümler {.no-prefix}
 
-## araştırma eksenleri {.no-prefix}
-
-:::: {.recep-grid}
-
-::: {.recep-card}
-[01]{.recep-index}
-
-### maliyet ve talep kanalı {.unnumbered .unlisted .no-anchor}
-
-SKDM'nin sektörel maliyet yükü, ihracat fiyatlarına yansıması ve AB ithalat talebi üzerinden pazar kaybı.
-
-- Gömülü emisyonlar (Kapsam 1 + 2)
-- AB ETS fiyat senaryoları
-- İthalat talep esneklikleri (2SLS)
-:::
-
-::: {.recep-card}
-[02]{.recep-index}
-
-### sektörel kırılganlık {.unnumbered .unlisted .no-anchor}
-
-Üretim kayıplarının girdi-çıktı ağı üzerinden tedarik zincirine yayılımı ve sektörlerin kırılganlık sıralaması.
-
-- Leontief ters matrisi
-- Kırılganlık endeksi
-- BAT temelli teknolojik sınır
-:::
-
-::: {.recep-card}
-[03]{.recep-index}
-
-### sosyo-ekonomik sonuçlar {.unnumbered .unlisted .no-anchor}
-
-İstihdam, ücret ve işletme artığı üzerindeki ayrıştırılmış etkiler ile hafifletici politika senaryoları.
-
-- Beceri düzeyine göre istihdam
-- Faktör gelirleri
-- NDC ve TR ETS etkileşimi
-:::
-
-::::
-
-## keşfet {.no-prefix}
-
-:::: {.recep-grid}
+:::: {.recep-grid .dort}
 
 ::: {.recep-card}
 [/proje]{.recep-index}
 
 ### [proje](proje/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-Amaç ve kapsam, yöntem özeti, iş paketleri ve takvim, TÜBİTAK destek bilgisi.
+- amaç ve kapsam
+- yöntem özeti
+- iş paketleri ve takvim
+- tübitak destek bilgisi
 :::
 
 ::: {.recep-card}
@@ -95,7 +51,10 @@ Amaç ve kapsam, yöntem özeti, iş paketleri ve takvim, TÜBİTAK destek bilgi
 
 ### [ekip](ekip/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-Yürütücü, araştırmacılar, danışmanlar ve bursiyerler.
+- yürütücü
+- araştırmacılar
+- danışmanlar
+- bursiyerler
 :::
 
 ::: {.recep-card}
@@ -103,7 +62,9 @@ Yürütücü, araştırmacılar, danışmanlar ve bursiyerler.
 
 ### [çıktılar](ciktilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-Politika notları, çalışma tebliğleri ve makaleler, sunumlar ve çalıştay materyalleri.
+- politika notları
+- çalışma tebliğleri ve makaleler
+- sunumlar ve çalıştay materyalleri
 :::
 
 ::: {.recep-card}
@@ -111,7 +72,9 @@ Politika notları, çalışma tebliğleri ve makaleler, sunumlar ve çalıştay 
 
 ### [veri ve kod](veri-kod/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-NACE–ISCO–GTİP uyumlaştırma anahtarları, anonimleştirilmiş veri setleri, analiz kodları.
+- uyumlaştırma anahtarları (NACE–ISCO–GTİP)
+- anonimleştirilmiş veri setleri
+- analiz kodları
 :::
 
 ::: {.recep-card}
@@ -119,7 +82,8 @@ NACE–ISCO–GTİP uyumlaştırma anahtarları, anonimleştirilmiş veri setler
 
 ### [araçlar](araclar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-SKDM maliyet hesaplayıcısı ve karbon fiyatı paneli.
+- skdm maliyet hesaplayıcısı
+- karbon fiyatı paneli
 :::
 
 ::: {.recep-card}
@@ -127,7 +91,19 @@ SKDM maliyet hesaplayıcısı ve karbon fiyatı paneli.
 
 ### [haberler](haberler/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-Duyurular, etkinlikler ve çalıştay haberleri.
+- duyurular
+- etkinlikler
+- çalıştay haberleri
+:::
+
+::: {.recep-card}
+[/iletisim]{.recep-index}
+
+### [iletişim](iletisim/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- e-posta
+- adres
+- sosyal medya bağlantıları
 :::
 
 ::::

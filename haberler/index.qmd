@@ -1,18 +1,30 @@
 ---
 title: "haberler"
-description: "Duyurular, etkinlikler ve çalıştay haberleri."
-listing:
-  contents: posts
-  type: grid
-  grid-columns: 3
-  sort: "date desc"
-  categories: true
-  sort-ui: false
-  filter-ui: true
-  feed: true
-  fields: [date, title, description, categories]
-page-layout: full
-title-block-banner: false
 toc: false
-repo-actions: false
 ---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### duyurular {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### etkinlikler {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### çalıştay haberleri {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

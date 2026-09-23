@@ -1,23 +1,8 @@
 ---
-title: "veri setleri"
-description: "Proje kapsamında üretilecek anonimleştirilmiş ve toplulaştırılmış veri ürünleri."
-order: 3
+title: "anonimleştirilmiş veri setleri"
+order: 2
 ---
 
-## gizlilik ilkesi
-
-Projede kullanılan firma ve çalışan düzeyindeki mikro veriler (Dış Ticaret, PRODCOM, Sektör Bilançoları, 4A Aktif Sigortalı İdari Kayıtları) TÜİK Veri Araştırma Merkezi (VAM) ortamında işlenir. **Bu veriler paylaşılmaz.** Yalnızca VAM'ın çıktı denetiminden geçmiş, istatistiksel gizliliği korunmuş ve toplulaştırılmış veri ürünleri yayımlanır.
-
-## planlanan veri ürünleri
-
-| veri ürünü | içerik | iş paketi | durum |
-|---|---|---|---|
-| sektörel emisyon yoğunlukları | Kapsam 1 ve Kapsam 2 yoğunlukları (tCO₂e / birim parasal çıktı) | İP2 | [planlandı]{.recep-tag} |
-| gömülü emisyonlar | AB'ye ihracattaki sektörel gömülü emisyonlar | İP4 | [planlandı]{.recep-tag} |
-| talep esneklikleri | ürün grubu bazında AB ithalat talep esneklikleri | İP3 | [planlandı]{.recep-tag} |
-| skdm maliyet senaryoları | ETS fiyat ve yansıtma oranı senaryolarına göre sektörel maliyetler | İP4 | [planlandı]{.recep-tag} |
-| uydu hesap katsayıları | sektör × beceri düzeyi istihdam ve ücret katsayıları | İP1 · İP4 | [planlandı]{.recep-tag} |
-
-::: {.recep-bos}
-Veri ürünleri yayımlandıkça bu sayfada sürüm numarası, açıklama (codebook) ve indirme bağlantısıyla listelenecektir.
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
 :::

@@ -14,6 +14,8 @@ $recep-surface: #F3F5F7 !default;   // kart / kod zemini
 $recep-green:   #12A12F !default;   // birincil vurgu
 $recep-blue:    #0077CC !default;   // bağlantılar / ikincil vurgu
 $recep-on-green: #FFFFFF !default;  // yeşil zemin üstündeki metin
+$recep-frame:   #0077CC !default;   // çerçeveler (elektrik mavi)
+$recep-red:     #D90F3C !default;   // Türkiye işareti
 
 // Navbar her iki temada da gece renginde kalır (marka şeridi)
 $recep-night:     #05080D;
@@ -121,30 +123,33 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
 
 :focus-visible { outline: 2px solid $recep-green; outline-offset: 2px; }
 
-// ============ navbar: iki satır, ortada amblem + [recep] ============
+// ============ navbar: bölünmüş tek satır — sol menü | [küre + recep] | sağ menü ============
+// Masaüstü (≥1200px): .navbar-collapse "display: contents" olur; iki <ul> ve marka
+// aynı ızgaraya yerleşir. Marka her zaman tam ortadadır (1fr auto 1fr).
+// Araçlar (github, tema) sol kenarda, arama sağ kenarda mutlak konumludur.
 #quarto-header {
   top: 0;
   z-index: 9999;
-  // pinned: true → Quarto başlığı sabitler; kaydırmada asla gizlenmez
-  transform: none !important;
+  transform: none !important;           // pinned: kaydırmada asla gizlenmez
 }
 
 .navbar {
   background-color: $recep-night !important;
-  border-bottom: 1px solid $recep-night-line;
-  box-shadow: none;
+  border-bottom: 1px solid rgba($recep-electric, .35);
+  box-shadow: 0 1px 0 rgba($recep-neon, .08), 0 8px 24px rgba(0, 0, 0, .35);
   padding: 0;
+  min-height: 68px;
 }
 
 .navbar .navbar-container {
+  position: relative;
   display: grid !important;
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-areas:
-    "sol  marka arac"
-    "menu menu  menu";
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: "sol marka sag";
   align-items: center;
+  column-gap: 0;
   padding: 0 1rem;
-  column-gap: 1rem;
+  min-height: 68px;
 }
 
 .navbar .navbar-brand-container {
@@ -156,27 +161,28 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   overflow: visible;
 }
 .navbar .navbar-brand, .navbar .navbar-title { overflow: visible !important; white-space: nowrap; min-width: max-content; }
-.navbar .navbar-toggler        { grid-area: sol;  justify-self: start; }
-.navbar #quarto-search         { grid-area: arac; justify-self: end; }
-.navbar .quarto-navbar-tools   { grid-area: arac; justify-self: end; margin-right: 2.75rem; display: flex; }
-.navbar .navbar-collapse       { grid-area: menu; justify-content: center; }
 
+// Quarto logo ve başlığı iki ayrı <a> olarak üretir: bitişik dursunlar
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: .7rem;
-  padding: .55rem 0;
-  margin: 0;
+  padding: .5rem 0;
+  margin: 0 !important;
 }
+.navbar-brand.navbar-brand-logo { padding-left: 1.75rem; padding-right: .55rem; }
+.navbar-brand:not(.navbar-brand-logo) { padding-right: 1.75rem; }
+.navbar .navbar-brand-container { display: flex; align-items: center; }
 
+// dönen küre (JS <canvas>; JS yoksa statik amblem <img>)
 .navbar-brand .navbar-logo {
-  height: 44px;
-  width: 44px;
+  height: 46px;
+  width: 46px;
   max-height: none;
+  display: block;
   filter: drop-shadow(0 0 6px rgba($recep-neon, .35));
 }
 
-// [recep] — köşeli parantezler logodaki gibi kalın, kare çizgiler
+// [recep] — logodaki gibi kalın kare köşeli parantezler
 .navbar-brand .navbar-title {
   position: relative;
   font-family: $font-family-sans-serif;
@@ -199,26 +205,20 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   &::after  { right: 0; border-left: none; }
 }
 
-// menü: terminal tipi, küçük harf
-.navbar .navbar-nav {
-  border-top: 1px solid $recep-night-line;
-  width: 100%;
-  justify-content: center;
-  gap: .25rem;
-}
-
+// menü öğeleri: terminal tipi, küçük harf
 .navbar .nav-link {
   font-family: $font-family-monospace;
-  font-size: .82rem;
+  font-size: .8rem;
   font-weight: 500;
   text-transform: lowercase;
+  white-space: nowrap;
   color: $recep-night-muted !important;
-  padding: .7rem .95rem !important;
-  border-bottom: 2px solid transparent;
-  transition: color .12s linear, border-color .12s linear;
+  padding: .55rem .7rem !important;
+  border: 1px solid transparent;
+  transition: color .12s linear, border-color .12s linear, box-shadow .12s linear;
 
-  &:hover { color: $recep-night-ink !important; border-bottom-color: $recep-electric; }
-  &.active { color: $recep-neon !important; border-bottom-color: $recep-neon; }
+  &:hover { color: $recep-night-ink !important; border-color: $recep-electric; }
+  &.active { color: $recep-neon !important; border-color: $recep-neon; box-shadow: 0 0 10px rgba($recep-neon, .25) inset; }
   &.active .menu-text::before { content: "> "; }
 }
 
@@ -226,20 +226,49 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
 .navbar .quarto-color-scheme-toggle,
 .navbar .aa-DetachedSearchButtonIcon,
 .navbar #quarto-search .aa-SubmitIcon { color: $recep-night-muted !important; }
-.navbar .quarto-navigation-tool:hover { color: $recep-neon !important; }
-.navbar .navbar-toggler { border: 1px solid $recep-night-line; }
+.navbar .quarto-navigation-tool:hover,
+.navbar .quarto-color-scheme-toggle:hover { color: $recep-neon !important; }
+.navbar .navbar-toggler { border: 1px solid $recep-electric; }
+
+// kenar araçları
+.navbar .quarto-navbar-tools {
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  display: flex; gap: .15rem; margin: 0 !important;
+}
+.navbar #quarto-search {
+  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  margin: 0 !important;
+}
 
 // arama katmanı navbar'ın (9999) üstünde açılsın
 .aa-DetachedOverlay, .aa-Panel { z-index: 10000 !important; }
 
-// mobil: üst satır [menü düğmesi | marka | arama], menü açılınca alt alta
-@media (max-width: 991.98px) {
-  .navbar .quarto-navbar-tools { display: none; }
-  .navbar-brand .navbar-logo { height: 36px; width: 36px; }
-  .navbar-brand .navbar-title { font-size: 1.35rem; }
+// ---- masaüstü: bölünmüş menü ----
+@media (min-width: 1200px) {
+  .navbar .navbar-toggler { display: none; }
+  .navbar .navbar-collapse { display: contents !important; }
+  .navbar .navbar-nav { flex-direction: row; align-items: center; gap: .3rem; margin: 0 !important; }
+  .navbar .navbar-nav.me-auto { grid-area: sol; justify-self: end; padding-left: 5.5rem; }   // sol kenar araçlarına yer
+  .navbar .navbar-nav.ms-auto { grid-area: sag; justify-self: start; padding-right: 3.5rem; } // sağ kenar aramaya yer
+}
+
+// ---- tablet / mobil: [menü düğmesi | marka | arama], menü aşağı açılır ----
+@media (max-width: 1199.98px) {
+  .navbar .navbar-container { grid-template-areas: "sol marka sag" "menu menu menu"; }
+  .navbar .navbar-toggler { grid-area: sol; justify-self: start; }
+  .navbar .navbar-collapse { grid-area: menu; }
+  .navbar .quarto-navbar-tools { left: auto; right: 3.4rem; top: 34px; }
+  .navbar .quarto-navbar-tools .quarto-navigation-tool:not(.quarto-color-scheme-toggle) { display: none; }
+  .navbar #quarto-search { top: 34px; }
+  .navbar-brand { padding: .5rem .5rem; }
   .navbar .navbar-nav { align-items: stretch; gap: 0; }
-  .navbar .nav-link { border-bottom: 1px solid $recep-night-line; border-left: 2px solid transparent; }
-  .navbar .nav-link.active { border-left-color: $recep-neon; }
+  .navbar .navbar-nav.me-auto { border-top: 1px solid rgba($recep-electric, .35); }
+  .navbar .nav-link { border: none; border-left: 2px solid transparent; border-bottom: 1px solid $recep-night-line; padding: .75rem 1rem !important; }
+  .navbar .nav-link.active { border-left-color: $recep-neon; box-shadow: none; }
+}
+@media (max-width: 575.98px) {
+  .navbar-brand .navbar-logo { height: 38px; width: 38px; }
+  .navbar-brand .navbar-title { font-size: 1.35rem; }
 }
 
 // ============ sidebar / toc ============
@@ -273,7 +302,7 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   font-size: .85rem;
   text-transform: lowercase;
   padding: .6rem 1.1rem;
-  border: 1px solid $recep-ink;
+  border: 1px solid $recep-frame;
   color: $recep-ink;
   text-decoration: none !important;
   transition: transform .12s linear, box-shadow .12s linear, background-color .12s linear;
@@ -297,8 +326,8 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
 .recep-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid $recep-line;
-  border-left: 1px solid $recep-line;
+  border-top: 1px solid $recep-frame;
+  border-left: 1px solid $recep-frame;
   margin: 1rem 0 3.5rem;
 }
 .recep-grid.dort { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -306,8 +335,8 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
 .recep-card {
   position: relative;
   padding: 1.75rem 1.5rem;
-  border-right: 1px solid $recep-line;
-  border-bottom: 1px solid $recep-line;
+  border-right: 1px solid $recep-frame;
+  border-bottom: 1px solid $recep-frame;
   transition: background-color .12s linear;
 
   &:hover { background-color: $recep-surface; }
@@ -368,7 +397,7 @@ body.quarto-light .amblem-koyu { display: none; }
   font-family: $font-family-monospace;
   font-size: .78rem;
   color: $recep-muted;
-  border: 1px solid $recep-line;
+  border: 1px solid $recep-frame;
   padding: .6rem .9rem;
   margin-bottom: 1rem;
   p { display: contents; }
@@ -500,4 +529,57 @@ form.oi-3a86ea { font-family: $font-family-monospace; font-size: .82rem; }
 input[type="range"] { accent-color: $recep-green; }
 form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^="oi-"] input[type="text"] {
   background: $recep-paper; color: $recep-ink; border: 1px solid $recep-line; font-family: $font-family-monospace;
+}
+
+// ============ küre (assets/js/kure.js) ============
+:root {
+  --recep-yesil:   #{$recep-green};
+  --recep-mavi:    #{$recep-blue};
+  --recep-kirmizi: #{$recep-red};
+  --recep-zemin:   #{$recep-paper};
+}
+
+// hero'daki büyük animasyon alanı: keskin neon çerçeve + terminal ızgarası
+.recep-hero-kure {
+  position: relative;
+  justify-self: stretch;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  border: 1px solid $recep-green;
+  box-shadow: 0 0 0 1px rgba($recep-green, .15), 0 0 32px rgba($recep-green, .12) inset;
+  background-color: $recep-paper;
+  background-image:
+    linear-gradient(rgba($recep-frame, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($recep-frame, .12) 1px, transparent 1px);
+  background-size: 32px 32px;
+
+  // köşe imleri (elektrik mavi)
+  &::before, &::after {
+    content: ""; position: absolute; width: 22px; height: 22px; pointer-events: none;
+    border: 2px solid $recep-blue;
+  }
+  &::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  &::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .recep-kure { position: absolute; inset: 7%; }
+  .recep-kure canvas, .recep-kure img { width: 100% !important; height: 100% !important; display: block; }
+
+  .recep-kure-etiket {
+    position: absolute; left: 12px; bottom: 10px;
+    font-family: $font-family-monospace; font-size: .7rem; color: $recep-muted; text-transform: lowercase;
+    b, strong { color: $recep-red; font-weight: 400; }
+  }
+}
+@media (max-width: 991.98px) {
+  .recep-hero-kure { margin: 0 auto; max-width: 360px; }
+}
+
+// iskelet sayfalar: içerik bekleniyor
+.recep-bekliyor {
+  font-family: $font-family-monospace; font-size: .85rem; color: $recep-muted;
+  border: 1px dashed $recep-frame; padding: 1.25rem 1.5rem; margin: 1.5rem 0 2rem;
+  p { display: inline; margin: 0; }
+  &::before { content: "// "; color: $recep-green; }
 }

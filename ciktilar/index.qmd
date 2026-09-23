@@ -1,12 +1,7 @@
 ---
 title: "çıktılar"
-description: "Politika notları, çalışma tebliğleri ve makaleler, sunumlar ve çalıştay materyalleri."
-order: 1
+order: 0
 toc: false
-listing:
-  id: liste
-  contents: ../data/ciktilar.yml
-  template: ../_templates/ciktilar.ejs
 ---
 
 :::: {.recep-grid}
@@ -15,29 +10,18 @@ listing:
 [01]{.recep-index}
 
 ### [politika notları](politika-notlari.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-Karar vericilere yönelik kısa, uygulanabilir notlar.
 :::
 
 ::: {.recep-card}
 [02]{.recep-index}
 
-### [tebliğler ve makaleler](tebligler-makaleler.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-Hakemli dergi makaleleri ve çalışma tebliğleri.
+### [çalışma tebliğleri ve makaleler](tebligler-makaleler.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 :::
 
 ::: {.recep-card}
 [03]{.recep-index}
 
-### [sunumlar ve çalıştaylar](sunumlar.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-Konferans sunumları ve çalıştay materyalleri.
+### [sunumlar ve çalıştay materyalleri](sunumlar.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 :::
 
 ::::
-
-## tüm çıktılar {.no-prefix}
-
-::: {#liste}
-:::

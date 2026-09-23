@@ -1,7 +1,6 @@
 ---
 title: "sunumlar ve çalıştay materyalleri"
-description: "Konferans sunumları, çalıştay programları ve materyalleri."
-order: 4
+order: 3
 toc: false
 listing:
   id: liste

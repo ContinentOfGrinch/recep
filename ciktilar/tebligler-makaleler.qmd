@@ -1,7 +1,6 @@
 ---
 title: "çalışma tebliğleri ve makaleler"
-description: "Hakemli dergi makaleleri ve çalışma tebliğleri."
-order: 3
+order: 2
 toc: false
 listing:
   id: liste

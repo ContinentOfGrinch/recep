@@ -1,7 +1,11 @@
 # RECEP web sitesi — proje hafızası
 
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
-> Son güncelleme: 2026-09-23 (oturum 1, aşama 3 — yeniden tasarım)
+> Son güncelleme: 2026-09-23 (oturum 1, aşama 4 — bölünmüş navbar, dönen küre, iskelet kategoriler)
+
+## ⚠ KESİN KURAL (kullanıcı, 2026-09-23)
+
+**Kullanıcı bilgi verip onaylamadan kategorilerin (proje, ekip, çıktılar, veri ve kod, araçlar, haberler, iletişim) içine içerik YAZILMAZ.** Belgelerden özet, örnek veri, araç içeriği dahil. Sayfalar yalnızca iskelet: başlık + kullanıcının verdiği alt başlıklar + `.recep-bekliyor` kutusu ("içerik hazırlanıyor."). Önceden hazırlanmış içerikler `_taslaklar/` klasöründe (derlenmez, `_taslaklar/BENİOKU.md`); kullanıcı onaylarsa oradan geri taşınır. Tasarım/altyapı işleri serbest.
 
 ## 1. proje künyesi
 
@@ -18,26 +22,32 @@
 - **Dil:** "bilimsel brutalizm" + siberpunk/terminal. Tüm köşeler keskin (`border-radius: 0`, `$enable-rounded: false` + global `*{border-radius:0!important}`).
 - **Palet — gece (VARSAYILAN):** zemin #05080D, metin #E6EDF3, soluk #8B98A5, çizgi #1C2633, yüzey #0B111A, **neon yeşil #39FF14**, **elektrik mavi #00A3FF**.
 - **Palet — açık:** zemin #FFFFFF, metin #0B1220, soluk #4B5563, çizgi #D0D7DE, yüzey #F3F5F7, yeşil **#12A12F**, mavi **#0077CC**.
-- **Navbar:** her iki temada #05080D, sabit (Quarto `pinned` + `z-index: 9999`), **iki satır**: üstte ortada amblem + [recep], sağda araçlar/arama; altta ortalanmış 7 menü (JetBrains Mono, küçük harf, aktif öğe `> ` + neon alt çizgi).
-- **Logo:** marka paketindeki küre amblemi (AB–TR noktalı yay = SKDM hattı). Navbar'da `assets/marka/amblem-nav.svg` (**dönen kesikli halka, akan AB–TR yayı, nabız atan noktalar**; CSS animasyonu SVG içinde, `prefers-reduced-motion` destekli). [recep] metni **Inter 900** (marka kelime işaretindeki ağır grotesk'e en yakın; Roboto Condensed yerine bilinçli seçim), köşeli parantezler CSS kenarlıklarıyla kalın kare çizgi.
+- **Navbar (v3, kullanıcı düzeltmesi):** **tek satır, bölünmüş:** SOL `proje · ekip · çıktılar` | MERKEZ [küre + [recep]] | SAĞ `veri ve kod · araçlar · haberler · iletişim`. Alt alta YOK, logo solda YOK. Her iki temada #05080D, sabit (`pinned` + `z-index: 9999`). ≥1200px: `.navbar-collapse{display:contents}` + grid `1fr auto 1fr`; Quarto `left:`→`.me-auto`, `right:`→`.ms-auto`. GitHub+tema düğmesi sol kenarda, arama sağ kenarda (mutlak). <1200px (`collapse-below: xl`): [menü düğmesi | marka | tema+arama], menü aşağı açılır.
+- **Logo/küre:** `assets/js/kure.js` — **gerçekten dönen wireframe dünya** (canvas, kütüphanesiz ortografik izdüşüm, Natural Earth 110m kıyı çizgileri neon yeşil, 20° ağ elektrik mavi), **Türkiye'de (35.2E, 39.0N) yanıp sönen neon kırmızı nokta + radar halkası** (#FF1F4B), küreyle birlikte döner, arka yüzde gizlenir. Eğim 24° (kuzeyden). Navbar'da `.navbar-logo` img → 46px canvas (hız 0.018°/ms); hero'da `.recep-kure` (hız 0.006, dış kesikli halka ters döner, renkler CSS değişkenlerinden `--recep-yesil/mavi/kirmizi/zemin`). JS yoksa yedek: `amblem-nav.svg` / `amblem-koyu.svg`. `prefers-reduced-motion` → tek kare. IntersectionObserver ile görünmezken durur.
+- **Küre derleme:** kaynak `assets/js/kure.src.js`; veri `assets/js/kaynak/kara-110m.json`; `node assets/js/kaynak/kure-derle.mjs assets/js/kure.src.js assets/js/kaynak/kara-110m.json assets/js/kure.js`. Yükleyici `_quarto.yml` `include-after-body` içinde, `<meta name="quarto:offset">` ile her derinlikte doğru yol.
+- [recep] metni **Inter 900** (marka kelime işaretine en yakın), köşeli parantezler CSS kenarlıklarıyla kalın kare çizgi.
+- **Çerçeveler:** kart ızgarası, butonlar, şeritler `$recep-frame` (gece #00A3FF / açık #0077CC); birincil buton ve hero küre çerçevesi neon yeşil; hero'da terminal ızgarası + mavi köşe imleri.
+- **Gece varsayılanı garantisi:** `include-in-header` betiği, eski sürümden kalan `quarto-color-scheme` tercihini bir kez siler (`recep-tema=v2` bayrağı) ve gerekirse sayfayı yeniler.
 - **Tipografi:** h1–h2 Roboto Condensed Bold, h3–h6 + menü + etiketler JetBrains Mono, gövde Inter. Hepsi küçük harf. h2 önüne `# ` (yeşil), h3 önüne `## ` (mavi); `.no-prefix` ile kapatılır.
 - **Etkileşim dili:** hover'da `translate(-2px,-2px)` + `4px 4px 0` neon gölge (brutalist), kartlarda alttan dolan neon çizgi.
 
 ## 3. site mimarisi (kalıcı adresler)
 
-| menü | adres | içerik | kaynak |
-|---|---|---|---|
-| proje | /proje/ | index (amaç-kapsam), yontem, is-paketleri (JS gantt), tubitak | başvuru formu |
-| ekip | /ekip/ | yürütücü, araştırmacılar, danışmanlar, bursiyerler | `data/ekip.yml` + `_templates/ekip.ejs` |
-| çıktılar | /ciktilar/ | index + politika-notlari, tebligler-makaleler, sunumlar | `data/ciktilar.yml` (`bolum` alanı ile süzülür) + `_templates/ciktilar.ejs` |
-| veri ve kod | /veri-kod/ | uyumlastirma-anahtarlari (SKDM Ek I GTİP→NACE taslak CSV), veri-setleri, analiz-kodlari (R Leontief demo, freeze) | `veri-kod/veri/*.csv` |
-| araçlar | /araclar/ | skdm-hesaplayici (OJS), karbon-fiyati (OJS + CSV) | `araclar/veri/ab-ets-yillik.csv` |
-| haberler | /haberler/ | grid listing + RSS (`haberler/index.xml`) | `haberler/posts/YYYY-AA-GG-slug/` |
-| iletişim | /iletisim/ | e-posta, adres, bağlantılar | yer tutucular |
+**Şu an tüm kategoriler İSKELET (içerik bekliyor).**
 
-- Sidebar: proje, ciktilar, veri-kod, araclar → `- auto: <klasör>`, sıra `order` alanıyla.
-- Ekip adları başvuru formundaki kadrodan: Durmaz (yürütücü); Avşar, Güngör, Şahin, Çivit (TÜİK), Alpar (TÜİK) (araştırmacı); Arı, Demir (danışman); bursiyerler boş → "belirlendiğinde" mesajı.
-- Çıktılar boş: `data/ciktilar.yml` içinde `bolum: yok` yer tutucu kayıt var (boş listing hatasını önler, şablon süzüyor).
+| menü | adres | alt kategoriler (sayfa) | altyapı |
+|---|---|---|---|
+| proje | /proje/ | amac-kapsam, yontem, is-paketleri, tubitak | sidebar |
+| ekip | /ekip/ | yürütücü, araştırmacılar, danışmanlar, bursiyerler (tek sayfa, gruplar) | `data/ekip.yml` (boş, `rol: yok` yer tutucu) + `_templates/ekip.ejs` |
+| çıktılar | /ciktilar/ | politika-notlari, tebligler-makaleler, sunumlar | `data/ciktilar.yml` (`bolum` ile süzülür) + `_templates/ciktilar.ejs` |
+| veri ve kod | /veri-kod/ | uyumlastirma-anahtarlari (NACE–ISCO–GTİP), veri-setleri, analiz-kodlari | sidebar |
+| araçlar | /araclar/ | skdm-hesaplayici, karbon-fiyati | sidebar; OJS altyapısı `_taslaklar/araclar/` içinde hazır |
+| haberler | /haberler/ | duyurular, etkinlikler, çalıştay haberleri (kartlar) | ilk haberde listing + RSS açılacak (`_taslaklar/haberler/index.qmd` şablon); `haberler/posts/_metadata.yml` hazır |
+| iletişim | /iletisim/ | e-posta, adres, sosyal medya bağlantıları (kartlar) | — |
+
+- Sidebar: proje, ciktilar, veri-kod, araclar → `- auto: <klasör>`, sıra `order` alanıyla; bölüm index'i `order: 0`.
+- İskeletler `scratchpad/iskelet.mjs` ile üretildi (yeniden gerekmez).
+- RSS bağlantıları navbar/footer'dan kaldırıldı (haber yokken kırık olurdu); ilk haberle geri eklenecek.
 
 ## 4. teknik kararlar ve tuzaklar
 
@@ -66,6 +76,8 @@
 - [x] Aşama 1–2 (2026-09-23): ilk iskelet, altyapı, CI (render + lychee + Pages), self-host fontlar, repo + ilk yayın.
 - [x] Aşama 3 (2026-09-23): **yeniden tasarım** — manifesto v2 paleti, iki satırlı ortalanmış navbar + animasyonlu marka amblemi, 7 bölümlü yeni bilgi mimarisi, başvuru formundan proje içeriği, ekip verisi, SKDM hesaplayıcısı ve karbon fiyatı paneli (OJS), GTİP→NACE taslak anahtar, R Leontief demosu, iş-zaman çizelgesi. Gece/mobil/araç sayfaları ekran görüntüsüyle doğrulandı.
 
+- [x] Aşama 4 (2026-09-23, kullanıcı düzeltmesi): bölünmüş tek satır navbar + merkez logo; canvas tabanlı gerçekten dönen wireframe küre + Türkiye'de yanıp sönen kırmızı nokta (navbar + hero); neon çerçeveler; gece varsayılanı sıfırlama betiği; tüm kategoriler iskelete çevrildi, içerikler `_taslaklar/`'a taşındı. Dönüş CDP ile gerçek zamanlı doğrulandı (3 sn arayla kare özetleri farklı).
+
 ## 7. açık işler / TODO
 
 - [x] Aşama 3 commit `c5d83f9` + push; Actions başarılı; canlıda 13 adres 200, araçlar çalışıyor. Açık tema, ekip ve mobil ekran görüntüleriyle doğrulandı (açık temada amblem-acik'in gri arka plan kutusu kaldırıldı).
@@ -75,6 +87,9 @@
 - [ ] İngilizce sürüm (tablo: About, Team, Outputs, Data & Code, Tools, News, Contact) — Quarto profilleri veya `/en/` alt ağacı ile; henüz başlanmadı.
 - [ ] `renv` ile R paketlerini kilitle (R içeriği büyüyünce).
 
+- **Doğrulama notu:** headless tarayıcıda `--virtual-time-budget` requestAnimationFrame'i ilerletmez (4 sn'de 6 kare). Animasyon kontrolü için `scratchpad/cdp.mjs` (Edge `--remote-debugging-port=9333` + Node WebSocket, gerçek zamanlı ölçüm ve ekran görüntüsü). Headless Edge'i kapatırken genel `taskkill /IM msedge.exe` KULLANMA (kullanıcının tarayıcısını etkileyebilir); yalnızca `edge-cdp` profilli süreçleri hedefle.
+- **Kabuk notu:** `node -e '...'` içinde tek tırnaklı JS dizeleri kabukta düşer → tırnak içeren düzenlemeleri Edit/Write ile yap.
+
 ## 8. sıradaki adım
 
-Kullanıcıdan doğrulama listesini (bölüm 7) al ve işle: proje no/başlangıç, ekip onayı ve kurumları, iletişim bilgileri. Ardından temsili verileri resmi kaynaklarla değiştir ve İngilizce sürüm kararını ver.
+**Kullanıcının kategori bilgilerini göndermesini bekle.** Gelen her bilgiyi yalnızca ilgili kategoriye işle; `_taslaklar/` içeriğini ancak kullanıcı onaylarsa kullan. Bekleme sürecinde yalnızca tasarım/altyapı işleri yapılabilir.

@@ -1,0 +1,34 @@
+---
+title: "uyumlaştırma anahtarları"
+description: "Ekonomik faaliyet (NACE Rev. 2), meslek (ISCO-08) ve ürün (GTİP/HS) sınıflamaları arasında geçiş tabloları."
+order: 2
+---
+
+Proje, doğası gereği farklı sınıflamalar kullanan veri setlerini (G-Ç tabloları, dış ticaret, emisyon envanterleri, işgücü kayıtları) bir araya getirir. Bu veri setleri arasında tutarlı bir köprü kurmak için ayrıntılı **uyumlaştırma (concordance) anahtarları** oluşturulmaktadır.
+
+## planlanan anahtarlar
+
+| anahtar | eşleştirme | amaç | durum |
+|---|---|---|---|
+| **GTİP → NACE** | 12 haneli GTİP/HS ürün kodları → NACE Rev. 2 sektörleri | ihraç ürünlerinin G-Ç sektörlerine atanması | [taslak]{.recep-tag} |
+| **NACE → ISCO** | NACE Rev. 2 sektörleri → ISCO-08 meslek grupları | istihdam ve ücret uydu hesapları | [hazırlanıyor]{.recep-tag} |
+| **PRODCOM → IPCC** | fiziksel ürün kodları → IPCC emisyon faktörleri | aşağıdan-yukarıya emisyon hesabı | [hazırlanıyor]{.recep-tag} |
+| **G-Ç ayrıştırma** | ana sektörler → SKDM alt sektörleri (ör. NACE 23.51) | SKDM sektörlerinin tabloda ayrık temsili | [hazırlanıyor]{.recep-tag} |
+
+## skdm ek i kapsamı: gtip → nace (taslak)
+
+AB 2023/956 sayılı SKDM Yönetmeliği Ek I'de listelenen mal gruplarının NACE Rev. 2 sektörleriyle ilk eşleştirmesi:
+
+```{r}
+#| echo: false
+anahtar <- read.csv("veri/skdm-ek1-gtip-nace.csv", encoding = "UTF-8", check.names = FALSE)
+knitr::kable(anahtar[, c("skdm_sektoru", "gtip_hs", "aciklama", "nace_rev2")],
+             col.names = c("sektör", "gtip / hs", "açıklama", "nace rev. 2"))
+```
+
+[↓ skdm-ek1-gtip-nace.csv](veri/skdm-ek1-gtip-nace.csv){.recep-btn download="skdm-ek1-gtip-nace.csv"}
+
+::: {.callout-warning}
+## taslak
+Bu tablo pozisyon/fasıl düzeyinde bir ilk eşleştirmedir. Nihai anahtar, Ek I'deki alt pozisyon istisnaları ve TÜİK'in 12 haneli GTİP–NACE uyumlaştırmasıyla doğrulanarak İP1 kapsamında yayımlanacaktır.
+:::

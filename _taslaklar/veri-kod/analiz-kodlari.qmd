@@ -1,0 +1,54 @@
+---
+title: "analiz kodları"
+description: "G-Ç modeli, emisyon yoğunlukları ve SKDM maliyet hesabının tekrarlanabilir kod örnekleri."
+order: 4
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+Projenin ana analizleri Stata (2SLS esneklik tahminleri) ve Matlab (G-Ç modeli) ile yürütülür; veri hazırlama ve görselleştirme için R ve Python kullanılır. Kodlar yayımlandıkça bu sayfada ve GitHub deposunda paylaşılacaktır.
+
+## örnek: gömülü emisyon ve skdm maliyeti (r)
+
+Aşağıdaki örnek, [yöntem](../proje/yontem.qmd) sayfasında özetlenen hesaplama zincirini **üç sektörlü sentetik (hayali) bir ekonomi** üzerinde gösterir. Sayılar gerçek veri değildir.
+
+```{r}
+sektor <- c("çimento", "demir-çelik", "diğer")
+
+# teknik katsayılar matrisi A (girdi / çıktı)
+A <- matrix(c(0.10, 0.05, 0.02,
+              0.04, 0.20, 0.03,
+              0.15, 0.25, 0.30),
+            nrow = 3, byrow = TRUE, dimnames = list(sektor, sektor))
+
+x  <- c(100, 250, 2000)   # toplam çıktı (milyon €)
+e1 <- c(60, 180, 150)     # Kapsam 1 emisyonları (bin tCO2e)
+
+k  <- e1 / x                       # doğrudan emisyon yoğunluğu
+L  <- solve(diag(3) - A)           # Leontief ters matrisi
+EX <- c(20, 60, 300)               # AB'ye ihracat (milyon €)
+
+ghg_eu <- diag(k) %*% L %*% EX     # sektörel gömülü emisyonlar (bin tCO2e)
+round(L, 3)
+```
+
+Proje senaryolarındaki AB ETS fiyatları (50, 75, 100 €/tCO₂e) altında SKDM maliyeti ve maliyet yükü oranı:
+
+```{r}
+fiyat <- c(50, 75, 100)
+maliyet <- sapply(fiyat, \(p) as.vector(ghg_eu) * p / 1000)   # milyon €
+sonuc <- data.frame(
+  sektor = sektor,
+  gomulu_emisyon = round(as.vector(ghg_eu), 1),
+  round(maliyet, 2),
+  yuk_orani_75 = sprintf("%%%.1f", 100 * maliyet[, 2] / EX)
+)
+names(sonuc) <- c("sektör", "gömülü emisyon (bin t)", "maliyet @50€", "maliyet @75€", "maliyet @100€", "yük oranı @75€")
+knitr::kable(sonuc)
+```
+
+::: {.callout-note appearance="minimal"}
+Gerçek analizde `A` ve `x` TÜİK G-Ç tablosundan, `e1` PRODCOM–IPCC eşleştirmesinden, `EX` ise dış ticaret mikro verisinden gelir; Kapsam 2 yoğunlukları ve SKDM geçiş dönemi oranları ayrıca eklenir.
+:::

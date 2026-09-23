@@ -1,49 +1,33 @@
 ---
-title: "amaç ve kapsam"
-description: "AB Sınırda Karbon Düzenleme Mekanizmasının Türkiye ekonomisine etkileri: sektörel maliyet yükü, fiyat etkileri ve sosyo-ekonomik yansımalar."
-order: 1
+title: "proje"
+order: 0
+toc: false
 ---
 
-::: {.recep-status}
-[tübitak 1001]{} [24 ay]{} [4 iş paketi]{} [yürütücü kurum: ytü]{} [ortak: tüik]{}
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [amaç ve kapsam](amac-kapsam.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 :::
 
-## neden skdm?
+::: {.recep-card}
+[02]{.recep-index}
 
-Avrupa Birliği, Türkiye'nin en büyük ve en önemli ihracat pazarıdır: TÜİK verilerine göre 2024 yılında toplam ihracatın %41,45'i (108,5 milyar ABD doları) AB'ye yapılmıştır. AB'nin uygulamaya koyduğu **Sınırda Karbon Düzenleme Mekanizması (SKDM / CBAM)**, bu pazara erişim koşullarını yeniden şekillendirmektedir.
+### [yöntem özeti](yontem.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
 
-SKDM; çimento, demir-çelik, alüminyum, gübre, elektrik ve hidrojen gibi karbon yoğun ürünlerin AB'ye ithalatında, bu ürünlerin üretiminde ortaya çıkan **gömülü emisyonlar** için AB Emisyon Ticaret Sistemi (ETS) fiyatına bağlı bir yükümlülük getirir.
+::: {.recep-card}
+[03]{.recep-index}
 
-## amaç
+### [iş paketleri ve takvim](is-paketleri.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
 
-Projenin temel amacı, SKDM'nin Türkiye ekonomisi üzerindeki potansiyel etkilerini kapsamlı biçimde analiz etmektir. TÜİK'in en güncel resmi girdi-çıktı (G-Ç) tabloları ile fiziksel sera gazı emisyon verilerini birleştiren **hibrit bir analitik çerçeve** kurularak:
+::: {.recep-card}
+[04]{.recep-index}
 
-1. Türkiye'nin AB'ye ihracatındaki gömülü karbon emisyonlarının, farklı karbon fiyatı senaryoları altında sektör bazında yaratacağı **maliyet yükleri**,
-2. bu yüklerin AB pazarındaki **talep etkileri**,
-3. yurt içi **üretim, istihdam ve faktör gelirleri** üzerindeki zincirleme sosyo-ekonomik etkiler
+### [tübitak destek bilgisi](tubitak.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
 
-incelenecektir.
-
-## hedefler
-
-- **Veri altyapısı:** Parasal G-Ç tablolarına fiziksel sera gazı verilerini (Kapsam 1 ve 2) entegre eden tutarlı bir veri tabanı kurmak.
-- **Emisyon yoğunlukları:** Teknik katsayılar ve Leontief çarpanları üzerinden sektörel emisyon yoğunluklarını hesaplamak.
-- **Gömülü emisyonlar:** AB'ye ihracattaki gömülü emisyonları SKDM Yönetmeliği (AB 2023/956) Ek IV metodolojisine uygun olarak hesaplamak.
-- **Maliyet ve talep:** Farklı AB ETS fiyat senaryolarında sektörel SKDM maliyetlerini ve ihracat miktarı üzerindeki etkileri tahmin etmek.
-- **Teknolojik sınır:** Her SKDM sektörü için "Mevcut En İyi Teknikler" (BAT) temelinde bir karbonsuzlaşma referansı belirlemek.
-- **Sosyo-ekonomik etkiler:** Üretim kayıplarını beceri düzeyine göre istihdam, ücret ve işletme artığı etkilerine ayrıştırmak.
-- **Politika senaryoları:** NDC hedefleri ve olası ulusal ETS (TR ETS) ile etkileşimleri değerlendirerek hafifletici politika önerileri geliştirmek.
-
-## kapsam
-
-| boyut | kapsam |
-|---|---|
-| sektörler | SKDM Ek I: çimento, demir-çelik, alüminyum, gübre, elektrik, hidrojen |
-| emisyonlar | Kapsam 1 (doğrudan), Kapsam 2 (elektrik tüketimi), öncül maddeler |
-| veri | TÜİK G-Ç tabloları, PRODCOM, dış ticaret, sektör bilançoları, 4A idari kayıtları |
-| sınıflamalar | NACE Rev. 2, GTİP/HS (12 hane), ISCO-08 |
-| yaklaşım | karşılaştırmalı statik; kısa-orta vadeli ilk etki analizi |
-
-## çıktılar
-
-Bulgular hakemli dergilerde, politika notlarında, sunumlarda ve ulusal/uluslararası çalıştaylarda paylaşılacaktır; bkz. [çıktılar](../ciktilar/index.qmd).
+::::

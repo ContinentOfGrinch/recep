@@ -1,11 +1,8 @@
 ---
 title: "araçlar"
-description: "Politika yapıcılar, sanayi temsilcileri ve araştırmacılar için etkileşimli araçlar."
-order: 1
+order: 0
 toc: false
 ---
-
-Araçlar tarayıcınızda çalışır; girdiğiniz hiçbir veri bir sunucuya gönderilmez.
 
 :::: {.recep-grid}
 
@@ -13,24 +10,12 @@ Araçlar tarayıcınızda çalışır; girdiğiniz hiçbir veri bir sunucuya gö
 [01]{.recep-index}
 
 ### [skdm maliyet hesaplayıcısı](skdm-hesaplayici.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-Ürün grubu, ihracat miktarı, emisyon yoğunluğu ve karbon fiyatı varsayımlarıyla 2026–2034 geçiş takvimi boyunca tahmini sertifika maliyeti.
 :::
 
 ::: {.recep-card}
 [02]{.recep-index}
 
 ### [karbon fiyatı paneli](karbon-fiyati.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-AB ETS karbon fiyatının seyri ve projenin fiyat senaryoları.
-:::
-
-::: {.recep-card}
-[03]{.recep-index}
-
-### yakında {.unnumbered .unlisted .no-anchor}
-
-Sektörel kırılganlık gezgini: proje sonuçları yayımlandığında sektör bazında maliyet yükü ve istihdam etkileri.
 :::
 
 ::::

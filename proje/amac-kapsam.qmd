@@ -1,6 +1,6 @@
 ---
-title: "yöntem özeti"
-order: 2
+title: "amaç ve kapsam"
+order: 1
 ---
 
 ::: {.recep-bekliyor}

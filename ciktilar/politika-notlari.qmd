@@ -1,7 +1,6 @@
 ---
 title: "politika notları"
-description: "Proje bulgularına dayanan, karar vericilere yönelik kısa ve uygulanabilir politika notları."
-order: 2
+order: 1
 toc: false
 listing:
   id: liste

@@ -4,7 +4,7 @@ const gruplar = [
   ["yurutucu", "yürütücü", ""],
   ["arastirmaci", "araştırmacılar", ""],
   ["danisman", "danışmanlar", ""],
-  ["bursiyer", "bursiyerler", "Doktora, yüksek lisans ve lisans bursiyerleri belirlendiğinde burada yer alacaktır."]
+  ["bursiyer", "bursiyerler", ""]
 ];
 const basHarf = (ad) => ad.replace(/(Prof\.|Doç\.|Dr\.|Araş\.|Arş\.|Gör\.)/g, "").trim().split(/\s+/).map(s => s[0]).slice(0, 2).join("");
 const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
@@ -12,7 +12,7 @@ const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
 <% for (const [rol, baslik, bosMesaj] of gruplar) { const uyeler = sirali.filter(i => i.rol === rol); %>
 <section class="recep-people-group">
 <h2 class="anchored" id="<%- rol %>"><%= baslik %></h2>
-<% if (!uyeler.length) { %><div class="recep-bos"><%= bosMesaj || "Henüz kayıt yok." %></div><% continue; } %>
+<% if (!uyeler.length) { %><div class="recep-bekliyor">içerik hazırlanıyor.</div><% continue; } %>
 <div class="recep-people">
 <% for (const k of uyeler) { %>
 <article class="recep-person">

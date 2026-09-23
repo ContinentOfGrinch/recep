@@ -9,7 +9,7 @@ const gercek = items.filter(i => i.tur in turAdi);
 const yillar = [...new Set(gercek.map(i => i.yil))].sort((a, b) => b - a);
 %>
 <% if (!gercek.length) { %>
-<div class="recep-bos">Bu başlık altında henüz yayımlanmış çıktı bulunmuyor. Çıktılar proje ilerledikçe burada paylaşılacaktır.</div>
+<div class="recep-bekliyor">içerik hazırlanıyor.</div>
 <% } %>
 <% for (const yil of yillar) { %>
 <section class="recep-pubs-year">

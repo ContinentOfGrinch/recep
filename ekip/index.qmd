@@ -1,16 +1,11 @@
 ---
 title: "ekip"
-description: "Yürütücü, araştırmacılar, danışmanlar ve bursiyerler."
 toc: false
 listing:
   id: ekip
   contents: ../data/ekip.yml
   template: ../_templates/ekip.ejs
 ---
-
-::: {.recep-status}
-[yıldız teknik üniversitesi]{} [türkiye istatistik kurumu]{}
-:::
 
 ::: {#ekip}
 :::

@@ -1,0 +1,79 @@
+---
+title: "iş paketleri ve takvim"
+description: "Dört iş paketi, 24 aylık iş-zaman çizelgesi ve ara çıktılar."
+order: 3
+---
+
+## iş-zaman çizelgesi
+
+```{=html}
+<div class="recep-gantt">
+<table>
+<thead><tr><th class="ip">iş paketi</th><th>%</th>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+<th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th></tr></thead>
+<tbody id="gantt-govde"></tbody>
+</table>
+</div>
+<script>
+(() => {
+  const ip = [
+    ["İP1 · veri toplama ve uyumlaştırma", 35, 1, 20, "ip1"],
+    ["İP2 · G-Ç modeli ve emisyon yoğunlukları", 15, 2, 7, "ip2"],
+    ["İP3 · dış ticaret talep esneklikleri", 15, 6, 11, "ip3"],
+    ["İP4 · bütünleşik G-Ç, uydu hesaplar, senaryolar", 35, 4, 24, "ip4"]
+  ];
+  const govde = document.getElementById("gantt-govde");
+  for (const [ad, pay, bas, bit, cls] of ip) {
+    let tr = `<tr><td class="ip">${ad}</td><td>${pay}</td>`;
+    for (let ay = 1; ay <= 24; ay++) {
+      const dolu = ay >= bas && ay <= bit;
+      tr += `<td class="${dolu ? "dolu " + cls : ""}" title="${ad} · ${ay}. ay"></td>`;
+    }
+    govde.insertAdjacentHTML("beforeend", tr + "</tr>");
+  }
+})();
+</script>
+```
+
+## İP1 · sayısal verilerin toplanması, derlenmesi ve uyumlaştırılması
+
+**Ay 1–20 · önem %35**
+
+- Proje başlangıç toplantısı, görev dağılımı ve takvim; web sitesi ve iletişim kanalları
+- TÜİK nezdinde ortak veri tabanının kurulması (mikro veri setleri, VAM erişimi)
+- NACE, ISCO ve GTİP sınıflamaları arasında **uyumlaştırma anahtarları**
+- PRODCOM fiziksel ürün kodları ile IPCC emisyon faktörlerinin eşleştirilmesi
+- Dış ticaret talep esnekliği analizi için değişkenlerin oluşturulması
+
+**Ara çıktılar:** uyumlaştırılmış ana veri seti · uyumlaştırma tabloları · istihdam ve ücret uydu hesabı veri matrisi · sektörel ihracat verileri
+
+## İP2 · g-ç modelinin kurulumu ve emisyon yoğunluklarının hesaplanması
+
+**Ay 2–7 · önem %15**
+
+- Statik G-Ç modelinin kodlanması; Leontief ters matrisinin hesaplanması
+- Sektörel Kapsam 1 ve Kapsam 2 emisyon yoğunlukları
+- SKDM sektörleri için BAT temelli referans emisyon yoğunlukları araştırma raporu
+
+**Ara çıktılar:** doğrulanmış G-Ç model kodu · Leontief ters matrisi · sektörel emisyon yoğunlukları tablosu
+
+## İP3 · dış ticaret talep esnekliklerinin tahmini
+
+**Ay 6–11 · önem %15**
+
+- Ürün grupları bazında AB ithalat talep esneklikleri (2SLS, araç değişkenler)
+- Araç gücü ve aşırı tanımlama testleri
+
+## İP4 · bütünleşik g-ç ve uydu hesapları ile senaryo analizleri
+
+**Ay 4–24 · önem %35**
+
+- SKDM maliyet, fiyat, talep ve gömülü emisyon senaryoları; kırılganlık endeksi
+- Leontief fiyat modeli ile enflasyonist baskılar
+- İstihdam, ücret ve işletme artığı etkileri; hafifletici politika senaryoları
+- NDC hedefleri, TR ETS ve BAT senaryoları ile etkileşim analizi
+
+::: {.callout-note appearance="minimal"}
+Çizelge, TÜBİTAK'a sunulan proje önerisindeki iş-zaman çizelgesine dayanır. Proje başlangıç tarihi kesinleştiğinde aylar takvim tarihleriyle eşleştirilecektir.
+:::
