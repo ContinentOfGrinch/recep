@@ -3,6 +3,18 @@
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
 > Son güncelleme: 2026-09-23 (oturum 1, aşama 4 — bölünmüş navbar, dönen küre, iskelet kategoriler)
 
+## ⛔ YAYIN DURUMU: KAPALI (kullanıcı isteği, 2026-09-25)
+
+Kullanıcı "birkaç değişiklik yapıp sonra tekrar açacağız" dedi. Uygulanan:
+- GitHub Pages silindi (`DELETE /repos/ContinentOfGrinch/recep/pages`) → tüm adresler 404 (doğrulandı).
+- `publish` iş akışı devre dışı (`PUT .../actions/workflows/365129935/disable`, durum `disabled_manually`) → push'lar siteyi AÇMAZ.
+- Repo ve kod olduğu gibi duruyor (public). Kullanıcı ayrıca istemedikçe repo gizlenmedi.
+
+**Yeniden açmak için (yalnızca kullanıcı isterse):**
+1. `PUT .../actions/workflows/365129935/enable`
+2. `POST .../pages` gövde `{"build_type":"workflow"}`
+3. İş akışını tetikle: `POST .../actions/workflows/365129935/dispatches` gövde `{"ref":"main"}` → Actions yeşil mi kontrol et → canlı adres 200 mü kontrol et.
+
 ## ⚠ KESİN KURAL (kullanıcı, 2026-09-23)
 
 **Kullanıcı bilgi verip onaylamadan kategorilerin (proje, ekip, çıktılar, veri ve kod, araçlar, haberler, iletişim) içine içerik YAZILMAZ.** Belgelerden özet, örnek veri, araç içeriği dahil. Sayfalar yalnızca iskelet: başlık + kullanıcının verdiği alt başlıklar + `.recep-bekliyor` kutusu ("içerik hazırlanıyor."). Önceden hazırlanmış içerikler `_taslaklar/` klasöründe (derlenmez, `_taslaklar/BENİOKU.md`); kullanıcı onaylarsa oradan geri taşınır. Tasarım/altyapı işleri serbest.
