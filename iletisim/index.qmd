@@ -1,5 +1,6 @@
 ---
 title: "iletişim"
+description: "E-posta, adres, sosyal medya bağlantıları."
 toc: false
 ---
 

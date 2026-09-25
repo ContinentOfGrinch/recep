@@ -1,25 +1,9 @@
 ---
-body-classes: recep-bas-sayfa
-page-layout: full
 title: "veri ve kod"
+description: "Uyumlaştırma anahtarları (NACE–ISCO–GTİP), anonimleştirilmiş veri setleri, analiz kodları."
 order: 0
 toc: false
 ---
-
-::::: {.recep-sayfa-bas}
-
-:::: {.recep-sayfa-bas-metin}
-[/veri-kod]{.recep-sayfa-yol}
-
-# veri ve kod {.recep-baslik .unnumbered .unlisted .no-anchor}
-
-[Uyumlaştırma anahtarları (NACE–ISCO–GTİP), anonimleştirilmiş veri setleri, analiz kodları.]{.recep-sayfa-alt}
-
-::::
-
-{{< artwindow gorsel="vitruvian" meta="> RNDR_VITRUVIAN.exe // CALC_ENGINE_V1.0" alt="Leonardo da Vinci, Vitruvius Adamı — 1-bit dither, negatif" kunye="leonardo da vinci · vitruvius adamı · y. 1490 · kamu malı" renk="mavi" oran="1/1" konum="50% 42%" ters="evet" >}}
-
-:::::
 
 :::: {.recep-grid}
 

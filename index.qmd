@@ -1,35 +1,18 @@
 ---
 pagetitle: "recep — çevre, temiz enerji ve ekonomi politikaları araştırma grubu"
+hero-baslik: "recep"
+description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu"
 page-layout: full
 toc: false
 page-navigation: false
 repo-actions: false
 ---
 
-::::: {.recep-hero}
-
-:::: {}
-::: {.recep-kicker}
-recep://türkiye
-:::
-
-# çevre, temiz enerji ve ekonomi politikaları araştırma grubu
-
 ::: {.recep-btns}
 [proje](proje/index.qmd){.birincil}
 [araçlar](araclar/index.qmd)
 [çıktılar](ciktilar/index.qmd)
 :::
-::::
-
-::: {.recep-hero-kure}
-::: {.recep-kure data-hiz="0.006"}
-![](assets/marka/amblem-koyu.svg){fig-alt="dönen dünya küresi"}
-:::
-[lat 39.0 · lon 35.2 · **●** türkiye]{.recep-kure-etiket}
-:::
-
-:::::
 
 ## bölümler {.no-prefix}
 

@@ -1,12 +1,16 @@
 /*-- scss:defaults --*/
 // Gece teması (varsayılan). Yalnızca palet; kurallar theme.scss'ten gelir.
-$recep-ink:      #E6EDF3 !default;
+$recep-ink:      #ECEAE4 !default;
 $recep-paper:    #05080D !default;
-$recep-muted:    #8B98A5 !default;
-$recep-line:     #1C2633 !default;
-$recep-surface:  #0B111A !default;
+$recep-muted:    #8E918F !default;
+$recep-line:     rgba(236, 234, 228, .12) !default;
+$recep-surface:  #0D1219 !default;
 $recep-green:    #39FF14 !default;
-$recep-blue:     #00A3FF !default;
+$recep-blue:     #7FC8F8 !default;   // bağlantılar: yumuşak mavi (neon değil)
 $recep-on-green: #05080D !default;
-$recep-frame:    #00A3FF !default;
 $recep-red:      #FF1F4B !default;
+
+// filigran: koyu zeminde "screen" ile açık çizgiler olarak belirir
+$recep-art-opaklik: .14 !default;
+$recep-art-karisim: screen !default;
+$recep-art-kagit:   invert(1) contrast(1.25) !default;   // krem kâğıt koyulaşsın, çizgiler açık kalsın

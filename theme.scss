@@ -1,48 +1,52 @@
 /*-- scss:defaults --*/
 // ============================================================
-// RECEP tasarım sistemi — "bilimsel brutalizm / terminal"
+// RECEP tasarım sistemi — "Elegant Cyber-Renaissance / High-End Editorial Brutalism"
 // Bu dosya AÇIK temanın paletini ve TÜM kuralları içerir.
 // theme-dark.scss yalnızca paleti ezer (gece teması, varsayılan).
+// İlke: kutu yok, neon çerçeve yok. İnce saç çizgileri, bol boşluk,
+// soluk Rönesans filigranları üzerinde dev, sıkı başlıklar.
 // ============================================================
 
 // ---- palet ----
-$recep-ink:     #0A0A0A !default;   // gövde metni — zifiri siyah
-$recep-paper:   #F4F2EC !default;   // zemin — kırık beyaz (post-internet editoryal)
-$recep-muted:   #3D3D3A !default;   // ikincil metin (AA kontrast)
-$recep-line:    #C9C4B8 !default;   // çizgiler
-$recep-surface: #EAE7DE !default;   // kart / kod zemini
-$recep-green:   #12A12F !default;   // birincil vurgu
-$recep-blue:    #0077CC !default;   // bağlantılar / ikincil vurgu
-$recep-on-green: #FFFFFF !default;  // yeşil zemin üstündeki metin
-$recep-frame:   #0077CC !default;   // çerçeveler (elektrik mavi)
-$recep-red:     #D90F3C !default;   // Türkiye işareti
+$recep-ink:      #0A0A0A !default;   // metin — zifiri siyah
+$recep-paper:    #F4F2EC !default;   // zemin — kırık beyaz
+$recep-muted:    #55524B !default;   // ikincil metin
+$recep-line:     rgba(10, 10, 10, .12) !default;   // saç çizgisi
+$recep-surface:  #EAE7DE !default;   // kod zemini
+$recep-green:    #12A12F !default;   // vurgu (az kullanılır)
+$recep-blue:     #0077CC !default;   // bağlantı
+$recep-on-green: #FFFFFF !default;
+$recep-red:      #D90F3C !default;   // Türkiye işareti (küre)
+
+// DynamicHero filigranı
+$recep-art-opaklik: .15 !default;
+$recep-art-karisim: multiply !default;
+$recep-art-kagit:   none !default;      // kâğıt üzerindeki eserler (Vitruvius) için ek filtre
 
 // Navbar her iki temada da gece renginde kalır (marka şeridi)
-$recep-night:     #05080D;
-$recep-night-ink: #E6EDF3;
-$recep-night-muted: #8B98A5;
-$recep-night-line: #1C2633;
-$recep-neon:      #39FF14;
-$recep-electric:  #00A3FF;
+$recep-night:       #05080D;
+$recep-night-ink:   #ECEAE4;
+$recep-night-muted: #8E918F;
+$recep-neon:        #39FF14;
 
-// ---- tipografi: 3 katmanlı sistem ----
-// Katman 1 · brütalist çapa    → h1, h2, manşetler, logo
-// Katman 2 · editoryal hümanizm → gövde metni, makaleler, paragraflar
-// Katman 3 · terminal / ui      → menü, butonlar, etiketler, tarih, koordinat, kod
+// ---- tipografi: 3 katman ----
+// 1 · Inter 900          → YALNIZCA dev sayfa başlıkları (DynamicHero) + logo
+// 2 · Lora               → tüm alt başlıklar, gövde, açıklamalar
+// 3 · Space Mono         → menü, meta etiketleri, butonlar, kod
 $font-brutal:    "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-editorial: "Lora", Georgia, "Times New Roman", serif;
-$font-terminal:  "JetBrains Mono", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$font-terminal:  "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
 $font-family-sans-serif: $font-brutal !default;
 $font-family-monospace:  $font-terminal !default;
-$font-family-base:       $font-editorial !default;     // <body> → Lora
-$headings-font-family:   $font-brutal !default;
-$headings-font-weight:   900 !default;
-$headings-line-height:   1.02 !default;
+$font-family-base:       $font-editorial !default;
+$headings-font-family:   $font-editorial !default;   // alt başlıklar Lora
+$headings-font-weight:   500 !default;
+$headings-line-height:   1.2 !default;
 $font-size-root:         16px !default;
-$font-size-base:         1.0625rem !default;           // 17px: Lora'nın küçük x-yüksekliğini dengeler
-$line-height-base:       1.7 !default;
-$brutal-tracking:        -0.05em;
+$font-size-base:         1.0625rem !default;
+$line-height-base:       1.75 !default;
+$brutal-tracking:        -0.06em;
 
 // ---- bootstrap / quarto eşlemeleri ----
 $enable-rounded:     false !default;
@@ -58,129 +62,109 @@ $body-bg:            $recep-paper !default;
 $body-color:         $recep-ink !default;
 $body-secondary:     $recep-muted !default;
 $link-color:         $recep-blue !default;
-$link-hover-color:   $recep-green !default;
+$link-hover-color:   $recep-ink !default;
 $link-decoration:    none !default;
 $border-color:       $recep-line !default;
-$primary:            $recep-green !default;
-$secondary:          $recep-blue !default;
+$primary:            $recep-ink !default;
+$secondary:          $recep-muted !default;
 
 $navbar-bg:          $recep-night;
 $navbar-fg:          $recep-night-ink;
-$navbar-hl:          $recep-neon;
+$navbar-hl:          $recep-night-ink;
 $footer-bg:          $recep-paper !default;
 $footer-fg:          $recep-muted !default;
-$sidebar-bg:         $recep-paper !default;
+$sidebar-bg:         transparent !default;   // filigran sidebar altında kesilmesin
 $sidebar-fg:         $recep-muted !default;
-$sidebar-hl:         $recep-green !default;
-$toc-color:          $recep-green !default;
+$sidebar-hl:         $recep-ink !default;
+$toc-color:          $recep-ink !default;
 
 $code-color:         $recep-ink !default;
 $code-bg:            $recep-surface !default;
 $code-block-bg:      $recep-surface !default;
-$code-block-border-left: $recep-green !default;
+$code-block-border-left: false !default;
 
 $input-bg:           $recep-paper !default;
 $input-color:        $recep-ink !default;
 $input-border-color: $recep-line !default;
 $input-group-addon-bg: $recep-surface !default;
 
-$callout-color-note:      $recep-blue !default;
-$callout-color-tip:       $recep-green !default;
-
 /*-- scss:rules --*/
 
 // ============ temel ============
-*, *::before, *::after { border-radius: 0 !important; }   // keskin köşe kuralı
+*, *::before, *::after { border-radius: 0 !important; }
 
-// ============ tipografi: 3 katman ============
 :root {
   --font-brutal:    #{$font-brutal};
   --font-editorial: #{$font-editorial};
   --font-terminal:  #{$font-terminal};
+  // küre (assets/js/kure.js) renkleri
+  --recep-yesil:    #{$recep-green};
+  --recep-mavi:     #{$recep-blue};
+  --recep-kirmizi:  #{$recep-red};
+  --recep-zemin:    #{$recep-paper};
 }
-// yardımcı sınıflar (Markdown'da: [metin]{.font-terminal} ya da ::: {.font-editorial})
 .font-brutal    { font-family: var(--font-brutal) !important; font-weight: 900; letter-spacing: $brutal-tracking; }
-.font-editorial { font-family: var(--font-editorial) !important; line-height: 1.7; letter-spacing: normal; }
-.font-terminal  { font-family: var(--font-terminal) !important; font-size: .8125rem; letter-spacing: .02em; }
+.font-editorial { font-family: var(--font-editorial) !important; line-height: 1.75; letter-spacing: normal; }
+.font-terminal  { font-family: var(--font-terminal) !important; font-size: .75rem; letter-spacing: .06em; }
 
-// Katman 2 — gövde: Lora, ferah satır aralığı, normal harf aralığı
 body {
   font-family: var(--font-editorial);
-  line-height: 1.7;
-  letter-spacing: normal;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;                     // tam genişlik filigranlar yatay kaydırma yaratmasın
 }
-blockquote { font-style: italic; border-left: 2px solid $recep-green; padding-left: 1rem; color: $recep-ink; }
 
-// Katman 3 — arayüz: menü, buton, form, etiket, tarih, meta, gezinme
+::selection { background: $recep-ink; color: $recep-paper; }
+
+// Katman 3 — yalnızca arayüz: menü, meta, buton, kod
 nav, button, .btn, input, select, textarea, label, .nav-link, .navbar, .dropdown-menu,
 .breadcrumb, .sidebar, #TOC, .toc-actions, .nav-footer, .page-navigation, .quarto-title-meta,
 .listing-date, .listing-author, .listing-reading-time, .listing-category, .quarto-category,
-.aa-Form, .aa-Item, .callout-title-container, figcaption.figure-caption, .table > thead th {
+.aa-Form, .aa-Item, .callout-title-container, .table > thead th, code, pre, kbd {
   font-family: var(--font-terminal);
 }
-button, .btn { font-size: .8125rem; letter-spacing: .02em; }
 
-::selection { background: $recep-green; color: $recep-on-green; }
-
-// Katman 1 — h1, h2: Inter 900, çok sıkı harf aralığı, blok gibi ağır (yalnızca küçük harf; lang="tr" ile I → ı)
-h1, h2, .h1, .h2, .title, .quarto-title .title {
-  font-family: var(--font-brutal);
-  font-weight: 900;
-  text-transform: lowercase;
-  letter-spacing: $brutal-tracking;
-  line-height: 1.02;
-  font-feature-settings: "ss01", "cv11";   // Inter: düz 'a', grotesk biçimler
-}
-// ara başlıklar terminal katmanında (başlık hiyerarşisi: blok → mono)
-h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
-  font-family: var(--font-terminal);
-  font-weight: 700;
+// Katman 2 — tüm alt başlıklar Lora (küçük harf, zarif)
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-editorial);
+  font-weight: 500;
   text-transform: lowercase;
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.2;
 }
-h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); }
-h2 { font-size: 1.85rem; border-bottom: 1px solid $recep-line; padding-bottom: .45rem; margin-top: 2.75rem; }
-h3 { font-size: 1.1rem; margin-top: 2rem; }
-h2::before { content: "# "; color: $recep-green; font-family: $font-family-monospace; font-weight: 400; }
-h3::before { content: "## "; color: $recep-blue; font-weight: 400; }
-.quarto-title .title::before, .recep-hero h1::before, .recep-card h3::before,
-.no-prefix::before, .listing-title::before, .card-title::before,
-.recep-people-group h2::before, .recep-pubs-year h2::before { content: none !important; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 3.5rem 0 1.25rem; border: none; padding: 0; }
+h3 { font-size: 1.35rem; margin: 2.25rem 0 .75rem; }
+h4, h5, h6 { font-size: 1.1rem; font-style: italic; }
+// Quarto'nun kendi başlık bloğu (DynamicHero olmayan sayfalarda) de Katman 1
+.quarto-title .title {
+  font-family: var(--font-brutal); font-weight: 900; letter-spacing: $brutal-tracking;
+  font-size: clamp(2.6rem, 6vw, 4.5rem); line-height: .95;
+}
 
-a { transition: color .12s linear; }
-main a:not(.nav-link):not(.btn):not(.recep-btn):hover { text-decoration: underline; text-underline-offset: 3px; }
+a { transition: color .15s ease; }
+main a:not(.nav-link):not(.btn):hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
-code, pre, kbd { font-family: $font-family-monospace; font-size: .875em; }
+code, pre, kbd { font-size: .82em; }
+p code:not(.sourceCode), li code:not(.sourceCode) { background: $recep-surface; color: $recep-ink; padding: .1em .35em; }
 div.sourceCode, pre.sourceCode { border: 1px solid $recep-line; }
-p code:not(.sourceCode), li code:not(.sourceCode) { color: $recep-green; background: $recep-surface; padding: .1em .35em; }
 
 hr { border-top: 1px solid $recep-line; opacity: 1; }
-
-:focus-visible { outline: 2px solid $recep-green; outline-offset: 2px; }
+blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left: 1.25rem; color: $recep-ink; }
+:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
 
 // ============ navbar: bölünmüş tek satır — sol menü | [küre + recep] | sağ menü ============
-// Masaüstü (≥1200px): .navbar-collapse "display: contents" olur; iki <ul> ve marka
-// aynı ızgaraya yerleşir. Marka her zaman tam ortadadır (1fr auto 1fr).
-// Araçlar (github, tema) sol kenarda, arama sağ kenarda mutlak konumludur.
-#quarto-header {
-  top: 0;
-  z-index: 9999;
-  transform: none !important;           // pinned: kaydırmada asla gizlenmez
-}
+#quarto-header { top: 0; z-index: 9999; transform: none !important; }
 
 .navbar {
   background-color: $recep-night !important;
-  border-bottom: 1px solid rgba($recep-electric, .35);
-  box-shadow: 0 1px 0 rgba($recep-neon, .08), 0 8px 24px rgba(0, 0, 0, .35);
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+  box-shadow: none;
   padding: 0;
   min-height: 68px;
 }
-
 .navbar .navbar-container {
   position: relative;
   display: grid !important;
@@ -188,78 +172,53 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   grid-template-areas: "sol marka sag";
   align-items: center;
   column-gap: 0;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
   min-height: 68px;
 }
-
 .navbar .navbar-brand-container {
-  grid-area: marka;
-  justify-self: center;
-  margin: 0 !important;
-  max-width: none !important;
-  min-width: max-content;
-  overflow: visible;
+  grid-area: marka; justify-self: center; margin: 0 !important;
+  max-width: none !important; min-width: max-content; overflow: visible;
+  display: flex; align-items: center;
 }
 .navbar .navbar-brand, .navbar .navbar-title { overflow: visible !important; white-space: nowrap; min-width: max-content; }
+.navbar-brand { display: flex; align-items: center; padding: .5rem 0; margin: 0 !important; }
+.navbar-brand.navbar-brand-logo { padding-left: 2rem; padding-right: .6rem; }
+.navbar-brand:not(.navbar-brand-logo) { padding-right: 2rem; }
 
-// Quarto logo ve başlığı iki ayrı <a> olarak üretir: bitişik dursunlar
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  padding: .5rem 0;
-  margin: 0 !important;
-}
-.navbar-brand.navbar-brand-logo { padding-left: 1.75rem; padding-right: .55rem; }
-.navbar-brand:not(.navbar-brand-logo) { padding-right: 1.75rem; }
-.navbar .navbar-brand-container { display: flex; align-items: center; }
+.navbar-brand .navbar-logo { height: 42px; width: 42px; max-height: none; display: block; }
 
-// dönen küre (JS <canvas>; JS yoksa statik amblem <img>)
-.navbar-brand .navbar-logo {
-  height: 46px;
-  width: 46px;
-  max-height: none;
-  display: block;
-  filter: drop-shadow(0 0 6px rgba($recep-neon, .35));
-}
-
-// [recep] — logodaki gibi kalın kare köşeli parantezler
+// [recep] — logodaki kalın kare köşeli parantezler (marka öğesi)
 .navbar-brand .navbar-title {
   position: relative;
-  font-family: $font-family-sans-serif;
-  font-weight: 900;
-  font-size: 1.7rem;
-  line-height: 1;
-  letter-spacing: $brutal-tracking;
-  text-transform: lowercase;
+  font-family: var(--font-brutal);
+  font-weight: 900; font-size: 1.6rem; line-height: 1;
+  letter-spacing: -0.05em; text-transform: lowercase;
   color: #F2F5F7;
   padding: .12em .42em .2em;
-
   &::before, &::after {
-    content: "";
-    position: absolute;
-    top: 0; bottom: 0;
-    width: .26em;
+    content: ""; position: absolute; top: 0; bottom: 0; width: .26em;
     border: .1em solid $recep-neon;
   }
-  &::before { left: 0;  border-right: none; }
+  &::before { left: 0; border-right: none; }
   &::after  { right: 0; border-left: none; }
 }
 
-// menü öğeleri: terminal tipi, küçük harf
+// menü: Space Mono, küçük harf; aktif öğe ince alt çizgi (kutu yok)
 .navbar .nav-link {
-  font-family: $font-family-monospace;
-  font-size: .8rem;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
+  position: relative;
+  font-family: var(--font-terminal);
+  font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; white-space: nowrap;
   color: $recep-night-muted !important;
-  padding: .55rem .7rem !important;
-  border: 1px solid transparent;
-  transition: color .12s linear, border-color .12s linear, box-shadow .12s linear;
-
-  &:hover { color: $recep-night-ink !important; border-color: $recep-electric; }
-  &.active { color: $recep-neon !important; border-color: $recep-neon; box-shadow: 0 0 10px rgba($recep-neon, .25) inset; }
-  &.active .menu-text::before { content: "> "; }
+  padding: .5rem .8rem !important;
+  border: none;
+  transition: color .15s ease;
+  &::after {
+    content: ""; position: absolute; left: .8rem; right: .8rem; bottom: .2rem; height: 1px;
+    background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  }
+  &:hover { color: $recep-night-ink !important; }
+  &:hover::after, &.active::after { transform: scaleX(1); }
+  &.active { color: $recep-night-ink !important; }
 }
 
 .navbar .quarto-navigation-tool,
@@ -267,32 +226,23 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
 .navbar .aa-DetachedSearchButtonIcon,
 .navbar #quarto-search .aa-SubmitIcon { color: $recep-night-muted !important; }
 .navbar .quarto-navigation-tool:hover,
-.navbar .quarto-color-scheme-toggle:hover { color: $recep-neon !important; }
-.navbar .navbar-toggler { border: 1px solid $recep-electric; }
+.navbar .quarto-color-scheme-toggle:hover { color: $recep-night-ink !important; }
+.navbar .navbar-toggler { border: 1px solid rgba(255, 255, 255, .15); }
 
-// kenar araçları
 .navbar .quarto-navbar-tools {
-  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%);
   display: flex; gap: .15rem; margin: 0 !important;
 }
-.navbar #quarto-search {
-  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-  margin: 0 !important;
-}
-
-// arama katmanı navbar'ın (9999) üstünde açılsın
+.navbar #quarto-search { position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%); margin: 0 !important; }
 .aa-DetachedOverlay, .aa-Panel { z-index: 10000 !important; }
 
-// ---- masaüstü: bölünmüş menü ----
 @media (min-width: 1200px) {
   .navbar .navbar-toggler { display: none; }
   .navbar .navbar-collapse { display: contents !important; }
-  .navbar .navbar-nav { flex-direction: row; align-items: center; gap: .3rem; margin: 0 !important; }
-  .navbar .navbar-nav.me-auto { grid-area: sol; justify-self: end; padding-left: 5.5rem; }   // sol kenar araçlarına yer
-  .navbar .navbar-nav.ms-auto { grid-area: sag; justify-self: start; padding-right: 3.5rem; } // sağ kenar aramaya yer
+  .navbar .navbar-nav { flex-direction: row; align-items: center; gap: .25rem; margin: 0 !important; }
+  .navbar .navbar-nav.me-auto { grid-area: sol; justify-self: end; padding-left: 5.5rem; }
+  .navbar .navbar-nav.ms-auto { grid-area: sag; justify-self: start; padding-right: 3.5rem; }
 }
-
-// ---- tablet / mobil: [menü düğmesi | marka | arama], menü aşağı açılır ----
 @media (max-width: 1199.98px) {
   .navbar .navbar-container { grid-template-areas: "sol marka sag" "menu menu menu"; }
   .navbar .navbar-toggler { grid-area: sol; justify-self: start; }
@@ -301,443 +251,244 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   .navbar .quarto-navbar-tools .quarto-navigation-tool:not(.quarto-color-scheme-toggle) { display: none; }
   .navbar #quarto-search { top: 34px; }
   .navbar-brand { padding: .5rem .5rem; }
-  .navbar .navbar-nav { align-items: stretch; gap: 0; }
-  .navbar .navbar-nav.me-auto { border-top: 1px solid rgba($recep-electric, .35); }
-  .navbar .nav-link { border: none; border-left: 2px solid transparent; border-bottom: 1px solid $recep-night-line; padding: .75rem 1rem !important; }
-  .navbar .nav-link.active { border-left-color: $recep-neon; box-shadow: none; }
+  .navbar .navbar-nav { align-items: stretch; gap: 0; padding-bottom: .5rem; }
+  .navbar .nav-link { padding: .7rem .25rem !important; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+  .navbar .nav-link::after { display: none; }
 }
 @media (max-width: 575.98px) {
-  .navbar-brand .navbar-logo { height: 38px; width: 38px; }
-  .navbar-brand .navbar-title { font-size: 1.35rem; }
+  .navbar-brand .navbar-logo { height: 36px; width: 36px; }
+  .navbar-brand .navbar-title { font-size: 1.3rem; }
+}
+
+// ============ DynamicHero (_extensions/recep/hero) ============
+// Çerçevesiz filigran: eser metnin arkasında, ortalanmış, gri tonlu, çok soluk.
+body:has(.recep-dhero) #title-block-header { display: none; }
+
+.recep-dhero {
+  --dhero-h: 46vh;
+  position: relative;
+  display: grid; place-items: center; text-align: center;
+  min-height: var(--dhero-h);
+  padding: clamp(3.5rem, 9vw, 7.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+.recep-dhero--tam   { --dhero-h: calc(100svh - 68px); }
+.recep-dhero--buyuk { --dhero-h: 62vh; }
+.recep-dhero--orta  { --dhero-h: 42vh; }
+
+// eser: absolute + tam genişlik + flex ortalama; kenarları yumuşak maskeyle erir
+.recep-dhero-sanat {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 100vw; transform: translateX(-50%);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 0; pointer-events: none; overflow: hidden;
+  // kenarlar tamamen erir (yarıçap × son durak < %50): kutu kenarı görünmez
+  -webkit-mask-image: radial-gradient(ellipse 60% 58% at 50% 50%, #000 22%, transparent 82%);
+          mask-image: radial-gradient(ellipse 60% 58% at 50% 50%, #000 22%, transparent 82%);
+  img {
+    width: min(1500px, 100%); height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    opacity: $recep-art-opaklik;
+    mix-blend-mode: $recep-art-karisim;
+  }
+}
+
+.recep-dhero[data-eser="vitruvian"] .recep-dhero-sanat img { filter: grayscale(100%) #{$recep-art-kagit}; }
+
+.recep-dhero-icerik { position: relative; z-index: 1; width: 100%; max-width: 64rem; padding: 0 1rem; }
+
+.recep-dhero--tam .recep-dhero-yol { display: none; }
+.recep-dhero-yol {
+  font-family: var(--font-terminal);
+  font-size: .7rem; letter-spacing: .14em; text-transform: lowercase;
+  color: $recep-muted; margin: 0 0 1.5rem;
+}
+
+// Katman 1 — dev, sıkı, blok başlık
+.recep-dhero-baslik {
+  font-family: var(--font-brutal); font-weight: 900;
+  font-size: clamp(3.4rem, 11vw, 9.5rem);
+  line-height: .86; letter-spacing: $brutal-tracking;
+  text-transform: lowercase; color: $recep-ink;
+  margin: 0; border: none; padding: 0;
+  overflow-wrap: anywhere; text-wrap: balance;
+}
+.recep-dhero--tam  .recep-dhero-baslik { font-size: clamp(4.5rem, 17vw, 14rem); }
+.recep-dhero--orta .recep-dhero-baslik { font-size: clamp(2.6rem, 7vw, 6rem); }
+
+// Katman 2 — açıklama
+.recep-dhero-alt {
+  font-family: var(--font-editorial); font-style: italic;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.6;
+  color: $recep-muted; max-width: 40rem; margin: 1.75rem auto 0;
+}
+
+// künye: sağ alt köşede fısıltı
+.recep-dhero-kunye {
+  position: absolute; right: 0; bottom: .75rem; z-index: 1; margin: 0;
+  font-family: var(--font-terminal); font-size: .62rem; letter-spacing: .06em;
+  color: $recep-muted; opacity: .75;
 }
 
 // ============ sidebar / toc ============
+.quarto-secondary-nav { background: $recep-paper !important; border-bottom: 1px solid $recep-line !important; box-shadow: none !important; }
+#quarto-sidebar, .sidebar.sidebar-navigation { background: transparent !important; }
 .sidebar-navigation .sidebar-item-text,
-.sidebar-navigation .menu-text { font-family: $font-family-monospace; font-size: .82rem; text-transform: lowercase; }
-.sidebar-navigation .sidebar-link.active .menu-text { color: $recep-green; }
-.sidebar-navigation .sidebar-link.active .menu-text::before { content: "> "; }
-.sidebar-title { font-family: $headings-font-family; text-transform: lowercase; }
-#TOC .nav-link, #toc-title { font-family: $font-family-monospace; font-size: .8rem; }
-.breadcrumb { font-family: $font-family-monospace; font-size: .8rem; text-transform: lowercase; }
-
-// sayfa başlığı altındaki açıklama
-.quarto-title .description, .quarto-title-block .description { color: $recep-muted; font-size: 1.05rem; }
+.sidebar-navigation .menu-text { font-family: var(--font-terminal); font-size: .74rem; letter-spacing: .03em; text-transform: lowercase; }
+.sidebar-navigation .sidebar-link.active .menu-text { color: $recep-ink; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.sidebar-title { font-family: var(--font-editorial); text-transform: lowercase; }
+#TOC .nav-link, #toc-title { font-size: .72rem; }
+.breadcrumb { font-size: .72rem; text-transform: lowercase; }
 
 // ============ ortak bileşenler ============
-.recep-kicker {
-  font-family: $font-family-monospace;
-  font-size: .78rem;
-  letter-spacing: .04em;
-  text-transform: lowercase;
-  color: $recep-green;
-  margin-bottom: 1rem;
-  p { display: inline; margin: 0; }
-  &::before { content: "$ "; color: $recep-blue; }
-}
-
-.recep-btns { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+// butonlar: Space Mono, saç çizgisi, ters dolgu hover
+.recep-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin: 0 0 3rem; }
 .recep-btn, .recep-btns a {
   display: inline-block;
-  font-family: $font-family-monospace;
-  font-size: .85rem;
-  text-transform: lowercase;
-  padding: .6rem 1.1rem;
-  border: 1px solid $recep-frame;
+  font-family: var(--font-terminal);
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: .8rem 1.4rem;
+  border: 1px solid rgba($recep-ink, .35);
   color: $recep-ink;
   text-decoration: none !important;
-  transition: transform .12s linear, box-shadow .12s linear, background-color .12s linear;
-  &:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 $recep-green; color: $recep-ink; }
-  &.birincil { background: $recep-green; border-color: $recep-green; color: $recep-on-green; }
-  &.birincil:hover { box-shadow: 4px 4px 0 $recep-blue; color: $recep-on-green; }
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  &:hover { background: $recep-ink; color: $recep-paper; border-color: $recep-ink; }
+  &.birincil { background: $recep-ink; color: $recep-paper; border-color: $recep-ink; }
+  &.birincil:hover { background: transparent; color: $recep-ink; }
 }
 
 .recep-tag {
   display: inline-block;
-  font-family: $font-family-monospace;
-  font-size: .7rem;
-  text-transform: lowercase;
-  padding: .1rem .45rem;
-  border: 1px solid $recep-green;
-  color: $recep-green;
+  font-family: var(--font-terminal); font-size: .66rem; letter-spacing: .08em; text-transform: lowercase;
+  padding: .1rem .5rem; border: 1px solid $recep-line; color: $recep-muted;
   text-decoration: none !important;
 }
 
-// kart ızgarası (ana sayfa, bölüm girişleri)
+// kart ızgarası: kutu yok — üstte saç çizgisi, bol boşluk
 .recep-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid $recep-frame;
-  border-left: 1px solid $recep-frame;
-  margin: 1rem 0 3.5rem;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  margin: 1rem 0 4rem;
 }
 .recep-grid.dort { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
 .recep-card {
   position: relative;
-  padding: 1.75rem 1.5rem;
-  border-right: 1px solid $recep-frame;
-  border-bottom: 1px solid $recep-frame;
-  transition: background-color .12s linear;
-
-  &:hover { background-color: $recep-surface; }
-  &:hover::after { transform: scaleX(1); }
-  &::after {  // alt kenarda dolan neon çizgi
-    content: "";
-    position: absolute; left: -1px; right: -1px; bottom: -1px;
-    height: 2px;
-    background: $recep-green;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .2s ease-out;
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid $recep-line;
+  transition: border-color .25s ease;
+  &:hover { border-top-color: $recep-ink; }
+  h3 {
+    font-family: var(--font-editorial); font-weight: 500; font-size: 1.45rem;
+    margin: .6rem 0 .6rem; letter-spacing: -0.01em;
+    a { color: $recep-ink; }
   }
-
-  h3 { font-size: 1.05rem; margin: .35rem 0 .7rem; }
-  p  { color: $recep-muted; font-size: .93rem; margin-bottom: .7rem; }
-  ul { padding-left: 1.1rem; margin: 0; color: $recep-muted; font-size: .88rem; }
-  .recep-index { font-family: $font-family-monospace; font-size: .75rem; color: $recep-blue; }
+  p  { color: $recep-muted; font-size: .98rem; margin-bottom: .6rem; }
+  ul { list-style: none; padding: 0; margin: 0; color: $recep-muted; font-size: .98rem; line-height: 1.7; }
+  .recep-index { font-family: var(--font-terminal); font-size: .66rem; letter-spacing: .1em; color: $recep-muted; }
   a.stretched-link::after { position: absolute; inset: 0; content: ""; }
 }
+@media (max-width: 991.98px) { .recep-grid, .recep-grid.dort { grid-template-columns: 1fr; } }
+@media (min-width: 576px) and (max-width: 991.98px) { .recep-grid.dort { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-@media (max-width: 991.98px) {
-  .recep-grid, .recep-grid.dort { grid-template-columns: 1fr; }
-}
-@media (min-width: 576px) and (max-width: 991.98px) {
-  .recep-grid.dort { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-// ============ ana sayfa hero ============
-.recep-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 2rem;
-  padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem);
-
-  h1 {
-    font-size: clamp(2.5rem, 5.4vw, 4.1rem);
-    line-height: 1;
-    letter-spacing: $brutal-tracking;
-    margin: 0 0 1.25rem;
-  }
-  .lead { font-size: 1.1rem; color: $recep-muted; margin: 0; max-width: 40rem; }
-  .recep-hero-amblem { justify-self: center; width: min(100%, 420px); }
-  .recep-hero-amblem img { width: 100%; height: auto; }
-}
-@media (max-width: 991.98px) {
-  .recep-hero { grid-template-columns: 1fr; }
-  .recep-hero .recep-hero-amblem { order: -1; width: min(70%, 300px); }
-}
-
-// temaya göre amblem seçimi
-.amblem-acik { display: none; }
-body.quarto-light .amblem-acik { display: block; }
-body.quarto-light .amblem-koyu { display: none; }
-
-.recep-status {
-  font-family: $font-family-monospace;
-  font-size: .78rem;
-  color: $recep-muted;
-  border: 1px solid $recep-frame;
-  padding: .6rem .9rem;
-  margin-bottom: 1rem;
-  p { display: contents; }
-  span { margin-right: 1.5rem; white-space: nowrap; }
-  span::before { content: "■ "; color: $recep-green; }
+// iskelet sayfalar: kutusuz, italik not
+.recep-bekliyor {
+  font-family: var(--font-editorial); font-style: italic;
+  font-size: 1.05rem; color: $recep-muted;
+  border: none; padding: 0; margin: 1rem 0 3rem; text-align: center;
+  p { display: inline; margin: 0; }
+  &::before { content: "— "; }
+  &::after  { content: " —"; }
 }
 
 // ============ tablo ============
-table.table { font-size: .9rem; }
-.table > thead { border-bottom: 2px solid $recep-green; }
-.table > thead th { font-family: $font-family-monospace; font-weight: 600; text-transform: lowercase; }
-
-// ============ iş-zaman çizelgesi (gantt) ============
-.recep-gantt {
-  overflow-x: auto;
-  margin: 1.5rem 0 2rem;
-  table { border-collapse: collapse; width: 100%; min-width: 640px; table-layout: fixed; font-family: $font-family-monospace; font-size: .72rem; }
-  th, td { border: 1px solid $recep-line; padding: .35rem 0; text-align: center; }
-  th:nth-child(1) { width: 32%; }
-  th:nth-child(2) { width: 2.2rem; }
-  th.ip, td.ip { text-align: left; padding: .35rem .5rem; line-height: 1.3; }
-  td.dolu { background: $recep-green; }
-  td.dolu.ip3, td.dolu.ip2 { background: $recep-blue; }
-}
+table.table { font-size: .95rem; }
+.table > thead { border-bottom: 1px solid $recep-ink; }
+.table > thead th { font-weight: 400; font-size: .72rem; letter-spacing: .06em; text-transform: lowercase; }
 
 // ============ haberler / listeler ============
 .quarto-grid-item.card {
-  border: 1px solid $recep-line;
-  box-shadow: none;
-  transition: transform .12s linear, box-shadow .12s linear, border-color .12s linear;
-  &:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 $recep-green; border-color: $recep-ink; }
-  .card-title { font-family: $headings-font-family; text-transform: lowercase; }
+  border: none; border-top: 1px solid $recep-line; box-shadow: none; background: transparent;
+  transition: border-color .25s ease;
+  &:hover { border-top-color: $recep-ink; }
+  .card-title { font-family: var(--font-editorial); font-weight: 500; text-transform: lowercase; }
 }
 .listing-category, .quarto-category,
 .quarto-grid-item .listing-categories .listing-category {
   text-transform: lowercase !important;
-  font-family: $font-family-monospace;
-  border: 1px solid $recep-green !important;
-  color: $recep-green !important;
+  border: 1px solid $recep-line !important; color: $recep-muted !important;
 }
 .quarto-listing-default .quarto-post {
   border-bottom: 1px solid $recep-line;
-  .listing-title { font-family: $headings-font-family; text-transform: lowercase; }
+  .listing-title { font-family: var(--font-editorial); text-transform: lowercase; }
 }
 
 // ============ ekip ============
+.recep-people-group h2 { text-align: left; }
 .recep-people {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+  column-gap: 2rem;
   margin: 1rem 0 2.5rem;
 }
 .recep-person {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1.1rem;
-  border: 1px solid $recep-line;
-  transition: transform .12s linear, box-shadow .12s linear;
-  &:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 $recep-blue; }
+  display: flex; gap: 1.1rem; align-items: flex-start;
+  padding: 1.25rem 0; border-top: 1px solid $recep-line;
 }
 .recep-avatar {
-  flex: 0 0 64px; width: 64px; height: 64px;
-  object-fit: cover;
+  flex: 0 0 64px; width: 64px; height: 64px; object-fit: cover;
   display: grid; place-items: center;
-  background: $recep-surface;
-  border: 1px solid $recep-green;
-  font-family: $font-family-monospace; font-weight: 700; font-size: 1.1rem;
-  color: $recep-green;
+  background: $recep-surface; filter: grayscale(100%);
+  font-family: var(--font-terminal); font-size: .95rem; color: $recep-muted;
 }
-.recep-person-name { font-weight: 700; line-height: 1.3; }
-.recep-person-role { font-family: $font-family-monospace; font-size: .75rem; color: $recep-blue; text-transform: lowercase; margin-top: .15rem; }
-.recep-person-area { font-size: .85rem; color: $recep-muted; margin-top: .35rem; }
+.recep-person-name { font-family: var(--font-editorial); font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+.recep-person-role { font-family: var(--font-terminal); font-size: .68rem; letter-spacing: .06em; color: $recep-muted; text-transform: lowercase; margin-top: .25rem; }
+.recep-person-area { font-size: .95rem; color: $recep-muted; margin-top: .4rem; }
 .recep-person-links {
   display: flex; gap: .75rem; align-items: center; margin-top: .5rem;
-  a { color: $recep-muted; &:hover { color: $recep-green; text-decoration: none; } }
+  a { color: $recep-muted; &:hover { color: $recep-ink; text-decoration: none; } }
 }
 
 // ============ çıktılar ============
 .recep-pubs { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
-.recep-pub {
-  padding: 1rem 0 1rem 1rem;
-  border-left: 2px solid $recep-line;
-  margin-bottom: .75rem;
-  transition: border-color .12s linear;
-  &:hover { border-left-color: $recep-green; }
-}
-.recep-pub-title { font-weight: 600; margin: .4rem 0 .2rem; line-height: 1.4; }
-.recep-pub-meta { font-size: .88rem; color: $recep-muted; }
+.recep-pub { padding: 1.25rem 0; border-top: 1px solid $recep-line; }
+.recep-pub-title { font-family: var(--font-editorial); font-weight: 600; font-size: 1.15rem; margin: .5rem 0 .25rem; line-height: 1.4; }
+.recep-pub-meta { font-size: .95rem; color: $recep-muted; }
 .recep-pub-links {
-  display: flex; gap: 1rem; margin-top: .35rem;
-  font-family: $font-family-monospace; font-size: .78rem;
-  a::before { content: "↗ "; }
+  display: flex; gap: 1.25rem; margin-top: .4rem;
+  font-family: var(--font-terminal); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+  a::after { content: " ↗"; }
   &:empty { display: none; }
 }
-.recep-bos {
-  font-family: $font-family-monospace; font-size: .85rem; color: $recep-muted;
-  border: 1px dashed $recep-line; padding: 1.25rem; margin: 1rem 0 2rem;
-  &::before { content: "// "; color: $recep-green; }
+
+// ============ araçlar (OJS; _taslaklar'dan geri gelirse) ============
+.recep-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); column-gap: 2rem; margin: 1.5rem 0; }
+.recep-tile {
+  padding: 1rem 0; border-top: 1px solid $recep-line;
+  .etiket { font-family: var(--font-terminal); font-size: .68rem; color: $recep-muted; text-transform: lowercase; }
+  .deger  { font-family: var(--font-brutal); font-weight: 900; letter-spacing: -0.04em; font-size: 2rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .birim  { font-family: var(--font-terminal); font-size: .7rem; color: $recep-muted; }
+}
+input[type="range"] { accent-color: $recep-ink; }
+form[class^="oi-"] { font-family: var(--font-terminal); font-size: .78rem; }
+form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^="oi-"] input[type="text"] {
+  background: $recep-paper; color: $recep-ink; border: 1px solid $recep-line;
 }
 
-// ============ araçlar (OJS) ============
-.recep-tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  border-top: 1px solid $recep-line; border-left: 1px solid $recep-line;
-  margin: 1.25rem 0;
+// iş-zaman çizelgesi (taslak)
+.recep-gantt {
+  overflow-x: auto; margin: 1.5rem 0 2rem;
+  table { border-collapse: collapse; width: 100%; min-width: 640px; table-layout: fixed; font-family: var(--font-terminal); font-size: .7rem; }
+  th, td { border: 1px solid $recep-line; padding: .35rem 0; text-align: center; }
+  th:nth-child(1) { width: 32%; } th:nth-child(2) { width: 2.2rem; }
+  th.ip, td.ip { text-align: left; padding: .35rem .5rem; line-height: 1.3; }
+  td.dolu { background: $recep-ink; }
 }
-.recep-tile {
-  padding: 1rem 1.1rem;
-  border-right: 1px solid $recep-line; border-bottom: 1px solid $recep-line;
-  .etiket { font-family: $font-family-monospace; font-size: .72rem; color: $recep-muted; text-transform: lowercase; }
-  .deger  { font-family: $headings-font-family; font-weight: 700; font-size: 1.9rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
-  .birim  { font-family: $font-family-monospace; font-size: .75rem; color: $recep-muted; }
-}
-.cell-output-display .observablehq form,
-form.oi-3a86ea { font-family: $font-family-monospace; font-size: .82rem; }
 
 // ============ footer ============
-.nav-footer {
-  border-top: 1px solid $recep-line !important;
-  font-family: $font-family-monospace;
-  font-size: .78rem;
-}
+.nav-footer { border-top: 1px solid $recep-line !important; font-size: .7rem; letter-spacing: .03em; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
-
-// OJS girdileri: marka rengi
-input[type="range"] { accent-color: $recep-green; }
-form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^="oi-"] input[type="text"] {
-  background: $recep-paper; color: $recep-ink; border: 1px solid $recep-line; font-family: $font-family-monospace;
-}
-
-// ============ küre (assets/js/kure.js) ============
-:root {
-  --recep-yesil:   #{$recep-green};
-  --recep-mavi:    #{$recep-blue};
-  --recep-kirmizi: #{$recep-red};
-  --recep-zemin:   #{$recep-paper};
-}
-
-// hero'daki büyük animasyon alanı: keskin neon çerçeve + terminal ızgarası
-.recep-hero-kure {
-  position: relative;
-  justify-self: stretch;
-  aspect-ratio: 1 / 1;
-  width: 100%;
-  max-width: 520px;
-  margin-left: auto;
-  border: 1px solid $recep-green;
-  box-shadow: 0 0 0 1px rgba($recep-green, .15), 0 0 32px rgba($recep-green, .12) inset;
-  background-color: $recep-paper;
-  background-image:
-    linear-gradient(rgba($recep-frame, .12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba($recep-frame, .12) 1px, transparent 1px);
-  background-size: 32px 32px;
-
-  // köşe imleri (elektrik mavi)
-  &::before, &::after {
-    content: ""; position: absolute; width: 22px; height: 22px; pointer-events: none;
-    border: 2px solid $recep-blue;
-  }
-  &::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-  &::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
-
-  .recep-kure { position: absolute; inset: 7%; }
-  .recep-kure canvas, .recep-kure img { width: 100% !important; height: 100% !important; display: block; }
-
-  .recep-kure-etiket {
-    position: absolute; left: 12px; bottom: 10px;
-    font-family: $font-family-monospace; font-size: .7rem; color: $recep-muted; text-transform: lowercase;
-    b, strong { color: $recep-red; font-weight: 400; }
-  }
-}
-@media (max-width: 991.98px) {
-  .recep-hero-kure { margin: 0 auto; max-width: 360px; }
-}
-
-// iskelet sayfalar: içerik bekleniyor
-.recep-bekliyor {
-  font-family: $font-family-monospace; font-size: .85rem; color: $recep-muted;
-  border: 1px dashed $recep-frame; padding: 1.25rem 1.5rem; margin: 1.5rem 0 2rem;
-  p { display: inline; margin: 0; }
-  &::before { content: "// "; color: $recep-green; }
-}
-
-// ============ art terminal window (_extensions/recep/artwindow) ============
-// Rönesans eserleri 1-bit dither olarak, katı bir terminal penceresinin içinde.
-// Pencere her iki temada da zifiri siyah (#000); çerçeve rengi --art-renk.
-.recep-art {
-  --art-renk: #{$recep-frame};
-  --art-kose: 16px;
-  margin: 0;
-  width: 100%;
-  font-family: var(--font-terminal);
-  position: relative;
-}
-.recep-art--yesil { --art-renk: #{$recep-green}; }
-
-// meta çubuğu (Katman 3: mono, 11–12px, büyük harf, neon)
-.recep-art-meta {
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  background: #000;
-  border: 1px solid var(--art-renk); border-bottom: none;
-  color: var(--art-renk);
-  font-size: 11.5px; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase;
-  padding: .45rem .65rem;
-  align-items: flex-start;
-  .komut { overflow-wrap: anywhere; }   // meta dizesi birebir ve tam görünür
-  .durum { flex: none; color: $recep-red; }
-  .durum::before { content: "● "; animation: recep-kayit 1.6s steps(2, start) infinite; }
-}
-@keyframes recep-kayit { to { visibility: hidden; } }
-
-// pencere
-.recep-art-pencere {
-  position: relative;
-  background: #000;
-  border: 1px solid var(--art-renk);
-  aspect-ratio: var(--oran, 4 / 3);
-  overflow: visible;
-
-  img {
-    display: block; width: 100%; height: 100%;
-    object-fit: cover; object-position: var(--konum, 50% 50%);
-    filter: grayscale(100%) contrast(150%);
-    mix-blend-mode: screen;
-    image-rendering: pixelated;           // 1-bit dither noktaları keskin kalsın
-    transition: filter .25s steps(3);
-  }
-  // tarama çizgileri
-  &::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .28) 0 1px, transparent 1px 3px);
-  }
-  // L köşe parantezleri (çerçevenin 5px dışında)
-  .kose { position: absolute; width: var(--art-kose); height: var(--art-kose); border: 2px solid var(--art-renk); z-index: 2; pointer-events: none; }
-  .k-ust-sol { top: -6px;    left: -6px;  border-right: none; border-bottom: none; }
-  .k-ust-sag { top: -6px;    right: -6px; border-left: none;  border-bottom: none; }
-  .k-alt-sol { bottom: -6px; left: -6px;  border-right: none; border-top: none; }
-  .k-alt-sag { bottom: -6px; right: -6px; border-left: none;  border-top: none; }
-  // merkez nişangahı (+)
-  .arti { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; transform: translate(-50%, -50%); z-index: 2; pointer-events: none; opacity: .55;
-    background:
-      linear-gradient(var(--art-renk), var(--art-renk)) center / 1px 100% no-repeat,
-      linear-gradient(var(--art-renk), var(--art-renk)) center / 100% 1px no-repeat; }
-}
-.recep-art:hover .recep-art-pencere img { filter: grayscale(100%) contrast(190%) brightness(1.08); }
-.recep-art:hover .recep-art-pencere { box-shadow: 0 0 0 1px var(--art-renk), 0 0 24px rgba($recep-frame, .25); }
-
-// negatif (kâğıt üzerindeki çizimler: Vitruvius)
-.recep-art--ters .recep-art-pencere img { filter: invert(1) grayscale(100%) contrast(150%); }
-.recep-art--ters:hover .recep-art-pencere img { filter: invert(1) grayscale(100%) contrast(190%); }
-// neon duotone: beyazlar çerçeve rengine döner
-.recep-art--ton .recep-art-pencere::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-  background: var(--art-renk); mix-blend-mode: multiply;
-}
-
-// künye çubuğu
-.recep-art-alt {
-  font-size: 10.5px; letter-spacing: .04em; text-transform: none;   // yabancı adlar Türkçe büyük harfe çevrilmesin (VİNCİ)
-  color: $recep-muted; text-align: right; padding-top: .45rem;
-}
-
-// ============ sayfa başlığı: brütalist başlık | art window ============
-// Başlık Katman 1, açıklama Katman 2; pencere sütunu sayfanın %30–40'ı.
-.recep-sayfa-bas {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 38%);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: end;
-  padding: clamp(1.5rem, 4vw, 3rem) 0 2rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid $recep-frame;
-
-  .recep-sayfa-bas-metin { align-self: end; padding-bottom: .25rem; min-width: 0; }
-  // Quarto başlığı bir <section> ile sarar ve sınıfları ona da kopyalar: yalnızca h1'i hedefle
-  section.recep-baslik { font: inherit; letter-spacing: normal; line-height: inherit; margin: 0; }
-  h1.recep-baslik {
-    font-family: var(--font-brutal); font-weight: 900; letter-spacing: $brutal-tracking;
-    font-size: clamp(3rem, 7vw, 6rem); line-height: .92; margin: .5rem 0 1.1rem;
-    border: none; padding: 0; overflow-wrap: anywhere;
-    &::before { content: none !important; }
-  }
-  .recep-sayfa-alt {
-    font-family: var(--font-editorial); font-weight: 400; font-size: 1.1rem;
-    line-height: 1.6; letter-spacing: normal; text-transform: none;
-    color: $recep-muted; max-width: 34rem; margin: 0;
-  }
-  .recep-sayfa-yol { font-family: var(--font-terminal); font-size: .78rem; color: $recep-green; text-transform: lowercase; }
-  .recep-sayfa-yol::before { content: "$ cd "; color: $recep-blue; }
-  .recep-sayfa-yol p, .recep-sayfa-alt p { margin: 0; display: inline; }
-}
-@media (max-width: 991.98px) {
-  .recep-sayfa-bas { grid-template-columns: 1fr; }
-  .recep-sayfa-bas .recep-art { max-width: 520px; }
-}
-
-// art window'lu bölüm sayfalarında Quarto'nun başlık bloğu gizlenir (başlık ızgarada)
-body.recep-bas-sayfa #title-block-header { display: none; }
-// tam genişlik düzende okunabilir içerik genişliği
-body.recep-bas-sayfa main.content { max-width: 1240px; }

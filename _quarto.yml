@@ -19,6 +19,9 @@ project:
 
 lang: tr
 
+filters:
+  - hero          # _extensions/recep/hero — her sayfaya DynamicHero (filigran eser + dev başlık)
+
 execute:
   freeze: auto   # R çıktıları _freeze/ içine yazılır ve commit edilir; CI'da R gerekmez
 

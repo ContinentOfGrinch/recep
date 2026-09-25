@@ -1,7 +1,7 @@
 # RECEP web sitesi — proje hafızası
 
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
-> Son güncelleme: 2026-09-25 (tipografi v3, yayın kapat/aç)
+> Son güncelleme: 2026-09-25 (tasarım v4: Elegant Cyber-Renaissance, DynamicHero)
 
 ## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
@@ -24,29 +24,23 @@
 - **GitHub:** https://github.com/ContinentOfGrinch/recep (public, `main`) → canlı: https://continentofgrinch.github.io/recep/ . Pages kaynağı = GitHub Actions. İleride Tunç Durmaz / lab organizasyonuna devredilecek (README'de adımlar).
 - **Araçlar:** Quarto 1.10.18 (yerel = CI), R 4.5.1, Node 24. `gh` CLI yok → GitHub API için `git credential fill` token'ı + curl (Türkçe JSON → `--data-binary @dosya.json`).
 
-## 2a. tipografi v3 — 3 katmanlı sistem (2026-09-25, "post-internet editorial / digital brutalism")
+## 2a. TASARIM v4 — "Elegant Cyber-Renaissance / High-End Editorial Brutalism" (2026-09-25, GÜNCEL)
 
-| katman | font | kullanım | kurallar |
-|---|---|---|---|
-| 1 · brütalist çapa | **Inter 900** (Helvetica Neue Black yedeği) | h1, h2, hero manşeti, logo `[recep]` | `letter-spacing: -0.05em` (`$brutal-tracking`), line-height ~1.0, küçük harf |
-| 2 · editoryal hümanizm | **Lora** 400–700 + italik | `<body>`, paragraf, liste, alıntı, makale | line-height 1.7, normal harf aralığı, 17px taban |
-| 3 · terminal / ui | **JetBrains Mono** (Space Mono yedek) | menü, buton, form, etiket, tarih/yazar, koordinat, breadcrumb, sidebar, TOC, footer, h3–h6, kod | 12–14px, küçük/büyük harf |
+Kullanıcı: önceki neon kutular, pikselli yeşil çerçeveler, glitch/tarama çizgisi ve "REC" terminal pencereleri "ucuz ve ürkütücü". **Tüm site** zarif, çerçevesiz dile geçirildi (Nous AI / Hermes-Agent estetiği).
 
-- CSS değişkenleri `--font-brutal / --font-editorial / --font-terminal`; yardımcı sınıflar `.font-brutal / .font-editorial / .font-terminal` (Markdown: `[metin]{.font-terminal}`). Tailwind YOK (Quarto + SCSS) — kullanıcıya eşdeğer olarak bildirildi.
-- Fontlar kendi sunucumuzda (fontsource = Google Fonts dosyaları, latin + latin-ext). **Roboto Condensed kaldırıldı.**
-- Açık tema paleti güncellendi: zemin kırık beyaz **#F4F2EC**, metin zifiri **#0A0A0A**, soluk #3D3D3A, çizgi #C9C4B8, yüzey #EAE7DE. Gece paleti değişmedi.
-- `p, li {Lora}` gibi geniş seçiciler KULLANMA: menü/footer listelerini de Lora'ya çeker; `body` kalıtımı yeterli.
+- **YASAK:** neon kutular/çerçeveler, tarama çizgisi, glitch, "REC", L köşe/nişangah, terminal pencere çerçeveleri, `#`/`$`/`>` terminal önekleri, ofsetli neon gölgeler. Neon yeşil yalnızca logodaki `[recep]` parantezlerinde ve küre çizgilerinde kalır.
+- **DynamicHero** = Quarto filtresi `_extensions/recep/hero/hero.lua` (`_quarto.yml` → `filters: [hero]`). Her HTML sayfasının başına `<section class="recep-dhero">` ekler; sayfa klasöründen sekmeyi bulur, eseri otomatik seçer:
+  ana/ekip/404 → athens · haberler/iletisim → ambassadors · veri-kod/araclar → vitruvian · proje/ciktilar → adam (odak: eller, `38% 46%`).
+  Başlık `title` (veya `hero-baslik`), alt satır `description`. Ayarlar: `hero: false`, `hero-eser`, `hero-boyut: tam|buyuk|orta` (varsayılan: ana=tam, index=buyuk, alt sayfa=orta). Görsel yolu `quarto.project` derinliğinden hesaplanır (raw HTML); 404'te Quarto mutlak yola çevirir.
+- **Filigran CSS:** `.recep-dhero-sanat` absolute, `left:50%; width:100vw; translateX(-50%)`, flex ortalı, `z-index:0`; img `grayscale(100%)`, açık: `opacity .15` + `multiply`; gece: `opacity .14` + `screen`; Vitruvius (krem kâğıt) gece temasında `invert(1) contrast(1.25)` (`$recep-art-kagit`) — yoksa açık dikdörtgen kutu gibi görünüyordu. Kenarlar radyal maskeyle tamamen erir: `ellipse 60% 58%`, `#000 22% → transparent 82%` (yarıçap × son durak < %50 olmalı, yoksa kutu kenarı görünür). `body { overflow-x: clip }`. Sidebar zemini `transparent` (yoksa filigranı dikey kesiyordu). `body:has(.recep-dhero) #title-block-header { display:none }`.
+- **Başlık:** Inter 900, `-0.06em`, `line-height .86`, küçük harf, ortalı; tam `clamp(4.5rem,17vw,14rem)`, büyük `clamp(3.4rem,11vw,9.5rem)`, orta `clamp(2.6rem,7vw,6rem)`. Açıklama Lora italik. Yol satırı (`/proje`) Space Mono (ana sayfada gizli). Künye sağ altta Space Mono .62rem, küçük harf.
+- **Görseller:** `assets/sanat/*.webp` — yüksek çözünürlüklü Commons asıllarından headless Edge canvas ile küçültme + gri tonlama + WebP (167–368 KB). Betikler scratchpad `sanat/webp.html`, `sanat/webp-surucu.mjs`. Kaynaklar `assets/sanat/KAYNAK.md`. ArtWindow bileşeni ve 1-bit PNG'ler SİLİNDİ.
+- **Tipografi v4:** Katman 1 Inter 900 → YALNIZCA dev sayfa başlıkları (DynamicHero) + logo. Katman 2 Lora → h2–h6 dahil TÜM alt başlıklar (500, küçük harf), gövde, açıklamalar. Katman 3 **Space Mono** 400/700 (JetBrains Mono kaldırıldı) → navbar, sidebar, TOC, breadcrumb, meta, butonlar, footer, kod.
+- **Bileşenler:** kart ızgarası kutusuz (yalnızca üst saç çizgisi, hover'da koyulaşır, başlık Lora 1.45rem); butonlar Space Mono büyük harf, saç çizgisi kenar, hover'da ters dolgu (birincil: dolu); `.recep-bekliyor` = ortalı Lora italik "— içerik hazırlanıyor. —" (kutu yok); navbar aktif öğe = ince alt çizgi (kutu yok).
+- **Palet v4:** gece metin `#ECEAE4`, soluk `#8E918F`, çizgi `rgba(236,234,228,.12)`, bağlantı yumuşak mavi `#7FC8F8`; açık soluk `#55524B`, çizgi `rgba(10,10,10,.12)`.
+- **Ana sayfa:** hero = Atina Okulu + dev "recep" + grup adı; altında butonlar + 7 bölüm kartı. Önceki büyük küre kutusu kaldırıldı (neon çerçeve yasağı); küre navbar logosunda dönmeye devam ediyor.
 
-## 2b. "Cyber-Renaissance" — Art Terminal Window (2026-09-25)
-
-- **Bileşen:** Quarto kısa kodu `_extensions/recep/artwindow/artwindow.lua` → `{{< artwindow gorsel= meta= alt= kunye= renk=mavi|yesil oran= konum= ters=evet ton=evet >}}`. Çıktı `<div role="figure">` (**`<figure>` KULLANMA**: Quarto figür/sütun işlemesi `column-*` sınıflarını img'ye taşıyıp ızgarayı bozuyor). Görsel pandoc Image olarak üretilir → yol her derinlikte çözülür (`gorsel="athens"` → `/assets/sanat/athens.png`).
-- **Görünüm:** siyah (#000) pencere, 1px `$recep-frame`/yeşil çerçeve, dışta 4 L köşe, ortada + nişangah, tarama çizgileri; img `grayscale(100%) contrast(150%)` + `mix-blend-mode: screen`, `image-rendering: pixelated`. Üstte meta çubuğu (mono 11.5px, büyük harf, neon, yanıp sönen ● REC; dize satır kaydırır, kırpılmaz). Altta künye (küçük harf — büyük harf dönüşümü yabancı adları "VİNCİ" yapıyordu).
-- **Görseller:** `assets/sanat/{athens,ambassadors,vitruvian,adam}.png` — Wikimedia Commons (kamu malı), headless Edge canvas'ında **Atkinson dither → 1-bit PNG** (Node zlib ile kendi PNG kodlayıcımız; 27–62 KB). Betikler scratchpad'de (`sanat/dither.html`, `sanat/dither-surucu.mjs`). Vitruvius: kâğıt beyaza çekilerek (kontrast 2.6, parlaklık +70) dither + CSS `ters` (negatif). Kaynak listesi `assets/sanat/KAYNAK.md`.
-- **Sayfa başlığı ızgarası:** `.recep-sayfa-bas` = `[yol + h1.recep-baslik (Inter 900, -0.05em, 3–6rem) + .recep-sayfa-alt (Lora)] | [art window, minmax(260px, 38%)]`; <992px'te alt alta. Bu sayfalarda front matter `body-classes: recep-bas-sayfa` + `page-layout: full` (Quarto başlık bloğu CSS ile gizli). `title-block-style: none` işe YARAMADI. Quarto `# başlık`'ı `<section>` ile sarıp sınıfları kopyalar → stil yalnızca `h1.recep-baslik`'e.
-- **Eşleme:** ekip → Atina Okulu (mavi 4:3) · haberler → Elçiler (yeşil 1:1) · araçlar + skdm-hesaplayıcı + veri-kod → Vitruvius (mavi 1:1 negatif) · proje + çıktılar → Adem'in Yaratılışı (yeşil 16:9). Meta dizeleri kullanıcının verdiği birebir. **Ana sayfa hero'su dönen küreyle kaldı** (önceki açık istek); Atina Okulu ana sayfaya istenirse eklenecek.
-- Alt satır metinleri yalnızca kullanıcının menü tablosundaki ifadeler (içerik yasağına uygun).
-
-## 2. tasarım manifestosu v2 (güncel, değişmez)
+## 2. tasarım manifestosu v2 (ESKİ — navbar/küre/palet temeli hâlâ geçerli; görsel dil için 2a v4 esastır)
 
 - **Dil:** "bilimsel brutalizm" + siberpunk/terminal. Tüm köşeler keskin (`border-radius: 0`, `$enable-rounded: false` + global `*{border-radius:0!important}`).
 - **Palet — gece (VARSAYILAN):** zemin #05080D, metin #E6EDF3, soluk #8B98A5, çizgi #1C2633, yüzey #0B111A, **neon yeşil #39FF14**, **elektrik mavi #00A3FF**.
