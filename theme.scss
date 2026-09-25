@@ -6,11 +6,11 @@
 // ============================================================
 
 // ---- palet ----
-$recep-ink:     #0B1220 !default;   // gövde metni
-$recep-paper:   #FFFFFF !default;   // zemin
-$recep-muted:   #4B5563 !default;   // ikincil metin
-$recep-line:    #D0D7DE !default;   // çizgiler / çerçeveler
-$recep-surface: #F3F5F7 !default;   // kart / kod zemini
+$recep-ink:     #0A0A0A !default;   // gövde metni — zifiri siyah
+$recep-paper:   #F4F2EC !default;   // zemin — kırık beyaz (post-internet editoryal)
+$recep-muted:   #3D3D3A !default;   // ikincil metin (AA kontrast)
+$recep-line:    #C9C4B8 !default;   // çizgiler
+$recep-surface: #EAE7DE !default;   // kart / kod zemini
 $recep-green:   #12A12F !default;   // birincil vurgu
 $recep-blue:    #0077CC !default;   // bağlantılar / ikincil vurgu
 $recep-on-green: #FFFFFF !default;  // yeşil zemin üstündeki metin
@@ -25,14 +25,24 @@ $recep-night-line: #1C2633;
 $recep-neon:      #39FF14;
 $recep-electric:  #00A3FF;
 
-// ---- tipografi ----
-$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !default;
-$font-family-monospace:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !default;
-$headings-font-family:   "Roboto Condensed", "Arial Narrow", sans-serif !default;
-$headings-font-weight:   700 !default;
-$headings-line-height:   1.1 !default;
+// ---- tipografi: 3 katmanlı sistem ----
+// Katman 1 · brütalist çapa    → h1, h2, manşetler, logo
+// Katman 2 · editoryal hümanizm → gövde metni, makaleler, paragraflar
+// Katman 3 · terminal / ui      → menü, butonlar, etiketler, tarih, koordinat, kod
+$font-brutal:    "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-editorial: "Lora", Georgia, "Times New Roman", serif;
+$font-terminal:  "JetBrains Mono", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+$font-family-sans-serif: $font-brutal !default;
+$font-family-monospace:  $font-terminal !default;
+$font-family-base:       $font-editorial !default;     // <body> → Lora
+$headings-font-family:   $font-brutal !default;
+$headings-font-weight:   900 !default;
+$headings-line-height:   1.02 !default;
 $font-size-root:         16px !default;
+$font-size-base:         1.0625rem !default;           // 17px: Lora'nın küçük x-yüksekliğini dengeler
 $line-height-base:       1.7 !default;
+$brutal-tracking:        -0.05em;
 
 // ---- bootstrap / quarto eşlemeleri ----
 $enable-rounded:     false !default;
@@ -82,29 +92,59 @@ $callout-color-tip:       $recep-green !default;
 // ============ temel ============
 *, *::before, *::after { border-radius: 0 !important; }   // keskin köşe kuralı
 
+// ============ tipografi: 3 katman ============
+:root {
+  --font-brutal:    #{$font-brutal};
+  --font-editorial: #{$font-editorial};
+  --font-terminal:  #{$font-terminal};
+}
+// yardımcı sınıflar (Markdown'da: [metin]{.font-terminal} ya da ::: {.font-editorial})
+.font-brutal    { font-family: var(--font-brutal) !important; font-weight: 900; letter-spacing: $brutal-tracking; }
+.font-editorial { font-family: var(--font-editorial) !important; line-height: 1.7; letter-spacing: normal; }
+.font-terminal  { font-family: var(--font-terminal) !important; font-size: .8125rem; letter-spacing: .02em; }
+
+// Katman 2 — gövde: Lora, ferah satır aralığı, normal harf aralığı
 body {
+  font-family: var(--font-editorial);
+  line-height: 1.7;
+  letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "cv11", "ss01";  // Inter: düz 'a', ayrık rakamlar
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
+blockquote { font-style: italic; border-left: 2px solid $recep-green; padding-left: 1rem; color: $recep-ink; }
+
+// Katman 3 — arayüz: menü, buton, form, etiket, tarih, meta, gezinme
+nav, button, .btn, input, select, textarea, label, .nav-link, .navbar, .dropdown-menu,
+.breadcrumb, .sidebar, #TOC, .toc-actions, .nav-footer, .page-navigation, .quarto-title-meta,
+.listing-date, .listing-author, .listing-reading-time, .listing-category, .quarto-category,
+.aa-Form, .aa-Item, .callout-title-container, figcaption.figure-caption, .table > thead th {
+  font-family: var(--font-terminal);
+}
+button, .btn { font-size: .8125rem; letter-spacing: .02em; }
 
 ::selection { background: $recep-green; color: $recep-on-green; }
 
-// başlıklar: yalnızca küçük harf (lang="tr" ile I → ı doğru)
+// Katman 1 — h1, h2: Inter 900, çok sıkı harf aralığı, blok gibi ağır (yalnızca küçük harf; lang="tr" ile I → ı)
 h1, h2, .h1, .h2, .title, .quarto-title .title {
-  font-family: $headings-font-family;
-  font-weight: 700;
+  font-family: var(--font-brutal);
+  font-weight: 900;
   text-transform: lowercase;
-  letter-spacing: -0.02em;
+  letter-spacing: $brutal-tracking;
+  line-height: 1.02;
+  font-feature-settings: "ss01", "cv11";   // Inter: düz 'a', grotesk biçimler
 }
+// ara başlıklar terminal katmanında (başlık hiyerarşisi: blok → mono)
 h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
-  font-family: $font-family-monospace;
+  font-family: var(--font-terminal);
   font-weight: 700;
   text-transform: lowercase;
   letter-spacing: -0.01em;
+  line-height: 1.3;
 }
-h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
-h2 { font-size: 1.75rem; border-bottom: 1px solid $recep-line; padding-bottom: .4rem; margin-top: 2.75rem; }
+h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); }
+h2 { font-size: 1.85rem; border-bottom: 1px solid $recep-line; padding-bottom: .45rem; margin-top: 2.75rem; }
 h3 { font-size: 1.1rem; margin-top: 2rem; }
 h2::before { content: "# "; color: $recep-green; font-family: $font-family-monospace; font-weight: 400; }
 h3::before { content: "## "; color: $recep-blue; font-weight: 400; }
@@ -189,7 +229,7 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   font-weight: 900;
   font-size: 1.7rem;
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: $brutal-tracking;
   text-transform: lowercase;
   color: #F2F5F7;
   padding: .12em .42em .2em;
@@ -374,9 +414,9 @@ hr { border-top: 1px solid $recep-line; opacity: 1; }
   padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem);
 
   h1 {
-    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 5.4vw, 4.1rem);
     line-height: 1;
-    letter-spacing: -0.035em;
+    letter-spacing: $brutal-tracking;
     margin: 0 0 1.25rem;
   }
   .lead { font-size: 1.1rem; color: $recep-muted; margin: 0; max-width: 40rem; }

@@ -41,8 +41,8 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
 ## tasarım sistemi
 
 - `theme.scss` — açık tema paleti ve tüm kurallar; `theme-dark.scss` — gece paleti (varsayılan tema).
-- Gece: `#05080D` zemin, neon yeşil `#39FF14`, elektrik mavi `#00A3FF`. Açık: beyaz zemin, `#12A12F`, `#0077CC`.
-- Fontlar kendi sunucumuzda: Inter, JetBrains Mono, Roboto Condensed (`assets/fonts/`, SIL OFL 1.1).
+- Gece: `#05080D` zemin, neon yeşil `#39FF14`, elektrik mavi `#00A3FF`. Açık: kırık beyaz `#F4F2EC` zemin, zifiri `#0A0A0A` metin, `#12A12F`, `#0077CC`.
+- Tipografi 3 katman: **Inter 900** (h1, h2, logo; -0.05em) · **Lora** (gövde metni) · **JetBrains Mono** (menü, buton, etiket, kod). CSS değişkenleri `--font-brutal`, `--font-editorial`, `--font-terminal` ve aynı adlı yardımcı sınıflar. Fontlar kendi sunucumuzda (`assets/fonts/`, SIL OFL 1.1).
 - Marka dosyaları: `assets/marka/` (animasyonlu amblemler, yatay logolar).
 
 ## yayın

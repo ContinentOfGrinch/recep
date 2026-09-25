@@ -69,9 +69,10 @@
       ctx.clearRect(0, 0, boyut, boyut);
 
       // küre gövdesi
+      const acik = renk.zemin.toUpperCase() !== NEON.zemin;   // açık tema: kırık beyaz zemin
       const g = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R);
-      g.addColorStop(0, renk.zemin === "#FFFFFF" ? "#EAF3FA" : "#0B2A44");
-      g.addColorStop(1, renk.zemin === "#FFFFFF" ? "#CFE1EE" : "#040A12");
+      g.addColorStop(0, acik ? "#EAF3FA" : "#0B2A44");
+      g.addColorStop(1, acik ? "#CFE1EE" : "#040A12");
       ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fillStyle = g; ctx.fill();
 
       // ağ

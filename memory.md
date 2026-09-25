@@ -29,6 +29,19 @@ Kullanıcı "birkaç değişiklik yapıp sonra tekrar açacağız" dedi. Uygulan
 - **GitHub:** https://github.com/ContinentOfGrinch/recep (public, `main`) → canlı: https://continentofgrinch.github.io/recep/ . Pages kaynağı = GitHub Actions. İleride Tunç Durmaz / lab organizasyonuna devredilecek (README'de adımlar).
 - **Araçlar:** Quarto 1.10.18 (yerel = CI), R 4.5.1, Node 24. `gh` CLI yok → GitHub API için `git credential fill` token'ı + curl (Türkçe JSON → `--data-binary @dosya.json`).
 
+## 2a. tipografi v3 — 3 katmanlı sistem (2026-09-25, "post-internet editorial / digital brutalism")
+
+| katman | font | kullanım | kurallar |
+|---|---|---|---|
+| 1 · brütalist çapa | **Inter 900** (Helvetica Neue Black yedeği) | h1, h2, hero manşeti, logo `[recep]` | `letter-spacing: -0.05em` (`$brutal-tracking`), line-height ~1.0, küçük harf |
+| 2 · editoryal hümanizm | **Lora** 400–700 + italik | `<body>`, paragraf, liste, alıntı, makale | line-height 1.7, normal harf aralığı, 17px taban |
+| 3 · terminal / ui | **JetBrains Mono** (Space Mono yedek) | menü, buton, form, etiket, tarih/yazar, koordinat, breadcrumb, sidebar, TOC, footer, h3–h6, kod | 12–14px, küçük/büyük harf |
+
+- CSS değişkenleri `--font-brutal / --font-editorial / --font-terminal`; yardımcı sınıflar `.font-brutal / .font-editorial / .font-terminal` (Markdown: `[metin]{.font-terminal}`). Tailwind YOK (Quarto + SCSS) — kullanıcıya eşdeğer olarak bildirildi.
+- Fontlar kendi sunucumuzda (fontsource = Google Fonts dosyaları, latin + latin-ext). **Roboto Condensed kaldırıldı.**
+- Açık tema paleti güncellendi: zemin kırık beyaz **#F4F2EC**, metin zifiri **#0A0A0A**, soluk #3D3D3A, çizgi #C9C4B8, yüzey #EAE7DE. Gece paleti değişmedi.
+- `p, li {Lora}` gibi geniş seçiciler KULLANMA: menü/footer listelerini de Lora'ya çeker; `body` kalıtımı yeterli.
+
 ## 2. tasarım manifestosu v2 (güncel, değişmez)
 
 - **Dil:** "bilimsel brutalizm" + siberpunk/terminal. Tüm köşeler keskin (`border-radius: 0`, `$enable-rounded: false` + global `*{border-radius:0!important}`).
