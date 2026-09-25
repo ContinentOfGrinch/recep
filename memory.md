@@ -1,7 +1,7 @@
 # RECEP web sitesi — proje hafızası
 
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
-> Son güncelleme: 2026-09-23 (oturum 1, aşama 4 — bölünmüş navbar, dönen küre, iskelet kategoriler)
+> Son güncelleme: 2026-09-25 (tipografi v3, yayın kapat/aç)
 
 ## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
@@ -41,14 +41,14 @@
 
 - **Dil:** "bilimsel brutalizm" + siberpunk/terminal. Tüm köşeler keskin (`border-radius: 0`, `$enable-rounded: false` + global `*{border-radius:0!important}`).
 - **Palet — gece (VARSAYILAN):** zemin #05080D, metin #E6EDF3, soluk #8B98A5, çizgi #1C2633, yüzey #0B111A, **neon yeşil #39FF14**, **elektrik mavi #00A3FF**.
-- **Palet — açık:** zemin #FFFFFF, metin #0B1220, soluk #4B5563, çizgi #D0D7DE, yüzey #F3F5F7, yeşil **#12A12F**, mavi **#0077CC**.
+- **Palet — açık:** bkz. 2a (kırık beyaz #F4F2EC, zifiri #0A0A0A); yeşil **#12A12F**, mavi **#0077CC**.
 - **Navbar (v3, kullanıcı düzeltmesi):** **tek satır, bölünmüş:** SOL `proje · ekip · çıktılar` | MERKEZ [küre + [recep]] | SAĞ `veri ve kod · araçlar · haberler · iletişim`. Alt alta YOK, logo solda YOK. Her iki temada #05080D, sabit (`pinned` + `z-index: 9999`). ≥1200px: `.navbar-collapse{display:contents}` + grid `1fr auto 1fr`; Quarto `left:`→`.me-auto`, `right:`→`.ms-auto`. GitHub+tema düğmesi sol kenarda, arama sağ kenarda (mutlak). <1200px (`collapse-below: xl`): [menü düğmesi | marka | tema+arama], menü aşağı açılır.
 - **Logo/küre:** `assets/js/kure.js` — **gerçekten dönen wireframe dünya** (canvas, kütüphanesiz ortografik izdüşüm, Natural Earth 110m kıyı çizgileri neon yeşil, 20° ağ elektrik mavi), **Türkiye'de (35.2E, 39.0N) yanıp sönen neon kırmızı nokta + radar halkası** (#FF1F4B), küreyle birlikte döner, arka yüzde gizlenir. Eğim 24° (kuzeyden). Navbar'da `.navbar-logo` img → 46px canvas (hız 0.018°/ms); hero'da `.recep-kure` (hız 0.006, dış kesikli halka ters döner, renkler CSS değişkenlerinden `--recep-yesil/mavi/kirmizi/zemin`). JS yoksa yedek: `amblem-nav.svg` / `amblem-koyu.svg`. `prefers-reduced-motion` → tek kare. IntersectionObserver ile görünmezken durur.
 - **Küre derleme:** kaynak `assets/js/kure.src.js`; veri `assets/js/kaynak/kara-110m.json`; `node assets/js/kaynak/kure-derle.mjs assets/js/kure.src.js assets/js/kaynak/kara-110m.json assets/js/kure.js`. Yükleyici `_quarto.yml` `include-after-body` içinde, `<meta name="quarto:offset">` ile her derinlikte doğru yol.
 - [recep] metni **Inter 900** (marka kelime işaretine en yakın), köşeli parantezler CSS kenarlıklarıyla kalın kare çizgi.
 - **Çerçeveler:** kart ızgarası, butonlar, şeritler `$recep-frame` (gece #00A3FF / açık #0077CC); birincil buton ve hero küre çerçevesi neon yeşil; hero'da terminal ızgarası + mavi köşe imleri.
 - **Gece varsayılanı garantisi:** `include-in-header` betiği, eski sürümden kalan `quarto-color-scheme` tercihini bir kez siler (`recep-tema=v2` bayrağı) ve gerekirse sayfayı yeniler.
-- **Tipografi:** h1–h2 Roboto Condensed Bold, h3–h6 + menü + etiketler JetBrains Mono, gövde Inter. Hepsi küçük harf. h2 önüne `# ` (yeşil), h3 önüne `## ` (mavi); `.no-prefix` ile kapatılır.
+- **Tipografi:** bkz. 2a (3 katman: Inter 900 · Lora · JetBrains Mono). Başlıklar küçük harf. h2 önüne `# ` (yeşil), h3 önüne `## ` (mavi); `.no-prefix` ile kapatılır.
 - **Etkileşim dili:** hover'da `translate(-2px,-2px)` + `4px 4px 0` neon gölge (brutalist), kartlarda alttan dolan neon çizgi.
 
 ## 3. site mimarisi (kalıcı adresler)
