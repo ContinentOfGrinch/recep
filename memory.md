@@ -3,17 +3,12 @@
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
 > Son güncelleme: 2026-09-23 (oturum 1, aşama 4 — bölünmüş navbar, dönen küre, iskelet kategoriler)
 
-## ⛔ YAYIN DURUMU: KAPALI (kullanıcı isteği, 2026-09-25)
+## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
-Kullanıcı "birkaç değişiklik yapıp sonra tekrar açacağız" dedi. Uygulanan:
-- GitHub Pages silindi (`DELETE /repos/ContinentOfGrinch/recep/pages`) → tüm adresler 404 (doğrulandı).
-- `publish` iş akışı devre dışı (`PUT .../actions/workflows/365129935/disable`, durum `disabled_manually`) → push'lar siteyi AÇMAZ.
-- Repo ve kod olduğu gibi duruyor (public). Kullanıcı ayrıca istemedikçe repo gizlenmedi.
-
-**Yeniden açmak için (yalnızca kullanıcı isterse):**
-1. `PUT .../actions/workflows/365129935/enable`
-2. `POST .../pages` gövde `{"build_type":"workflow"}`
-3. İş akışını tetikle: `POST .../actions/workflows/365129935/dispatches` gövde `{"ref":"main"}` → Actions yeşil mi kontrol et → canlı adres 200 mü kontrol et.
+- 2026-09-25: kullanıcı isteğiyle kapatıldı (Pages silindi + publish iş akışı devre dışı), aynı gün tipografi v3 sonrası yeniden açıldı.
+- **Kapatma:** `PUT .../actions/workflows/365129935/disable` + `DELETE .../pages` (CDN önbelleği ~10 dk içinde düşer).
+- **Açma:** `PUT .../actions/workflows/365129935/enable` → `POST .../pages` `{"build_type":"workflow"}` → `POST .../actions/workflows/365129935/dispatches` `{"ref":"main"}` → Actions yeşil + canlı 200 kontrolü.
+- GitHub dil çubuğu yalnızca SCSS/JS/EJS/CSS gösterir: `.qmd` (Quarto) ve `.yml` dosyaları Linguist tarafından dil olarak sayılmaz; `kure.js` (gömülü veri) üretilmiş dosya olarak dışlanır. Site yine de Quarto sitesidir; kullanıcıya açıklandı.
 
 ## ⚠ KESİN KURAL (kullanıcı, 2026-09-23)
 
