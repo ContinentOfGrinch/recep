@@ -1,4 +1,6 @@
 ---
+body-classes: recep-bas-sayfa
+page-layout: full
 title: "ekip"
 toc: false
 listing:
@@ -6,6 +8,21 @@ listing:
   contents: ../data/ekip.yml
   template: ../_templates/ekip.ejs
 ---
+
+::::: {.recep-sayfa-bas}
+
+:::: {.recep-sayfa-bas-metin}
+[/ekip]{.recep-sayfa-yol}
+
+# ekip {.recep-baslik .unnumbered .unlisted .no-anchor}
+
+[Yürütücü, araştırmacılar, danışmanlar, bursiyerler.]{.recep-sayfa-alt}
+
+::::
+
+{{< artwindow gorsel="athens" meta="> RNDR_ATHENS_SCHOOL.exe // LAT:41.025 LON:28.889" alt="Raphael, Atina Okulu — 1-bit dither" kunye="raphael · atina okulu · 1509–1511 · kamu malı" renk="mavi" oran="4/3" konum="50% 60%" >}}
+
+:::::
 
 ::: {#ekip}
 :::

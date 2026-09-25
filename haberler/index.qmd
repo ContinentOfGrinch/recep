@@ -1,7 +1,24 @@
 ---
+body-classes: recep-bas-sayfa
+page-layout: full
 title: "haberler"
 toc: false
 ---
+
+::::: {.recep-sayfa-bas}
+
+:::: {.recep-sayfa-bas-metin}
+[/haberler]{.recep-sayfa-yol}
+
+# haberler {.recep-baslik .unnumbered .unlisted .no-anchor}
+
+[Duyurular, etkinlikler, çalıştay haberleri.]{.recep-sayfa-alt}
+
+::::
+
+{{< artwindow gorsel="ambassadors" meta="> RNDR_AMBASSADORS.exe // GLOBAL_DIPLOMACY_NET" alt="Hans Holbein, Elçiler — 1-bit dither" kunye="hans holbein (genç) · elçiler · 1533 · kamu malı" renk="yesil" oran="1/1" konum="50% 40%" >}}
+
+:::::
 
 :::: {.recep-grid}
 

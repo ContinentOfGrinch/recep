@@ -1,7 +1,22 @@
 ---
+body-classes: recep-bas-sayfa
+page-layout: full
 title: "skdm maliyet hesaplayıcısı"
 order: 1
 ---
+
+::::: {.recep-sayfa-bas}
+
+:::: {.recep-sayfa-bas-metin}
+[/araclar/skdm-hesaplayici]{.recep-sayfa-yol}
+
+# skdm maliyet hesaplayıcısı {.recep-baslik .unnumbered .unlisted .no-anchor}
+
+::::
+
+{{< artwindow gorsel="vitruvian" meta="> RNDR_VITRUVIAN.exe // CALC_ENGINE_V1.0" alt="Leonardo da Vinci, Vitruvius Adamı — 1-bit dither, negatif" kunye="leonardo da vinci · vitruvius adamı · y. 1490 · kamu malı" renk="mavi" oran="1/1" konum="50% 42%" ters="evet" >}}
+
+:::::
 
 ::: {.recep-bekliyor}
 içerik hazırlanıyor.

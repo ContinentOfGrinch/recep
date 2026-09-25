@@ -1,8 +1,25 @@
 ---
+body-classes: recep-bas-sayfa
+page-layout: full
 title: "çıktılar"
 order: 0
 toc: false
 ---
+
+::::: {.recep-sayfa-bas}
+
+:::: {.recep-sayfa-bas-metin}
+[/ciktilar]{.recep-sayfa-yol}
+
+# çıktılar {.recep-baslik .unnumbered .unlisted .no-anchor}
+
+[Politika notları, çalışma tebliğleri ve makaleler, sunumlar ve çalıştay materyalleri.]{.recep-sayfa-alt}
+
+::::
+
+{{< artwindow gorsel="adam" meta="> RNDR_ADAM.exe // OUTPUT_GENERATION_NODE" alt="Michelangelo, Adem'in Yaratılışı — 1-bit dither" kunye="michelangelo · adem'in yaratılışı · y. 1508–1512 · kamu malı" renk="yesil" oran="16/9" konum="45% 50%" >}}
+
+:::::
 
 :::: {.recep-grid}
 

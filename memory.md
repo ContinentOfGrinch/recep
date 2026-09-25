@@ -37,6 +37,15 @@
 - Açık tema paleti güncellendi: zemin kırık beyaz **#F4F2EC**, metin zifiri **#0A0A0A**, soluk #3D3D3A, çizgi #C9C4B8, yüzey #EAE7DE. Gece paleti değişmedi.
 - `p, li {Lora}` gibi geniş seçiciler KULLANMA: menü/footer listelerini de Lora'ya çeker; `body` kalıtımı yeterli.
 
+## 2b. "Cyber-Renaissance" — Art Terminal Window (2026-09-25)
+
+- **Bileşen:** Quarto kısa kodu `_extensions/recep/artwindow/artwindow.lua` → `{{< artwindow gorsel= meta= alt= kunye= renk=mavi|yesil oran= konum= ters=evet ton=evet >}}`. Çıktı `<div role="figure">` (**`<figure>` KULLANMA**: Quarto figür/sütun işlemesi `column-*` sınıflarını img'ye taşıyıp ızgarayı bozuyor). Görsel pandoc Image olarak üretilir → yol her derinlikte çözülür (`gorsel="athens"` → `/assets/sanat/athens.png`).
+- **Görünüm:** siyah (#000) pencere, 1px `$recep-frame`/yeşil çerçeve, dışta 4 L köşe, ortada + nişangah, tarama çizgileri; img `grayscale(100%) contrast(150%)` + `mix-blend-mode: screen`, `image-rendering: pixelated`. Üstte meta çubuğu (mono 11.5px, büyük harf, neon, yanıp sönen ● REC; dize satır kaydırır, kırpılmaz). Altta künye (küçük harf — büyük harf dönüşümü yabancı adları "VİNCİ" yapıyordu).
+- **Görseller:** `assets/sanat/{athens,ambassadors,vitruvian,adam}.png` — Wikimedia Commons (kamu malı), headless Edge canvas'ında **Atkinson dither → 1-bit PNG** (Node zlib ile kendi PNG kodlayıcımız; 27–62 KB). Betikler scratchpad'de (`sanat/dither.html`, `sanat/dither-surucu.mjs`). Vitruvius: kâğıt beyaza çekilerek (kontrast 2.6, parlaklık +70) dither + CSS `ters` (negatif). Kaynak listesi `assets/sanat/KAYNAK.md`.
+- **Sayfa başlığı ızgarası:** `.recep-sayfa-bas` = `[yol + h1.recep-baslik (Inter 900, -0.05em, 3–6rem) + .recep-sayfa-alt (Lora)] | [art window, minmax(260px, 38%)]`; <992px'te alt alta. Bu sayfalarda front matter `body-classes: recep-bas-sayfa` + `page-layout: full` (Quarto başlık bloğu CSS ile gizli). `title-block-style: none` işe YARAMADI. Quarto `# başlık`'ı `<section>` ile sarıp sınıfları kopyalar → stil yalnızca `h1.recep-baslik`'e.
+- **Eşleme:** ekip → Atina Okulu (mavi 4:3) · haberler → Elçiler (yeşil 1:1) · araçlar + skdm-hesaplayıcı + veri-kod → Vitruvius (mavi 1:1 negatif) · proje + çıktılar → Adem'in Yaratılışı (yeşil 16:9). Meta dizeleri kullanıcının verdiği birebir. **Ana sayfa hero'su dönen küreyle kaldı** (önceki açık istek); Atina Okulu ana sayfaya istenirse eklenecek.
+- Alt satır metinleri yalnızca kullanıcının menü tablosundaki ifadeler (içerik yasağına uygun).
+
 ## 2. tasarım manifestosu v2 (güncel, değişmez)
 
 - **Dil:** "bilimsel brutalizm" + siberpunk/terminal. Tüm köşeler keskin (`border-radius: 0`, `$enable-rounded: false` + global `*{border-radius:0!important}`).

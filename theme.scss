@@ -623,3 +623,121 @@ form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^=
   p { display: inline; margin: 0; }
   &::before { content: "// "; color: $recep-green; }
 }
+
+// ============ art terminal window (_extensions/recep/artwindow) ============
+// Rönesans eserleri 1-bit dither olarak, katı bir terminal penceresinin içinde.
+// Pencere her iki temada da zifiri siyah (#000); çerçeve rengi --art-renk.
+.recep-art {
+  --art-renk: #{$recep-frame};
+  --art-kose: 16px;
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-terminal);
+  position: relative;
+}
+.recep-art--yesil { --art-renk: #{$recep-green}; }
+
+// meta çubuğu (Katman 3: mono, 11–12px, büyük harf, neon)
+.recep-art-meta {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  background: #000;
+  border: 1px solid var(--art-renk); border-bottom: none;
+  color: var(--art-renk);
+  font-size: 11.5px; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase;
+  padding: .45rem .65rem;
+  align-items: flex-start;
+  .komut { overflow-wrap: anywhere; }   // meta dizesi birebir ve tam görünür
+  .durum { flex: none; color: $recep-red; }
+  .durum::before { content: "● "; animation: recep-kayit 1.6s steps(2, start) infinite; }
+}
+@keyframes recep-kayit { to { visibility: hidden; } }
+
+// pencere
+.recep-art-pencere {
+  position: relative;
+  background: #000;
+  border: 1px solid var(--art-renk);
+  aspect-ratio: var(--oran, 4 / 3);
+  overflow: visible;
+
+  img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: var(--konum, 50% 50%);
+    filter: grayscale(100%) contrast(150%);
+    mix-blend-mode: screen;
+    image-rendering: pixelated;           // 1-bit dither noktaları keskin kalsın
+    transition: filter .25s steps(3);
+  }
+  // tarama çizgileri
+  &::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .28) 0 1px, transparent 1px 3px);
+  }
+  // L köşe parantezleri (çerçevenin 5px dışında)
+  .kose { position: absolute; width: var(--art-kose); height: var(--art-kose); border: 2px solid var(--art-renk); z-index: 2; pointer-events: none; }
+  .k-ust-sol { top: -6px;    left: -6px;  border-right: none; border-bottom: none; }
+  .k-ust-sag { top: -6px;    right: -6px; border-left: none;  border-bottom: none; }
+  .k-alt-sol { bottom: -6px; left: -6px;  border-right: none; border-top: none; }
+  .k-alt-sag { bottom: -6px; right: -6px; border-left: none;  border-top: none; }
+  // merkez nişangahı (+)
+  .arti { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; transform: translate(-50%, -50%); z-index: 2; pointer-events: none; opacity: .55;
+    background:
+      linear-gradient(var(--art-renk), var(--art-renk)) center / 1px 100% no-repeat,
+      linear-gradient(var(--art-renk), var(--art-renk)) center / 100% 1px no-repeat; }
+}
+.recep-art:hover .recep-art-pencere img { filter: grayscale(100%) contrast(190%) brightness(1.08); }
+.recep-art:hover .recep-art-pencere { box-shadow: 0 0 0 1px var(--art-renk), 0 0 24px rgba($recep-frame, .25); }
+
+// negatif (kâğıt üzerindeki çizimler: Vitruvius)
+.recep-art--ters .recep-art-pencere img { filter: invert(1) grayscale(100%) contrast(150%); }
+.recep-art--ters:hover .recep-art-pencere img { filter: invert(1) grayscale(100%) contrast(190%); }
+// neon duotone: beyazlar çerçeve rengine döner
+.recep-art--ton .recep-art-pencere::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: var(--art-renk); mix-blend-mode: multiply;
+}
+
+// künye çubuğu
+.recep-art-alt {
+  font-size: 10.5px; letter-spacing: .04em; text-transform: none;   // yabancı adlar Türkçe büyük harfe çevrilmesin (VİNCİ)
+  color: $recep-muted; text-align: right; padding-top: .45rem;
+}
+
+// ============ sayfa başlığı: brütalist başlık | art window ============
+// Başlık Katman 1, açıklama Katman 2; pencere sütunu sayfanın %30–40'ı.
+.recep-sayfa-bas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 38%);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid $recep-frame;
+
+  .recep-sayfa-bas-metin { align-self: end; padding-bottom: .25rem; min-width: 0; }
+  // Quarto başlığı bir <section> ile sarar ve sınıfları ona da kopyalar: yalnızca h1'i hedefle
+  section.recep-baslik { font: inherit; letter-spacing: normal; line-height: inherit; margin: 0; }
+  h1.recep-baslik {
+    font-family: var(--font-brutal); font-weight: 900; letter-spacing: $brutal-tracking;
+    font-size: clamp(3rem, 7vw, 6rem); line-height: .92; margin: .5rem 0 1.1rem;
+    border: none; padding: 0; overflow-wrap: anywhere;
+    &::before { content: none !important; }
+  }
+  .recep-sayfa-alt {
+    font-family: var(--font-editorial); font-weight: 400; font-size: 1.1rem;
+    line-height: 1.6; letter-spacing: normal; text-transform: none;
+    color: $recep-muted; max-width: 34rem; margin: 0;
+  }
+  .recep-sayfa-yol { font-family: var(--font-terminal); font-size: .78rem; color: $recep-green; text-transform: lowercase; }
+  .recep-sayfa-yol::before { content: "$ cd "; color: $recep-blue; }
+  .recep-sayfa-yol p, .recep-sayfa-alt p { margin: 0; display: inline; }
+}
+@media (max-width: 991.98px) {
+  .recep-sayfa-bas { grid-template-columns: 1fr; }
+  .recep-sayfa-bas .recep-art { max-width: 520px; }
+}
+
+// art window'lu bölüm sayfalarında Quarto'nun başlık bloğu gizlenir (başlık ızgarada)
+body.recep-bas-sayfa #title-block-header { display: none; }
+// tam genişlik düzende okunabilir içerik genişliği
+body.recep-bas-sayfa main.content { max-width: 1240px; }
