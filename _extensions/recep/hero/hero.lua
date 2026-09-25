@@ -1,28 +1,31 @@
 --[[
-  recep · DynamicHero — küresel sayfa başlığı filtresi
+  recep · sayfa başlığı filtresi (DynamicHero)
 
-  Her HTML sayfasının en üstüne, çerçevesiz bir "filigran" başlık alanı ekler:
-    · arka planda sekmeye özgü Rönesans eseri (gri tonlu, çok düşük opaklık, ortalanmış)
-    · önde Katman 1 dev başlık (Inter 900), altında Katman 2 açıklama (Lora)
+  Her HTML sayfasının en üstüne otomatik bir başlık alanı ekler:
+    · ana sayfa   → KÜRE HERO: ortada dönen wireframe dünya (assets/js/kure.js),
+                    altında "recep" (Inter 900), grup adı (Lora), koordinat (Space Mono)
+    · diğer sayfalar → ART CANVAS HERO: sütun genişliğinde, tam opak, 1-bit dither
+                    Rönesans eseri; dev başlık (Inter 900) tuvalin SOL ALT köşesine
+                    demirli, tuvalden taşarak zemine biner. Altında açıklama (Lora).
   Eser, sayfanın bulunduğu klasörden (sekmeden) OTOMATİK seçilir; sayfalarda ek kod gerekmez.
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
     hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam
-    hero-baslik    → başlığı ez        hero-boyut: tam|buyuk|orta
+    hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
 ]]
 
--- eser → dosya, odak noktası (object-position) ve künye
+-- eser → dosya (720×405, 1-bit), odak noktası (object-position) ve künye
 local ESER = {
-  athens      = { dosya = "athens.webp",      odak = "50% 44%", kunye = "raphael — atina okulu, 1509–1511" },
-  ambassadors = { dosya = "ambassadors.webp", odak = "50% 38%", kunye = "hans holbein (genç) — elçiler, 1533" },
-  vitruvian   = { dosya = "vitruvian.webp",   odak = "50% 40%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
-  adam        = { dosya = "adam.webp",        odak = "38% 46%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
+  athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
+  ambassadors = { dosya = "ambassadors.png", odak = "50% 30%", kunye = "hans holbein (genç) — elçiler, 1533" },
+  vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
+  adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
 }
 
 -- sekme (klasör) → eser
 local SEKME = {
-  ana = "athens", ekip = "athens", ["404"] = "athens",
+  ekip = "athens", ["404"] = "athens",
   haberler = "ambassadors", iletisim = "ambassadors",
   ["veri-kod"] = "vitruvian", araclar = "vitruvian",
   proje = "adam", ciktilar = "adam",
@@ -58,30 +61,45 @@ local function konum()
   return sekme, dosya, derinlik, parcalar
 end
 
+-- ana sayfa: ortada dönen küre
+local function kureHero(baslik, alt)
+  return string.format([[
+<section class="recep-khero" aria-labelledby="recep-khero-baslik">
+  <div class="recep-kure recep-khero-kure" data-hiz="0.006" role="presentation"></div>
+  <h1 id="recep-khero-baslik" class="recep-khero-baslik">%s</h1>
+  %s
+  <p class="recep-khero-koord">lat 39.0 · lon 35.2 · <b>●</b> türkiye</p>
+</section>]],
+    kacis(baslik),
+    alt and ('<p class="recep-khero-alt">' .. kacis(alt) .. '</p>') or "")
+end
+
 function Pandoc(doc)
   if not quarto.doc.is_format("html") then return nil end
   local m = doc.meta
   if m["hero"] == false or yazi(m["hero"]) == "false" then return nil end
 
   local sekme, dosya, derinlik, parcalar = konum()
+  local baslik = yazi(m["hero-baslik"]) or yazi(m["title"]) or yazi(m["pagetitle"]) or ""
+  local alt = yazi(m["description"])
+
+  if sekme == "ana" and not yazi(m["hero-eser"]) then
+    table.insert(doc.blocks, 1, pandoc.RawBlock("html", kureHero(baslik, alt)))
+    return doc
+  end
+
   local eserAdi = yazi(m["hero-eser"]) or SEKME[sekme]
   if not eserAdi or not ESER[eserAdi] then return nil end
   local eser = ESER[eserAdi]
 
-  local baslik = yazi(m["hero-baslik"]) or yazi(m["title"]) or yazi(m["pagetitle"]) or ""
-  local alt = yazi(m["description"])
-
   local boyut = yazi(m["hero-boyut"])
-  if not boyut then
-    if sekme == "ana" then boyut = "tam"
-    elseif dosya == "index" then boyut = "buyuk"
-    else boyut = "orta" end
+  if boyut ~= "buyuk" and boyut ~= "orta" then
+    boyut = (dosya == "index") and "buyuk" or "orta"
   end
 
-  -- terminal yolu: /ekip · /proje/yontem
+  -- yol: /ekip · /proje/yontem
   local yol
-  if sekme == "ana" then yol = "/"
-  elseif dosya == "index" then yol = "/" .. sekme
+  if dosya == "index" then yol = "/" .. sekme
   elseif derinlik == 0 then yol = "/" .. dosya
   else yol = "/" .. table.concat(parcalar, "/", 1, #parcalar - 1) .. "/" .. dosya end
 
@@ -90,15 +108,17 @@ function Pandoc(doc)
 
   local html = string.format([[
 <section class="recep-dhero recep-dhero--%s" data-eser="%s" aria-labelledby="recep-dhero-baslik">
-  <div class="recep-dhero-sanat" aria-hidden="true"><img src="%s" alt="" style="object-position: %s" decoding="async" fetchpriority="high"></div>
-  <div class="recep-dhero-icerik">
-    <p class="recep-dhero-yol">%s</p>
-    <h1 id="recep-dhero-baslik" class="recep-dhero-baslik">%s</h1>
-    %s
+  <div class="recep-dhero-meta"><span>%s</span><span>1-bit · 720×405</span></div>
+  <div class="recep-dhero-tuval">
+    <img src="%s" alt="" width="720" height="405" style="object-position: %s" decoding="async" fetchpriority="high">
+    <h1 id="recep-dhero-baslik" class="recep-dhero-baslik"><span>%s</span></h1>
   </div>
-  <p class="recep-dhero-kunye">%s</p>
+  <div class="recep-dhero-alt-satir">
+    %s
+    <p class="recep-dhero-kunye">%s</p>
+  </div>
 </section>]],
-    boyut, eserAdi, src, eser.odak, kacis(yol), kacis(baslik),
+    boyut, eserAdi, kacis(yol), src, eser.odak, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "",
     kacis(eser.kunye))
 

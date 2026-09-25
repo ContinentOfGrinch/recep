@@ -4,7 +4,7 @@
 // Bu dosya AÇIK temanın paletini ve TÜM kuralları içerir.
 // theme-dark.scss yalnızca paleti ezer (gece teması, varsayılan).
 // İlke: kutu yok, neon çerçeve yok. İnce saç çizgileri, bol boşluk,
-// soluk Rönesans filigranları üzerinde dev, sıkı başlıklar.
+// ana sayfada dönen küre; alt sayfalarda 1-bit Rönesans tuvali + dev, sıkı başlıklar.
 // ============================================================
 
 // ---- palet ----
@@ -18,10 +18,9 @@ $recep-blue:     #0077CC !default;   // bağlantı
 $recep-on-green: #FFFFFF !default;
 $recep-red:      #D90F3C !default;   // Türkiye işareti (küre)
 
-// DynamicHero filigranı
-$recep-art-opaklik: .15 !default;
-$recep-art-karisim: multiply !default;
-$recep-art-kagit:   none !default;      // kâğıt üzerindeki eserler (Vitruvius) için ek filtre
+// sanat tuvali (alt sayfa hero): 1-bit eser, zemin rengiyle karışır
+$recep-tuval-zemin:   #0033FF !default;   // kobalt: siyah pikseller maviye döner
+$recep-tuval-karisim: screen !default;
 
 // Navbar her iki temada da gece renginde kalır (marka şeridi)
 $recep-night:       #05080D;
@@ -114,7 +113,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
-  overflow-x: clip;                     // tam genişlik filigranlar yatay kaydırma yaratmasın
+  overflow-x: clip;
 }
 
 ::selection { background: $recep-ink; color: $recep-paper; }
@@ -260,75 +259,107 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   .navbar-brand .navbar-title { font-size: 1.3rem; }
 }
 
-// ============ DynamicHero (_extensions/recep/hero) ============
-// Çerçevesiz filigran: eser metnin arkasında, ortalanmış, gri tonlu, çok soluk.
+// ============ ana sayfa: küre hero (_extensions/recep/hero · assets/js/kure.js) ============
+.recep-khero {
+  min-height: calc(100svh - 68px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: clamp(1.5rem, 4vh, 3rem) 0 clamp(2rem, 6vh, 4rem);
+}
+.recep-khero-kure { width: min(56vh, 540px, 86vw); aspect-ratio: 1 / 1; }
+.recep-khero-kure canvas { width: 100% !important; height: 100% !important; display: block; }
+.recep-khero-baslik {
+  font-family: var(--font-brutal); font-weight: 900;
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  line-height: .86; letter-spacing: $brutal-tracking;
+  text-transform: lowercase; color: $recep-ink;
+  margin: clamp(1rem, 3vh, 2rem) 0 0; border: none; padding: 0;
+}
+.recep-khero-alt {
+  font-family: var(--font-editorial); font-style: italic;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.6;
+  color: $recep-muted; max-width: 40rem; margin: 1rem auto 0;
+}
+.recep-khero-koord {
+  font-family: var(--font-terminal); font-size: .68rem; letter-spacing: .12em;
+  color: $recep-muted; margin: .9rem 0 0;
+  b { color: $recep-red; font-weight: 400; }
+}
+
+// ============ alt sayfalar: art canvas hero (_extensions/recep/hero) ============
+// Tuval sütun genişliğinde, tam opak. Eser 1-bit dither PNG; renk, tuval zemini ile
+// karışımdan gelir (açık: kobalt mavi / beyaz · gece: zifiri / kırık beyaz).
+// Başlık sol alt köşeye demirli; zemin renginde bir levha olarak tuvalden taşar.
 body:has(.recep-dhero) #title-block-header { display: none; }
 
 .recep-dhero {
-  --dhero-h: 46vh;
-  position: relative;
-  display: grid; place-items: center; text-align: center;
-  min-height: var(--dhero-h);
-  padding: clamp(3.5rem, 9vw, 7.5rem) 0 clamp(3rem, 7vw, 5.5rem);
-  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  --baslik: clamp(3.2rem, 14cqi, 9rem);
+  --tuval-oran: 16 / 9;
+  container-type: inline-size;
+  width: 100%; max-width: 64rem;
+  margin: clamp(1.25rem, 3vw, 2.5rem) auto clamp(2rem, 5vw, 3.5rem);
 }
-.recep-dhero--tam   { --dhero-h: calc(100svh - 68px); }
-.recep-dhero--buyuk { --dhero-h: 62vh; }
-.recep-dhero--orta  { --dhero-h: 42vh; }
+.recep-dhero--orta { --baslik: clamp(2.6rem, 9cqi, 6rem); --tuval-oran: 21 / 9; }
 
-// eser: absolute + tam genişlik + flex ortalama; kenarları yumuşak maskeyle erir
-.recep-dhero-sanat {
-  position: absolute; top: 0; bottom: 0; left: 50%;
-  width: 100vw; transform: translateX(-50%);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 0; pointer-events: none; overflow: hidden;
-  // kenarlar tamamen erir (yarıçap × son durak < %50): kutu kenarı görünmez
-  -webkit-mask-image: radial-gradient(ellipse 60% 58% at 50% 50%, #000 22%, transparent 82%);
-          mask-image: radial-gradient(ellipse 60% 58% at 50% 50%, #000 22%, transparent 82%);
+.recep-dhero-meta {
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--font-terminal); font-size: .66rem; letter-spacing: .12em;
+  text-transform: lowercase; color: $recep-muted;
+  padding-bottom: .5rem;
+}
+
+.recep-dhero-tuval {
+  position: relative;
+  isolation: isolate;                    // karışım yalnızca tuval zeminiyle
+  aspect-ratio: var(--tuval-oran);
+  background: $recep-tuval-zemin;
   img {
-    width: min(1500px, 100%); height: 100%;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
-    filter: grayscale(100%);
-    opacity: $recep-art-opaklik;
-    mix-blend-mode: $recep-art-karisim;
+    image-rendering: pixelated;          // dither pikselleri keskin kalsın
+    filter: grayscale(100%) contrast(200%);
+    mix-blend-mode: $recep-tuval-karisim;
   }
 }
 
-.recep-dhero[data-eser="vitruvian"] .recep-dhero-sanat img { filter: grayscale(100%) #{$recep-art-kagit}; }
-
-.recep-dhero-icerik { position: relative; z-index: 1; width: 100%; max-width: 64rem; padding: 0 1rem; }
-
-.recep-dhero--tam .recep-dhero-yol { display: none; }
-.recep-dhero-yol {
-  font-family: var(--font-terminal);
-  font-size: .7rem; letter-spacing: .14em; text-transform: lowercase;
-  color: $recep-muted; margin: 0 0 1.5rem;
-}
-
-// Katman 1 — dev, sıkı, blok başlık
+// Katman 1 — dev başlık, sol alt köşe, tuvalden aşağı taşar
 .recep-dhero-baslik {
+  position: absolute; left: 0; bottom: 0; z-index: 1;
+  max-width: 94%;
+  transform: translateY(calc(var(--baslik) * .42));
   font-family: var(--font-brutal); font-weight: 900;
-  font-size: clamp(3.4rem, 11vw, 9.5rem);
-  line-height: .86; letter-spacing: $brutal-tracking;
+  font-size: var(--baslik);
+  line-height: .9; letter-spacing: $brutal-tracking;
   text-transform: lowercase; color: $recep-ink;
   margin: 0; border: none; padding: 0;
-  overflow-wrap: anywhere; text-wrap: balance;
+  overflow-wrap: anywhere;
+  span {
+    background: $recep-paper;
+    padding: .06em .16em 0 0;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
 }
-.recep-dhero--tam  .recep-dhero-baslik { font-size: clamp(4.5rem, 17vw, 14rem); }
-.recep-dhero--orta .recep-dhero-baslik { font-size: clamp(2.6rem, 7vw, 6rem); }
 
+.recep-dhero-alt-satir {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem;
+  margin-top: calc(var(--baslik) * .42 + 1.25rem);
+}
 // Katman 2 — açıklama
 .recep-dhero-alt {
   font-family: var(--font-editorial); font-style: italic;
   font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.6;
-  color: $recep-muted; max-width: 40rem; margin: 1.75rem auto 0;
+  color: $recep-muted; max-width: 40rem; margin: 0;
 }
-
-// künye: sağ alt köşede fısıltı
+// Katman 3 — künye
 .recep-dhero-kunye {
-  position: absolute; right: 0; bottom: .75rem; z-index: 1; margin: 0;
+  flex: none; margin: .35rem 0 0 auto; text-align: right;
   font-family: var(--font-terminal); font-size: .62rem; letter-spacing: .06em;
-  color: $recep-muted; opacity: .75;
+  color: $recep-muted;
+}
+@media (max-width: 767.98px) {
+  .recep-dhero-alt-satir { flex-direction: column; gap: .75rem; }
+  .recep-dhero-kunye { margin: 0; text-align: left; }
 }
 
 // ============ sidebar / toc ============

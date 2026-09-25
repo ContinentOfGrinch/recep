@@ -1,9 +1,13 @@
 ---
 title: "proje"
-description: "Amaç ve kapsam, yöntem özeti, iş paketleri ve takvim, TÜBİTAK destek bilgisi."
+description: "SKDM’nin Türkiye ekonomisine etkilerini, sektörel veriler ve kanıta dayalı politika analiziyle inceliyoruz."
 order: 0
 toc: false
 ---
+
+Bu proje, Avrupa Birliği’nin Sınırda Karbon Düzenleme Mekanizması’nın (SKDM) Türkiye ekonomisi üzerindeki olası etkilerini incelemektedir. Çalışma; dış ticaret, üretim yapısı ve sektörel emisyon yoğunlukları arasındaki ilişkileri değerlendirerek, karbon düzenlemesinin farklı sektörler ve ekonomik aktörler üzerindeki etkilerini bütüncül bir çerçevede ele almayı amaçlar.
+
+Araştırma kapsamında nicel ekonomik analiz, kurumsal ve politika değerlendirmeleriyle bir araya getirilir. Elde edilen bulguların, Türkiye’de düşük karbonlu dönüşümün tasarlanmasına ve SKDM’ye yönelik kanıta dayalı politika seçeneklerinin geliştirilmesine katkı sunması hedeflenmektedir.
 
 :::: {.recep-grid}
 
