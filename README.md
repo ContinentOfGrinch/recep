@@ -2,7 +2,7 @@
 
 # recep
 
-**Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu** web sitesi — TÜBİTAK 1001 destekli *AB Sınırda Karbon Düzenleme Mekanizmasının (SKDM) Türkiye ekonomisine etkileri* projesi.
+**recep — Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu** web sitesi.
 
 Site [Quarto](https://quarto.org) ile üretilir ve GitHub Actions ile GitHub Pages'e yayımlanır: <https://continentofgrinch.github.io/recep/>
 
@@ -72,5 +72,3 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
 ## lisans
 
 İçerik ve veri ürünleri [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.tr), kod MIT. Fontlar SIL OFL 1.1.
-
-Bu çalışma, TÜBİTAK tarafından 325K372 numaralı proje kapsamında desteklenmektedir.
