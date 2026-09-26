@@ -330,12 +330,6 @@ body:has(.recep-dhero) #title-block-header { display: none; }
   }
 }
 
-// merkür: sütun genişliğinde (859 px) üretildi; masaüstünde 1:1, retinada tam 2×.
-// Daha dar ekranlarda küçültülürken ince gazete çizgileri kaybolmasın: yumuşak ölçekleme.
-@media (max-width: 1279.98px) {
-  .recep-dhero[data-eser="mercury"] .recep-dhero-tuval img { image-rendering: auto; }
-}
-
 // Katman 1 — dev başlık, sol alt köşe, tuvalden aşağı taşar
 .recep-dhero-baslik {
   position: absolute; left: 0; bottom: 0; z-index: 1;

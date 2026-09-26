@@ -51,8 +51,7 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
   | sekme | eser |
   |---|---|
   | ekip, 404 | Raphael — Atina Okulu |
-  | haberler | Giambologna — Uçan Merkür (gazeteli kolaj) |
-  | iletişim | Holbein — Elçiler |
+  | haberler, iletişim | Holbein — Elçiler |
   | veri ve kod, araçlar | Da Vinci — Vitruvius Adamı |
   | proje, çıktılar | Michelangelo — Adem'in Yaratılışı |
   | hakkımızda | Rembrandt — Kumaşçılar Loncası Yöneticileri |
