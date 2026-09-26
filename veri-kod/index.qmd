@@ -1,6 +1,7 @@
 ---
 title: "veri ve kod"
 description: "Uyumlaştırma anahtarları (NACE–ISCO–GTİP), anonimleştirilmiş veri setleri, analiz kodları."
+hero-meta: '\> DIR_DAVINCI.exe // OPEN_SOURCE_MANUSCRIPT'
 order: 0
 toc: false
 ---

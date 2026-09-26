@@ -31,3 +31,12 @@ Kullanıcı isteği (2026-09-26): boşluksuz, tuvali dolduran kadraj → 16:9 k�
 (tam merkez .50 iki yüzü göz hizasından kesiyordu). Yüzler ve polihedron tam; masa alttan kesilir.
 859×483 ince taneli Floyd–Steinberg, glitch yok. `sabit = true` → alt sayfalarda da 16:9.
 Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `pacioli2.json`.
+
+## codex.png — veri ve kod
+
+Leonardo da Vinci, *Codex Atlanticus*, f. 26 verso (Arşimet vidaları, su çarkları, ayna yazısı) — kamu malı.
+Commons: "Leonardo da Vinci - Ambrosiana-Codice-Atlantico-Codex-Atlanticus-f-26-verso.jpg" (2000×1474).
+16:9 kırpım, 1,35× yakınlaştırma (cx .46, cy .42); tonlar **ters çevrildi** (kâğıt siyah, mürekkep ışık →
+terminal / mavi baskı), seviye 62–165, ince taneli Floyd–Steinberg, 859×483, glitch yok.
+Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `codex.json`.
+Not: vitruvian.png artık hiçbir sekmeye bağlı değil (`hero-eser: vitruvian` ile kullanılabilir).

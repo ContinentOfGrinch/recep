@@ -11,7 +11,7 @@
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
-    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics|pacioli
+    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics|pacioli|codex
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
     hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
 ]]
@@ -25,6 +25,8 @@ local ESER = {
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
   syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
+  codex       = { dosya = "codex.png",       odak = "50% 50%", w = 859, h = 483, ince = true,
+                  kunye = "leonardo da vinci — codex atlanticus, f. 26 verso" },
   pacioli     = { dosya = "pacioli.png",     odak = "50% 50%", w = 859, h = 483, ince = true, sabit = true,
                   kunye = "jacopo de' barbari (atf.) — luca pacioli portresi, 1495" },
 }
@@ -33,7 +35,7 @@ local ESER = {
 local SEKME = {
   ekip = "athens", ["404"] = "athens",
   haberler = "ambassadors", iletisim = "ambassadors",
-  ["veri-kod"] = "vitruvian", araclar = "pacioli",
+  ["veri-kod"] = "codex", araclar = "pacioli",
   proje = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
 }

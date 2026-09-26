@@ -52,7 +52,7 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
   |---|---|
   | ekip, 404 | Raphael — Atina Okulu |
   | haberler, iletişim | Holbein — Elçiler |
-  | veri ve kod | Da Vinci — Vitruvius Adamı |
+  | veri ve kod | Da Vinci — Codex Atlanticus f. 26v (ters: terminal / mavi baskı) |
   | araçlar | Jacopo de' Barbari — Luca Pacioli portresi |
   | proje, çıktılar | Michelangelo — Adem'in Yaratılışı |
   | hakkımızda | Rembrandt — Kumaşçılar Loncası Yöneticileri |
