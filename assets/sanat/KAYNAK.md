@@ -23,10 +23,11 @@ Holbein asli (Google Art Project, kamu malı), 16:9 kırpım (cy .36), **859×48
 hafif keskinleştirme, yumuşak ton eğrisi (sert eşik yok), 4 ince tarama satırı kayması.
 Yeniden üretim: scratchpad `sanat/elciler.html` + `elciler-surucu.mjs` + `e3.json`.
 
-## pacioli.png — araçlar (tam tablo, 16:9 tuvale yerleştirilmiş)
+## pacioli.png — araçlar (16:9 kırpım, tuvali doldurur)
 
 Jacopo de' Barbari (atf.), *Luca Pacioli portresi*, 1495 — kamu malı. Commons: "Jacopo de' Barbari (attributed to)
 Portrait of Luca Pacioli (1445 1517) with a student (Guidobaldo da Montefeltro) (2).jpg" (3000×2500).
-Tablo 1,2:1 olduğu için **kırpılmadı**: 580×483 ince taneli Floyd–Steinberg, 859×483 siyah tuvale sağa yaslı
-(sol 279 px saf siyah; başlık bu alana oturur). Glitch yok. `sabit = true` → alt sayfalarda da 16:9.
-Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `pacioli.json`.
+Kullanıcı isteği (2026-09-26): boşluksuz, tuvali dolduran kadraj → 16:9 kırpım, dikey merkez .44
+(tam merkez .50 iki yüzü göz hizasından kesiyordu). Yüzler ve polihedron tam; masa alttan kesilir.
+859×483 ince taneli Floyd–Steinberg, glitch yok. `sabit = true` → alt sayfalarda da 16:9.
+Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `pacioli2.json`.

@@ -18,7 +18,7 @@
 
 -- eser → dosya (1-bit PNG; w/h verilmezse 720×405), odak noktası ve künye.
 -- ince = true: tuval genişliğinde (859 px) üretilmiş ince taneli dither; dar ekranda yumuşak ölçeklenir
--- sabit = true: alt sayfalarda da 16:9 kalır (tablo kırpılmadan tuvale yerleştirildiyse)
+-- sabit = true: alt sayfalarda da 16:9 kalır (21:9 kırpım yüzleri keserdi)
 local ESER = {
   athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
   ambassadors = { dosya = "ambassadors.png", odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "hans holbein (genç) — elçiler, 1533" },

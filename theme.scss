@@ -452,6 +452,19 @@ body.nav-sidebar .recep-dhero--ince .recep-dhero-tuval img { image-rendering: au
 @media (min-width: 576px) and (max-width: 991.98px) { .recep-grid.dort { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 // iskelet sayfalar: kutusuz, italik not
+// araç modülleri henüz hazır değil: Katman 3 terminal durum satırları (büyük harf korunur)
+.recep-durum {
+  font-family: var(--font-terminal);
+  font-size: .78rem; line-height: 1.6; letter-spacing: .06em;
+  text-transform: none;
+  margin: .9rem 0 0;
+  p { margin: 0 0 .2rem; color: rgba($recep-ink, .5); overflow-wrap: anywhere; }
+  p:first-child { color: $recep-blue; }
+}
+.recep-card .recep-durum p { font-size: .62rem; letter-spacing: .02em; }   // en uzun satır (35 karakter) kart genişliğine sığar
+// alt sayfada durum bloğu içerik alanının ortasında, ferah
+.recep-dhero ~ .recep-durum, main > .recep-durum { margin: 1rem 0 3rem; }
+
 .recep-bekliyor {
   font-family: var(--font-editorial); font-style: italic;
   font-size: 1.05rem; color: $recep-muted;

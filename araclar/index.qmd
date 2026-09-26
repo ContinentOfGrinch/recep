@@ -12,12 +12,28 @@ toc: false
 [01]{.recep-index}
 
 ### [skdm maliyet hesaplayıcısı](skdm-hesaplayici.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-durum}
+\> STATUS: İÇERİK HAZIRLANIYOR\.\.\.
+
+// MODULE_IN_DEVELOPMENT
+
+[VERİ_SETİ_ENTEGRASYONU_BEKLENİYOR]
+:::
 :::
 
 ::: {.recep-card}
 [02]{.recep-index}
 
 ### [karbon fiyatı paneli](karbon-fiyati.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-durum}
+\> STATUS: İÇERİK HAZIRLANIYOR\.\.\.
+
+// MODULE_IN_DEVELOPMENT
+
+[VERİ_SETİ_ENTEGRASYONU_BEKLENİYOR]
+:::
 :::
 
 ::::
