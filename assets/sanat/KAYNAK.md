@@ -7,10 +7,19 @@ tam opak "art canvas" tuvalinde kullanılır (ana sayfada eser yok, dönen küre
 | dosya | eser | sekmeler | Commons dosyası |
 |---|---|---|---|
 | athens.png | Raphael, *Atina Okulu*, 1509–1511 | ekip, 404 | "The School of Athens" by Raffaello Sanzio da Urbino.jpg |
-| ambassadors.png | Hans Holbein (Genç), *Elçiler*, 1533 | haberler, iletişim | Hans Holbein the Younger - The Ambassadors - Google Art Project.jpg |
+| ambassadors.png | Hans Holbein (Genç), *Elçiler*, 1533 | iletişim | Hans Holbein the Younger - The Ambassadors - Google Art Project.jpg |
 | vitruvian.png | Leonardo da Vinci, *Vitruvius Adamı*, y. 1490 | veri ve kod, araçlar | Da Vinci Vitruve Luc Viatour.jpg |
 | adam.png | Michelangelo, *Adem'in Yaratılışı*, y. 1508–1512 | proje, çıktılar | Michelangelo - Creation of Adam (cropped).jpg |
 | syndics.png | Rembrandt, *Kumaşçılar Loncası Yöneticileri (De Staalmeesters)*, 1662 | hakkımızda | Rembrandt - De Staalmeesters- het college van staalmeesters (waardijns) van het Amsterdamse lakenbereidersgilde - Google Art Project.jpg |
 
 İşleme: yüksek çözünürlüklü asıldan 16:9 kırpma → 720×405 → kontrast → Atkinson dither → 1-bit PNG (7–29 KB).
 Değiştirmek için dosyayı aynı adla bu klasöre koyun; renk tuval zemini ve `mix-blend-mode` ile verilir (`$recep-tuval-*`).
+
+## mercury.png — kolaj (haberler)
+
+Giambologna, *Uçan Merkür*, y. 1580 (heykel kamu malı). Fotoğraf: **MarkPagl**, Wikimedia Commons,
+"Mercurio in bronzo del Giambologna.jpg", **CC BY-SA 4.0** → bu türev görsel de **CC BY-SA 4.0** lisanslıdır.
+Kolaj: heykel perdeden taşma dolgusuyla ayrıldı, en büyük bağlı parça tutuldu, tonlar açıldı,
+Atkinson dither (yalnızca figür içinde) + 1 px siluet hattı; "DAILY NEWS" gazetesi canvas ile çizildi
+(Bayer 4×4), zemin saf #000. Boyut 859×483 = masaüstü tuval genişliği (1:1, retinada 2×).
+Yeniden üretim: scratchpad `sanat/merkur.html` + `merkur-surucu.mjs` + `p5.json` (bu depoda değil).

@@ -11,24 +11,26 @@
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
-    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics
+    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics|mercury
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
     hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
 ]]
 
--- eser → dosya (720×405, 1-bit), odak noktası (object-position) ve künye
+-- eser → dosya (1-bit PNG; boyut verilmezse 720×405), odak noktası (object-position) ve künye
 local ESER = {
   athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
   ambassadors = { dosya = "ambassadors.png", odak = "50% 30%", kunye = "hans holbein (genç) — elçiler, 1533" },
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
   syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
+  mercury     = { dosya = "mercury.png",     odak = "50% 50%", w = 859, h = 483,
+                  kunye = "giambologna — uçan merkür, y. 1580 · foto: markpagl, cc by-sa 4.0 · kolaj: recep" },
 }
 
 -- sekme (klasör) → eser
 local SEKME = {
   ekip = "athens", ["404"] = "athens",
-  haberler = "ambassadors", iletisim = "ambassadors",
+  haberler = "mercury", iletisim = "ambassadors",
   ["veri-kod"] = "vitruvian", araclar = "vitruvian",
   proje = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
@@ -113,9 +115,9 @@ function Pandoc(doc)
 
   local html = string.format([[
 <section class="recep-dhero recep-dhero--%s" data-eser="%s" aria-labelledby="recep-dhero-baslik">
-  <div class="recep-dhero-meta%s"><span>%s</span><span>1-bit · 720×405</span></div>
+  <div class="recep-dhero-meta%s"><span>%s</span><span>1-bit · %d×%d</span></div>
   <div class="recep-dhero-tuval">
-    <img src="%s" alt="" width="720" height="405" style="object-position: %s" decoding="async" fetchpriority="high">
+    <img src="%s" alt="" width="%d" height="%d" style="object-position: %s" decoding="async" fetchpriority="high">
     <h1 id="recep-dhero-baslik" class="recep-dhero-baslik"><span>%s</span></h1>
   </div>
   <div class="recep-dhero-alt-satir">
@@ -123,7 +125,7 @@ function Pandoc(doc)
     <p class="recep-dhero-kunye">%s</p>
   </div>
 </section>]],
-    boyut, eserAdi, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), src, eser.odak, kacis(baslik),
+    boyut, eserAdi, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), eser.w or 720, eser.h or 405, src, eser.w or 720, eser.h or 405, eser.odak, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "",
     kacis(eser.kunye))
 
