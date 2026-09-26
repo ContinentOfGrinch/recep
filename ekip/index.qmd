@@ -2,6 +2,7 @@
 title: "ekip"
 description: "Yürütücü, araştırmacılar, danışmanlar, bursiyerler."
 toc: false
+hero-meta: '\> DIR_ATHENS.exe // RESEARCH_SYNDICATE_NODE'
 listing:
   id: ekip
   contents: ../data/ekip.yml

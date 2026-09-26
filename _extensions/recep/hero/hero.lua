@@ -20,7 +20,7 @@
 -- ince = true: tuval genişliğinde (859 px) üretilmiş ince taneli dither; dar ekranda yumuşak ölçeklenir
 -- sabit = true: alt sayfalarda da 16:9 kalır (21:9 kırpım yüzleri keserdi)
 local ESER = {
-  athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
+  athens      = { dosya = "athens.png",      odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "raphael — atina okulu, 1509–1511" },
   ambassadors = { dosya = "ambassadors.png", odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "hans holbein (genç) — elçiler, 1533" },
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },

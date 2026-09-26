@@ -40,3 +40,9 @@ Commons: "Leonardo da Vinci - Ambrosiana-Codice-Atlantico-Codex-Atlanticus-f-26-
 terminal / mavi baskı), seviye 62–165, ince taneli Floyd–Steinberg, 859×483, glitch yok.
 Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `codex.json`.
 Not: vitruvian.png artık hiçbir sekmeye bağlı değil (`hero-eser: vitruvian` ile kullanılabilir).
+
+## athens.png — ekip, 404 (ince taneli, 2026-09-26)
+
+Raphael asli (3820×2964), 16:9 kırpım, 1,2× yakınlaştırma (cy .58: figür bandı; kemerin tepesi kesilir).
+Fresk açık tonlu olduğundan orta tonlar koyulaştırıldı (gama 1,45, kontrast 1,3, keskinleştirme .8).
+859×483 Floyd–Steinberg, glitch yok. Yeniden üretim: scratchpad `sanat/elciler.html` + `tablo-surucu.mjs` + `athens.json`.
