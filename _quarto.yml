@@ -61,13 +61,18 @@ format:
       text: |
         <meta name="theme-color" content="#05080D">
         <script>
-          // Varsayılan gece teması: eski sürümlerden kalmış tema tercihini bir kez sıfırla
+          // Ana mod gece; açık tema yalnızca oturumluk bir seçenek.
+          // Quarto tema seçimini localStorage'a kalıcı yazar: her yeni tarayıcı oturumunun
+          // ilk sayfasında bu kaydı sil → site hep gece temasıyla açılır. Oturum içinde
+          // (sayfadan sayfaya) düğmeyle seçilen tema korunur.
           try {
-            if (localStorage.getItem("recep-tema") !== "v2") {
-              var eski = localStorage.getItem("quarto-color-scheme");
-              localStorage.removeItem("quarto-color-scheme");
-              localStorage.setItem("recep-tema", "v2");
-              if (eski) location.reload();
+            if (!sessionStorage.getItem("recep-oturum")) {
+              sessionStorage.setItem("recep-oturum", "1");
+              localStorage.removeItem("recep-tema");
+              if (localStorage.getItem("quarto-color-scheme")) {
+                localStorage.removeItem("quarto-color-scheme");
+                location.reload();
+              }
             }
           } catch (e) {}
         </script>
