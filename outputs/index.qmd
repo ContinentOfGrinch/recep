@@ -1,0 +1,28 @@
+---
+title: "outputs"
+description: "Policy briefs, working papers and articles, presentations and workshop materials."
+order: 0
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [policy briefs](policy-briefs.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [working papers and articles](working-papers.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [presentations and workshop materials](presentations.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::::

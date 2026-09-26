@@ -1,0 +1,39 @@
+---
+title: "tools"
+description: "CBAM cost calculator, carbon price dashboard."
+hero-meta: '\> DIR_PACIOLI.exe // CALC_ENGINE_NODE'
+order: 0
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [cbam cost calculator](cbam-calculator.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-durum}
+\> STATUS: CONTENT IN PREPARATION\.\.\.
+
+// MODULE_IN_DEVELOPMENT
+
+[AWAITING_DATASET_INTEGRATION]
+:::
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [carbon price dashboard](carbon-price.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-durum}
+\> STATUS: CONTENT IN PREPARATION\.\.\.
+
+// MODULE_IN_DEVELOPMENT
+
+[AWAITING_DATASET_INTEGRATION]
+:::
+:::
+
+::::

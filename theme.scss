@@ -239,6 +239,38 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
 .navbar #quarto-search { position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%); margin: 0 !important; }
 .aa-DetachedOverlay, .aa-Panel { z-index: 10000 !important; }
 
+// dil seçici (tr / en): navbar'ın sağ kenarında, aramanın solunda; mutlak konum →
+// ortadaki küre + [recep] ve bölünmüş menü ızgarası hiç kaymaz. Her iki temada gece rengi.
+.navbar .recep-dil {
+  position: absolute; right: 3.6rem; top: 50%; transform: translateY(-50%);
+  display: flex; align-items: center;
+  font-family: var(--font-terminal); font-size: .7rem; line-height: 1;
+  letter-spacing: .06em; text-transform: lowercase;
+  background: $recep-night; color: $recep-neon;
+  border: 1px solid $recep-neon; border-radius: 0;
+  a, span { padding: .38rem .5rem; color: $recep-neon; text-decoration: none; }
+  span { padding: .38rem 0; opacity: .5; }
+  a:not(.aktif) { opacity: .55; transition: opacity .15s ease; }
+  a:not(.aktif):hover { opacity: 1; }
+  a.aktif { background: $recep-neon; color: $recep-night; }
+  a:focus-visible { outline: 1px solid $recep-neon; outline-offset: 2px; }
+}
+@media (min-width: 1200px) {
+  .navbar .navbar-nav.ms-auto { padding-right: 9rem; }   // sağ menü seçiciye taşmasın
+}
+@media (max-width: 1199.98px) {
+  .navbar .recep-dil { top: 34px; right: 6.2rem; }        // tema + arama ikonlarının solu
+}
+// menü içi kopya: yalnızca dar ekranda (logo ile ikonlar arasında yer kalmadığında)
+.navbar .recep-dil.recep-dil--menu { display: none; }
+@media (max-width: 639.98px) {
+  .navbar .recep-dil:not(.recep-dil--menu) { display: none; }
+  .navbar .recep-dil.recep-dil--menu {
+    display: inline-flex; position: static; transform: none;
+    margin: .9rem 0 1rem; width: max-content;
+  }
+}
+
 @media (min-width: 1200px) {
   .navbar .navbar-toggler { display: none; }
   .navbar .navbar-collapse { display: contents !important; }

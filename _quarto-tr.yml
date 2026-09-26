@@ -1,0 +1,77 @@
+# Türkçe profil (varsayılan): quarto render  →  _site/
+project:
+  output-dir: _site
+  render:
+    - "index.qmd"
+    - "404.qmd"
+    - "hakkimizda/*.qmd"
+    - "proje/*.qmd"
+    - "ekip/*.qmd"
+    - "ciktilar/*.qmd"
+    - "veri-kod/*.qmd"
+    - "araclar/*.qmd"
+    - "haberler/**/*.qmd"
+    - "iletisim/*.qmd"
+
+lang: tr
+
+website:
+  description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu — AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM/CBAM) Türkiye ekonomisine etkileri."
+  site-url: "https://continentofgrinch.github.io/recep/"
+
+  navbar:
+    left:                                  # merkez logonun solu
+      - text: "hakkımızda"
+        href: hakkimizda/index.qmd
+      - text: "proje"
+        href: proje/index.qmd
+      - text: "ekip"
+        href: ekip/index.qmd
+      - text: "çıktılar"
+        href: ciktilar/index.qmd
+    right:                                 # merkez logonun sağı
+      - text: "veri ve kod"
+        href: veri-kod/index.qmd
+      - text: "araçlar"
+        href: araclar/index.qmd
+      - text: "haberler"
+        href: haberler/index.qmd
+      - text: "iletişim"
+        href: iletisim/index.qmd
+
+  sidebar:
+    - id: proje
+      title: "proje"
+      style: floating
+      contents:
+        - auto: proje
+    - id: ciktilar
+      title: "çıktılar"
+      style: floating
+      contents:
+        - auto: ciktilar
+    - id: veri-kod
+      title: "veri ve kod"
+      style: floating
+      contents:
+        - auto: veri-kod
+    - id: araclar
+      title: "araçlar"
+      style: floating
+      contents:
+        - auto: araclar
+
+  page-footer:
+    border: true
+    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · [tübitak 1001](/proje/tubitak.qmd) destekli"
+    right:
+      - icon: github
+        href: "https://github.com/ContinentOfGrinch/recep"
+        aria-label: GitHub
+      - icon: envelope
+        href: iletisim/index.qmd
+        aria-label: İletişim
+
+format:
+  html:
+    toc-title: "bu sayfada"

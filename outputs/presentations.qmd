@@ -1,0 +1,16 @@
+---
+title: "presentations and workshop materials"
+order: 3
+toc: false
+listing:
+  id: liste
+  contents: ../data/ciktilar.yml
+  template: ../_templates/ciktilar.ejs
+  template-params:
+    dil: en
+  include:
+    bolum: "sunumlar"
+---
+
+::: {#liste}
+:::

@@ -9,8 +9,9 @@ Site [Quarto](https://quarto.org) ile üretilir ve GitHub Actions ile GitHub Pag
 ## hızlı başlangıç
 
 ```bash
-quarto preview        # canlı önizleme
-quarto render         # tam derleme -> _site/
+quarto preview                  # canlı önizleme (Türkçe)
+quarto render                   # Türkçe tam derleme   -> _site/
+quarto render --profile en      # İngilizce tam derleme -> _site/en/  (Türkçeden SONRA çalıştırın)
 ```
 
 Gereksinimler: Quarto **1.10.18** · R ≥ 4.3 (yalnızca R kodu içeren sayfalar için).
@@ -27,6 +28,24 @@ Gereksinimler: Quarto **1.10.18** · R ≥ 4.3 (yalnızca R kodu içeren sayfala
 | araçlar | `/araclar/` | `araclar/*.qmd` (Observable JS), `araclar/veri/` |
 | haberler | `/haberler/` | `haberler/posts/` |
 | iletişim | `/iletisim/` | `iletisim/index.qmd` |
+
+## çift dil (tr / en)
+
+Quarto **proje profilleri** ile iki ayrı derleme: `_quarto.yml` ortak ayarlar, `_quarto-tr.yml` Türkçe (varsayılan, `_site/`), `_quarto-en.yml` İngilizce (`_site/en/`). Her profil kendi menüsünü, kenar çubuklarını, alt bilgisini ve sayfa listesini tanımlar.
+
+| tr | en |
+|---|---|
+| `index.qmd` | `index.en.qmd` (→ `/en/`) |
+| `hakkimizda/` | `about/` |
+| `proje/` | `project/` |
+| `ekip/` | `team/` |
+| `ciktilar/` | `outputs/` |
+| `veri-kod/` | `data-code/` |
+| `araclar/` | `tools/` |
+| `haberler/` | `news/` |
+| `iletisim/` | `contact/` |
+
+Navbar'ın sağındaki **tr / en** seçicisi her sayfanın karşı dildeki eşine gider; eşleme `_extensions/recep/hero/hero.lua` içindeki `CEVIRI` tablosundadır. **Yeni sayfa eklerken** iki dilde de dosyayı oluşturup bu tabloya bir satır ekleyin. Listeleme şablonları (`_templates/`) `template-params: { dil: en }` ile İngilizce etiket kullanır.
 
 ## içerik ekleme
 

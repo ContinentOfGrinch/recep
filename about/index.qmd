@@ -1,0 +1,14 @@
+---
+title: "about"
+hero-meta: '\> DIR_SYNDICS.exe // YTU_POLICY_MAKERS // EST. 2026'
+toc: false
+page-navigation: false
+---
+
+::: {.recep-metin}
+The Environment, Clean Energy and Economic Policies Research Group (RECEP) is an influential academic community at Yıldız Technical University. Focusing on sustainability, clean energy and economic policy, RECEP aims to develop sustainable policies in response to global challenges, to contribute to the related body of knowledge and to encourage innovation.
+
+Through its activities, research and collaborations, RECEP aims to become an international hub. The group seeks to bring together scientists, business people and policymakers from around the world to contribute to the changes needed for a sustainable, clean and prosperous future, and to develop solutions building on these collaborations.
+
+RECEP brings together a multidisciplinary community of researchers able to explore a wide range of topics. This community includes researchers and business people who study the impacts of climate change, focus on renewable energy technologies, and examine and develop sustainable economic policies. The team's innovative, collaborative and interdisciplinary approach substantially shapes RECEP's outputs and contributes to identifying the policies that will enable the transition to a sustainable economy and a highly prosperous society.
+:::

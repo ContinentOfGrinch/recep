@@ -1,0 +1,93 @@
+---
+pagetitle: "recep — environment, clean energy and economic policies research group"
+hero-baslik: "recep"
+description: "Environment, Clean Energy and Economic Policies Research Group"
+output-file: index.html
+page-layout: full
+toc: false
+page-navigation: false
+repo-actions: false
+---
+
+::: {.recep-btns}
+[project](project/index.qmd){.birincil}
+[tools](tools/index.qmd)
+[outputs](outputs/index.qmd)
+:::
+
+## sections {.no-prefix}
+
+:::: {.recep-grid .dort}
+
+::: {.recep-card}
+[/project]{.recep-index}
+
+### [project](project/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- aims and scope
+- methodology summary
+- work packages and timeline
+- tübitak funding information
+:::
+
+::: {.recep-card}
+[/team]{.recep-index}
+
+### [team](team/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- principal investigator
+- researchers
+- advisors
+- research fellows
+:::
+
+::: {.recep-card}
+[/outputs]{.recep-index}
+
+### [outputs](outputs/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- policy briefs
+- working papers and articles
+- presentations and workshop materials
+:::
+
+::: {.recep-card}
+[/data-code]{.recep-index}
+
+### [data & code](data-code/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- concordance keys (NACE–ISCO–HS)
+- anonymised datasets
+- analysis code
+:::
+
+::: {.recep-card}
+[/tools]{.recep-index}
+
+### [tools](tools/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- cbam cost calculator
+- carbon price dashboard
+:::
+
+::: {.recep-card}
+[/news]{.recep-index}
+
+### [news](news/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- announcements
+- events
+- workshop news
+:::
+
+::: {.recep-card}
+[/contact]{.recep-index}
+
+### [contact](contact/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- e-mail
+- address
+- social media links
+:::
+
+::::

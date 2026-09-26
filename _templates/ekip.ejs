@@ -1,6 +1,14 @@
 ```{=html}
 <%
-const gruplar = [
+// dil: listing'in template-params: { dil: en } alanından (varsayılan tr)
+const en = typeof templateParams !== "undefined" && templateParams && templateParams.dil === "en";
+const bekliyor = en ? "content in preparation." : "içerik hazırlanıyor.";
+const gruplar = en ? [
+  ["yurutucu", "principal investigator", ""],
+  ["arastirmaci", "researchers", ""],
+  ["danisman", "advisors", ""],
+  ["bursiyer", "research fellows", ""]
+] : [
   ["yurutucu", "yürütücü", ""],
   ["arastirmaci", "araştırmacılar", ""],
   ["danisman", "danışmanlar", ""],
@@ -12,7 +20,7 @@ const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
 <% for (const [rol, baslik, bosMesaj] of gruplar) { const uyeler = sirali.filter(i => i.rol === rol); %>
 <section class="recep-people-group">
 <h2 class="anchored" id="<%- rol %>"><%= baslik %></h2>
-<% if (!uyeler.length) { %><div class="recep-bekliyor">içerik hazırlanıyor.</div><% continue; } %>
+<% if (!uyeler.length) { %><div class="recep-bekliyor"><%= bekliyor %></div><% continue; } %>
 <div class="recep-people">
 <% for (const k of uyeler) { %>
 <article class="recep-person">
@@ -22,7 +30,7 @@ const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
 <div class="recep-person-role"><%= k.unvan %><% if (k.kurum) { %> · <%= k.kurum %><% } %></div>
 <% if (k.alan) { %><div class="recep-person-area"><%= k.alan %></div><% } %>
 <div class="recep-person-links">
-<% if (k.eposta) { %><a href="mailto:<%- k.eposta %>" aria-label="E-posta"><i class="bi bi-envelope"></i></a><% } %>
+<% if (k.eposta) { %><a href="mailto:<%- k.eposta %>" aria-label="<%= en ? "E-mail" : "E-posta" %>"><i class="bi bi-envelope"></i></a><% } %>
 <% if (k.web) { %><a href="<%- k.web %>" aria-label="Web"><i class="bi bi-globe2"></i></a><% } %>
 <% if (k.scholar) { %><a href="<%- k.scholar %>" aria-label="Google Scholar"><i class="bi bi-mortarboard"></i></a><% } %>
 <% if (k.github) { %><a href="https://github.com/<%- k.github %>" aria-label="GitHub"><i class="bi bi-github"></i></a><% } %>

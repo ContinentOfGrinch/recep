@@ -1,0 +1,33 @@
+---
+title: "contact"
+description: "E-mail, address, social media links."
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### e-mail {.unnumbered .unlisted .no-anchor}
+
+content in preparation.
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### address {.unnumbered .unlisted .no-anchor}
+
+content in preparation.
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### social media links {.unnumbered .unlisted .no-anchor}
+
+content in preparation.
+:::
+
+::::

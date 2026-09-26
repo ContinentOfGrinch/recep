@@ -26,8 +26,13 @@ jobs:
           version: 1.10.18          # yereldeki sürümle aynı tutun
 
       # R kodu freeze ile önceden çalıştırılır (_freeze/ commit edilir) -> CI'da R kurulumu gerekmez.
-      - name: Render
+      # Çift dil: önce Türkçe (varsayılan profil → _site/), sonra İngilizce (→ _site/en/).
+      # Sıra önemli: Türkçe tam derleme _site/ klasörünü temizler.
+      - name: Render (tr)
         uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Render (en)
+        run: quarto render --profile en
 
       - name: İç link kontrolü
         uses: lycheeverse/lychee-action@v2

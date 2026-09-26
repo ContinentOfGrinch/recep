@@ -1,0 +1,16 @@
+---
+title: "policy briefs"
+order: 1
+toc: false
+listing:
+  id: liste
+  contents: ../data/ciktilar.yml
+  template: ../_templates/ciktilar.ejs
+  template-params:
+    dil: en
+  include:
+    bolum: "politika-notlari"
+---
+
+::: {#liste}
+:::

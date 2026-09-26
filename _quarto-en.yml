@@ -1,0 +1,79 @@
+# English profile: quarto render --profile en  →  _site/en/
+# Source pages live in English-named folders (about/, project/, team/, …) + index.en.qmd,
+# so they never collide with the Turkish folders.
+project:
+  output-dir: _site/en
+  render:
+    - "index.en.qmd"
+    - "about/*.qmd"
+    - "project/*.qmd"
+    - "team/*.qmd"
+    - "outputs/*.qmd"
+    - "data-code/*.qmd"
+    - "tools/*.qmd"
+    - "news/**/*.qmd"
+    - "contact/*.qmd"
+
+lang: en
+
+website:
+  description: "Environment, Clean Energy and Economic Policies Research Group — effects of the EU Carbon Border Adjustment Mechanism (CBAM) on the Turkish economy."
+  site-url: "https://continentofgrinch.github.io/recep/en/"
+
+  navbar:
+    logo-alt: "recep emblem: globe and EU–Türkiye link"
+    left:
+      - text: "about"
+        href: about/index.qmd
+      - text: "project"
+        href: project/index.qmd
+      - text: "team"
+        href: team/index.qmd
+      - text: "outputs"
+        href: outputs/index.qmd
+    right:
+      - text: "data & code"
+        href: data-code/index.qmd
+      - text: "tools"
+        href: tools/index.qmd
+      - text: "news"
+        href: news/index.qmd
+      - text: "contact"
+        href: contact/index.qmd
+
+  sidebar:
+    - id: project
+      title: "project"
+      style: floating
+      contents:
+        - auto: project
+    - id: outputs
+      title: "outputs"
+      style: floating
+      contents:
+        - auto: outputs
+    - id: data-code
+      title: "data & code"
+      style: floating
+      contents:
+        - auto: data-code
+    - id: tools
+      title: "tools"
+      style: floating
+      contents:
+        - auto: tools
+
+  page-footer:
+    border: true
+    left: "© 2026 recep · environment, clean energy and economic policies research group · supported by [tübitak 1001](/project/tubitak.qmd)"
+    right:
+      - icon: github
+        href: "https://github.com/ContinentOfGrinch/recep"
+        aria-label: GitHub
+      - icon: envelope
+        href: contact/index.qmd
+        aria-label: Contact
+
+format:
+  html:
+    toc-title: "on this page"

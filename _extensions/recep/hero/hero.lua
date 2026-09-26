@@ -14,21 +14,32 @@
     hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics|pacioli|codex
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
     hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
+
+  Çift dil (_quarto-tr.yml / _quarto-en.yml): dil front matter'daki `lang` alanından okunur.
+  Her sayfaya karşı dildeki eşinin adresi yazılır (<meta name="recep-ceviri"> + hreflang);
+  navbar'daki tr / en seçicisi bu adresi kullanır (_quarto.yml → include-after-body).
 ]]
 
 -- eser → dosya (1-bit PNG; w/h verilmezse 720×405), odak noktası ve künye.
 -- ince = true: tuval genişliğinde (859 px) üretilmiş ince taneli dither; dar ekranda yumuşak ölçeklenir
 -- sabit = true: alt sayfalarda da 16:9 kalır (21:9 kırpım yüzleri keserdi)
 local ESER = {
-  athens      = { dosya = "athens.png",      odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "raphael — atina okulu, 1509–1511" },
-  ambassadors = { dosya = "ambassadors.png", odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "hans holbein (genç) — elçiler, 1533" },
-  vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
-  adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
-  syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
+  athens      = { dosya = "athens.png",      odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "raphael — atina okulu, 1509–1511",
+                  kunye_en = "raphael — the school of athens, 1509–1511" },
+  ambassadors = { dosya = "ambassadors.png", odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "hans holbein (genç) — elçiler, 1533",
+                  kunye_en = "hans holbein the younger — the ambassadors, 1533" },
+  vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490",
+                  kunye_en = "leonardo da vinci — vitruvian man, c. 1490" },
+  adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512",
+                  kunye_en = "michelangelo — the creation of adam, c. 1508–1512" },
+  syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662",
+                  kunye_en = "rembrandt — the syndics of the drapers' guild, 1662" },
   codex       = { dosya = "codex.png",       odak = "50% 50%", w = 859, h = 483, ince = true,
-                  kunye = "leonardo da vinci — codex atlanticus, f. 26 verso" },
+                  kunye = "leonardo da vinci — codex atlanticus, f. 26 verso",
+                  kunye_en = "leonardo da vinci — codex atlanticus, f. 26 verso" },
   pacioli     = { dosya = "pacioli.png",     odak = "50% 50%", w = 859, h = 483, ince = true, sabit = true,
-                  kunye = "jacopo de' barbari (atf.) — luca pacioli portresi, 1495" },
+                  kunye = "jacopo de' barbari (atf.) — luca pacioli portresi, 1495",
+                  kunye_en = "jacopo de' barbari (attr.) — portrait of luca pacioli, 1495" },
 }
 
 -- sekme (klasör) → eser
@@ -38,7 +49,40 @@ local SEKME = {
   ["veri-kod"] = "codex", araclar = "pacioli",
   proje = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
+  -- İngilizce klasörler (_quarto-en.yml)
+  team = "athens", news = "ambassadors", contact = "ambassadors",
+  ["data-code"] = "codex", tools = "pacioli",
+  project = "adam", outputs = "adam", about = "syndics",
 }
+
+-- Türkçe kaynak ↔ İngilizce kaynak (proje köküne göre, uzantısız). Yeni sayfa eklerken buraya da ekleyin.
+local CEVIRI = {
+  ["index"] = "index.en",
+  ["hakkimizda/index"] = "about/index",
+  ["proje/index"] = "project/index",
+  ["proje/amac-kapsam"] = "project/aims-scope",
+  ["proje/yontem"] = "project/methodology",
+  ["proje/is-paketleri"] = "project/work-packages",
+  ["proje/tubitak"] = "project/tubitak",
+  ["ekip/index"] = "team/index",
+  ["ciktilar/index"] = "outputs/index",
+  ["ciktilar/politika-notlari"] = "outputs/policy-briefs",
+  ["ciktilar/tebligler-makaleler"] = "outputs/working-papers",
+  ["ciktilar/sunumlar"] = "outputs/presentations",
+  ["veri-kod/index"] = "data-code/index",
+  ["veri-kod/uyumlastirma-anahtarlari"] = "data-code/concordance-keys",
+  ["veri-kod/veri-setleri"] = "data-code/datasets",
+  ["veri-kod/analiz-kodlari"] = "data-code/analysis-code",
+  ["araclar/index"] = "tools/index",
+  ["araclar/skdm-hesaplayici"] = "tools/cbam-calculator",
+  ["araclar/karbon-fiyati"] = "tools/carbon-price",
+  ["haberler/index"] = "news/index",
+  ["iletisim/index"] = "contact/index",
+}
+local TERS = {}
+for tr, en in pairs(CEVIRI) do TERS[en] = tr end
+
+local SITE = "https://continentofgrinch.github.io/recep/"
 
 local function kacis(s)
   return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
@@ -63,7 +107,7 @@ local function konum()
   local derinlik = #parcalar - 1
   local sekme
   if derinlik == 0 then
-    sekme = (dosya == "index") and "ana" or dosya
+    sekme = (dosya == "index" or dosya == "index.en") and "ana" or dosya
   else
     sekme = parcalar[1]
   end
@@ -83,12 +127,43 @@ local function kureHero(baslik, alt)
     alt and ('<p class="recep-khero-alt">' .. kacis(alt) .. '</p>') or "")
 end
 
+-- kaynak anahtarı → yayındaki html yolu (sitenin köküne göre)
+local function cikti(anahtar)
+  if anahtar == "index.en" then return "index.html" end
+  return anahtar .. ".html"
+end
+
+-- karşı dildeki eşin adresi: <meta name="recep-ceviri"> (göreli) + hreflang (mutlak)
+local function ceviriBaglantisi(dil, parcalar, derinlik)
+  local anahtar = table.concat(parcalar, "/"):gsub("%.qmd$", ""):gsub("%.md$", "")
+  local ofset = derinlik == 0 and "./" or string.rep("../", derinlik)
+  local trYol, enYol, hedef
+  if dil == "en" then
+    enYol = cikti(anahtar)
+    trYol = TERS[anahtar] and cikti(TERS[anahtar]) or "index.html"
+    hedef = ofset .. "../" .. trYol              -- _site/en/… → _site/…
+  else
+    trYol = cikti(anahtar)
+    enYol = CEVIRI[anahtar] and cikti(CEVIRI[anahtar]) or "index.html"
+    hedef = ofset .. "en/" .. enYol
+    -- 404 herhangi bir adreste gösterilir: göreli yol kırılır, mutlak adres kullan
+    if anahtar == "404" then hedef = SITE .. "en/" .. enYol end
+  end
+  quarto.doc.include_text("in-header", string.format(
+    '<meta name="recep-ceviri" content="%s">\n' ..
+    '<link rel="alternate" hreflang="tr" href="%s%s">\n' ..
+    '<link rel="alternate" hreflang="en" href="%sen/%s">',
+    hedef, SITE, trYol, SITE, enYol))
+end
+
 function Pandoc(doc)
   if not quarto.doc.is_format("html") then return nil end
   local m = doc.meta
-  if m["hero"] == false or yazi(m["hero"]) == "false" then return nil end
-
+  local dil = yazi(m["lang"]) or "tr"
   local sekme, dosya, derinlik, parcalar = konum()
+  ceviriBaglantisi(dil, parcalar, derinlik)
+  if m["hero"] == false or yazi(m["hero"]) == "false" then return nil end
+  if dosya == "index.en" then dosya = "index" end
   local baslik = yazi(m["hero-baslik"]) or yazi(m["title"]) or yazi(m["pagetitle"]) or ""
   local alt = yazi(m["description"])
 
@@ -133,7 +208,7 @@ function Pandoc(doc)
 </section>]],
     boyut, ekSinif, eserAdi, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), w, h, src, w, h, eser.odak, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "",
-    kacis(eser.kunye))
+    kacis((dil == "en" and eser.kunye_en) or eser.kunye))
 
   table.insert(doc.blocks, 1, pandoc.RawBlock("html", html))
   return doc

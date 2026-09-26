@@ -1,0 +1,31 @@
+---
+title: "data & code"
+description: "Concordance keys (NACE–ISCO–HS), anonymised datasets, analysis code."
+hero-meta: '\> DIR_DAVINCI.exe // OPEN_SOURCE_MANUSCRIPT'
+order: 0
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [concordance keys](concordance-keys.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+NACE–ISCO–HS
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [anonymised datasets](datasets.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [analysis code](analysis-code.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::::

@@ -1,0 +1,38 @@
+---
+title: "project"
+description: "We examine the effects of CBAM on the Turkish economy through sectoral data and evidence-based policy analysis."
+order: 0
+toc: false
+---
+
+This project examines the potential effects of the European Union's Carbon Border Adjustment Mechanism (CBAM) on the Turkish economy. By assessing the relationships between foreign trade, production structure and sectoral emission intensities, the study aims to address the effects of carbon regulation on different sectors and economic actors within a holistic framework.
+
+The research combines quantitative economic analysis with institutional and policy assessments. The findings are intended to contribute to the design of Türkiye's low-carbon transition and to the development of evidence-based policy options regarding CBAM.
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [aims and scope](aims-scope.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [methodology summary](methodology.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [work packages and timeline](work-packages.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[04]{.recep-index}
+
+### [tübitak funding information](tubitak.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::::

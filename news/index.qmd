@@ -1,0 +1,31 @@
+---
+title: "news"
+description: "Announcements, events, workshop news."
+toc: false
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### announcements {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### events {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### workshop news {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+::: {.recep-bekliyor}
+content in preparation.
+:::

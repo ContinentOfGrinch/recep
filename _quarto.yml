@@ -1,24 +1,20 @@
 project:
   type: website
-  output-dir: _site
-  render:
-    - "*.qmd"
-    - "proje/*.qmd"
-    - "ekip/*.qmd"
-    - "ciktilar/*.qmd"
-    - "veri-kod/*.qmd"
-    - "araclar/*.qmd"
-    - "haberler/**/*.qmd"
-    - "iletisim/*.qmd"
-    - "hakkimizda/*.qmd"
   resources:
-    - ".nojekyll"
-    - "assets/fonts/"
-    - "assets/marka/"
-    - "assets/sanat/"
-    - "assets/js/kure.js"
+    - "/.nojekyll"          # / = proje köküne sabit (EN derlemesi _site/ içindekileri kopyalamasın)
+    - "/assets/fonts/"
+    - "/assets/marka/"
+    - "/assets/sanat/"
+    - "/assets/js/kure.js"
 
-lang: tr
+# Çift dil: Quarto proje profilleri. Varsayılan tr.
+#   quarto render                 → _quarto-tr.yml  (Türkçe, _site/)
+#   quarto render --profile en    → _quarto-en.yml  (İngilizce, _site/en/)
+# Dile özgü her şey (lang, menü, kenar çubukları, alt bilgi, sayfa listesi) profil dosyalarındadır.
+profile:
+  default: tr
+  group:
+    - [tr, en]
 
 filters:
   - hero          # _extensions/recep/hero — ana sayfada küre, diğer sayfalarda 1-bit sanat tuvali + dev başlık
@@ -28,8 +24,6 @@ execute:
 
 website:
   title: "recep"
-  description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu — AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM/CBAM) Türkiye ekonomisine etkileri."
-  site-url: "https://continentofgrinch.github.io/recep/"
   repo-url: "https://github.com/ContinentOfGrinch/recep"
   repo-actions: [edit, issue]
   favicon: assets/favicon.svg
@@ -51,61 +45,10 @@ website:
     logo: assets/marka/amblem-nav.svg
     logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
     title: "recep"
-    left:                                  # merkez logonun solu
-      - text: "hakkımızda"
-        href: hakkimizda/index.qmd
-      - text: "proje"
-        href: proje/index.qmd
-      - text: "ekip"
-        href: ekip/index.qmd
-      - text: "çıktılar"
-        href: ciktilar/index.qmd
-    right:                                 # merkez logonun sağı
-      - text: "veri ve kod"
-        href: veri-kod/index.qmd
-      - text: "araçlar"
-        href: araclar/index.qmd
-      - text: "haberler"
-        href: haberler/index.qmd
-      - text: "iletişim"
-        href: iletisim/index.qmd
     tools:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"
         aria-label: GitHub
-
-  sidebar:
-    - id: proje
-      title: "proje"
-      style: floating
-      contents:
-        - auto: proje
-    - id: ciktilar
-      title: "çıktılar"
-      style: floating
-      contents:
-        - auto: ciktilar
-    - id: veri-kod
-      title: "veri ve kod"
-      style: floating
-      contents:
-        - auto: veri-kod
-    - id: araclar
-      title: "araçlar"
-      style: floating
-      contents:
-        - auto: araclar
-
-  page-footer:
-    border: true
-    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · [tübitak 1001](/proje/tubitak.qmd) destekli"
-    right:
-      - icon: github
-        href: "https://github.com/ContinentOfGrinch/recep"
-        aria-label: GitHub
-      - icon: envelope
-        href: iletisim/index.qmd
-        aria-label: İletişim
 
 format:
   html:
@@ -139,10 +82,33 @@ format:
             s.defer = true;
             document.body.appendChild(s);
           })();
+          // dil seçici (tr / en): karşı dildeki eşin adresi hero filtresinin yazdığı meta'dan gelir
+          (function () {
+            var kap = document.querySelector(".navbar .navbar-container");
+            if (!kap) return;
+            var dil = (document.documentElement.lang || "tr").slice(0, 2) === "en" ? "en" : "tr";
+            var m = document.querySelector('meta[name="recep-ceviri"]');
+            var o = document.querySelector('meta[name="quarto:offset"]');
+            var karsi = m ? m.content : (o ? o.content : "./") + (dil === "en" ? "../index.html" : "en/index.html");
+            var d = document.createElement("nav");
+            d.className = "recep-dil";
+            d.setAttribute("aria-label", dil === "en" ? "Language" : "Dil");
+            ["tr", "en"].forEach(function (k, i) {
+              if (i) { var ay = document.createElement("span"); ay.textContent = "/"; ay.setAttribute("aria-hidden", "true"); d.appendChild(ay); }
+              var a = document.createElement("a");
+              a.textContent = k; a.lang = k; a.hreflang = k;
+              if (k === dil) { a.className = "aktif"; a.setAttribute("aria-current", "true"); }
+              else { a.href = karsi; a.title = k === "en" ? "English" : "Türkçe"; }
+              d.appendChild(a);
+            });
+            kap.appendChild(d);
+            // dar ekranda logo ile ikonlar arasında yer yok: bir kopyası açılır menünün en altında
+            var menu = document.querySelector(".navbar .navbar-collapse");
+            if (menu) { var k = d.cloneNode(true); k.classList.add("recep-dil--menu"); menu.appendChild(k); }
+          })();
         </script>
     toc: true
     toc-depth: 3
-    toc-title: "bu sayfada"
     smooth-scroll: true
     anchor-sections: true
     code-copy: true
