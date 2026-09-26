@@ -1,7 +1,7 @@
 # RECEP web sitesi — proje hafızası
 
 > Her oturumun başında bu dosya okunur. Her önemli karar ve tamamlanan aşamadan sonra güncellenir.
-> Son güncelleme: 2026-09-25 (tasarım v4: Elegant Cyber-Renaissance, DynamicHero)
+> Son güncelleme: 2026-09-26 (tasarım v5: küre ana sayfa, 1-bit art canvas hero, navbar küresi 1:1)
 
 ## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
@@ -24,7 +24,17 @@
 - **GitHub:** https://github.com/ContinentOfGrinch/recep (public, `main`) → canlı: https://continentofgrinch.github.io/recep/ . Pages kaynağı = GitHub Actions. İleride Tunç Durmaz / lab organizasyonuna devredilecek (README'de adımlar).
 - **Araçlar:** Quarto 1.10.18 (yerel = CI), R 4.5.1, Node 24. `gh` CLI yok → GitHub API için `git credential fill` token'ı + curl (Türkçe JSON → `--data-binary @dosya.json`).
 
-## 2a. TASARIM v4 — "Elegant Cyber-Renaissance / High-End Editorial Brutalism" (2026-09-25, GÜNCEL)
+## 2b. TASARIM v5 — küre ana sayfa + 1-bit "art canvas" hero (2026-09-26, GÜNCEL; 2a'daki filigran/görsel/ana sayfa maddelerinin YERİNE geçer)
+
+Kullanıcı: soluk filigran "yıkanmış, silik" — Digital Brutalism / Post-Internet Art, "yüksek sınıf dijital sanat galerisi" istiyor. Ana sayfa diğerlerinden farklı olmalı.
+- **Ana sayfa (`.recep-khero`, hero.lua `kureHero`):** ortada dönen büyük küre (`.recep-kure`, `min(56vh,540px,86vw)`, çerçevesiz), altında "recep" Inter 900, grup adı Lora italik, `lat 39.0 · lon 35.2 · ● türkiye` Space Mono. Altında butonlar + 7 kart.
+- **Alt sayfalar (`.recep-dhero`):** sütun genişliğinde (max 64rem) TAM OPAK tuval; bölüm index 16:9 (`buyuk`), alt sayfa 21:9 (`orta`). Üstte meta satırı (`/yol` · `1-bit · 720×405`), altta açıklama (Lora) + künye (sağda, Space Mono).
+- **1-bit görseller:** `assets/sanat/*.png` 720×405, Atkinson dither, kaynaktan 16:9 kırpma. Betik: scratchpad `sanat/dither2.html` + `dither2-surucu.mjs` (parametreler: genişlik, kontrast, parlaklık, cx, cy, yakınlaştırma). Vitruvius `2.4, 30, .5, .33, 1.06` (yakınlaştırma = kenardaki siyah şeritleri atar). WebP'ler SİLİNDİ.
+- **Renk:** img `grayscale(100%) contrast(200%)`, `image-rendering: pixelated`, `mix-blend-mode` tuval zemini ile: açık `#0033FF` + `screen` (kobalt/beyaz), gece `#ECEAE4` + `multiply` (zifiri/kırık beyaz). Değişkenler `$recep-tuval-zemin`, `$recep-tuval-karisim`.
+- **Başlık:** sol alt köşeye demirli, `translateY(--baslik × .42)` ile tuvalden taşar; `<span>` zemin renginde levha (`box-decoration-break: clone`). Boyut container query: `--baslik` buyuk `clamp(3.2rem,14cqi,9rem)`, orta `clamp(2.6rem,9cqi,6rem)`. Açıklama boşluğu `--baslik × .56 + 1.25rem`.
+- **Navbar küresi:** Quarto `.navbar-logo { padding-right: 4px }` + border-box küreyi yumurtaya çeviriyordu → `padding:0; flex-shrink:0; aspect-ratio:1/1`. Boyut artık CSS'ten okunur (42/36 px), küçük kürede 2× süper örnekleme.
+
+## 2a. TASARIM v4 — "Elegant Cyber-Renaissance / High-End Editorial Brutalism" (2026-09-25; filigran/görsel/ana sayfa maddeleri 2b ile DEĞİŞTİ)
 
 Kullanıcı: önceki neon kutular, pikselli yeşil çerçeveler, glitch/tarama çizgisi ve "REC" terminal pencereleri "ucuz ve ürkütücü". **Tüm site** zarif, çerçevesiz dile geçirildi (Nous AI / Hermes-Agent estetiği).
 

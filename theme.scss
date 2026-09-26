@@ -184,7 +184,11 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
 .navbar-brand.navbar-brand-logo { padding-left: 2rem; padding-right: .6rem; }
 .navbar-brand:not(.navbar-brand-logo) { padding-right: 2rem; }
 
-.navbar-brand .navbar-logo { height: 42px; width: 42px; max-height: none; display: block; }
+// küre tuvali: Quarto'nun .navbar-logo padding'i ve flex daralması 1:1 oranı bozmasın
+.navbar-brand .navbar-logo {
+  height: 42px; width: 42px; max-height: none; display: block;
+  padding: 0; flex-shrink: 0; aspect-ratio: 1 / 1; object-fit: contain;
+}
 
 // [recep] — logodaki kalın kare köşeli parantezler (marka öğesi)
 .navbar-brand .navbar-title {
@@ -343,7 +347,7 @@ body:has(.recep-dhero) #title-block-header { display: none; }
 
 .recep-dhero-alt-satir {
   display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem;
-  margin-top: calc(var(--baslik) * .42 + 1.25rem);
+  margin-top: calc(var(--baslik) * .56 + 1.25rem);   // taşma + alt uzantılar (p, j, y)
 }
 // Katman 2 — açıklama
 .recep-dhero-alt {

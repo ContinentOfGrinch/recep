@@ -2,7 +2,7 @@
  * Harici kütüphane yok: ortografik izdüşüm + arka yüz kırpma, <canvas> üzerinde.
  * Kara verisi: Natural Earth 110m (kamu malı), world-atlas üzerinden; 0.1° hassasiyet.
  * Yerleşim:
- *   - navbar: .navbar-logo <img> aynı boyutta bir <canvas> ile değiştirilir (neon palet, sabit)
+ *   - navbar: .navbar-logo <img> bir <canvas> ile değiştirilir; boyut CSS'ten (neon palet, sabit)
  *   - sayfa:  <div class="recep-kure" data-hiz="…"> içine yerleşir (renkler CSS değişkenlerinden)
  * prefers-reduced-motion: tek kare çizilir, döndürülmez.
  */
@@ -31,16 +31,18 @@
 
   function kur(canvas, secenek) {
     const ctx = canvas.getContext("2d");
-    const kucuk = secenek.boyut < 80;
+    let kucuk = false;                             // navbar boyutu (< 80 px): ince çizgiler, halka yok
     let renk = secenek.renk ? secenek.renk() : NEON;
     let lambda0 = TURKIYE[0];                      // Türkiye önde başlar
     let son = performance.now(), gorunur = true, dpr = 1, boyut = 0;
 
     function olcekle() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      boyut = secenek.boyut || canvas.clientWidth || 300;
+      // boyut CSS'ten gelir (navbar: 42/36 px, sayfa: kapsayıcı genişliği)
+      boyut = Math.round(canvas.clientWidth) || 300;
+      kucuk = boyut < 80;
+      // küçük kürede süper örnekleme: 1x ekranda da keskin kenarlar
+      dpr = Math.min((window.devicePixelRatio || 1) * (kucuk ? 2 : 1), 4);
       canvas.width = Math.round(boyut * dpr); canvas.height = Math.round(boyut * dpr);
-      canvas.style.width = boyut + "px"; canvas.style.height = boyut + "px";
     }
 
     function ciz(zaman) {
@@ -129,7 +131,7 @@
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(e => { gorunur = e[0].isIntersecting; }).observe(canvas);
     }
-    window.addEventListener("resize", () => { if (!secenek.boyut) { olcekle(); ciz(performance.now()); } });
+    window.addEventListener("resize", () => { if (Math.round(canvas.clientWidth) !== boyut) { olcekle(); ciz(performance.now()); } });
     ciz(performance.now());
     if (!azHareket) requestAnimationFrame(dongu);
   }
@@ -146,9 +148,8 @@
       c.className = "navbar-logo recep-kure-canvas";
       c.setAttribute("role", "img");
       c.setAttribute("aria-label", "dönen dünya küresi; Türkiye kırmızı noktayla işaretli");
-      const b = Math.round(img.getBoundingClientRect().height) || 46;
       img.replaceWith(c);
-      kur(c, { boyut: b, hiz: 0.018 });
+      kur(c, { hiz: 0.018 });
     });
     // sayfa içi büyük küre(ler)
     document.querySelectorAll(".recep-kure").forEach(kap => {
