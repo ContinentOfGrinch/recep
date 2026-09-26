@@ -19,6 +19,7 @@ Gereksinimler: Quarto **1.10.18** · R ≥ 4.3 (yalnızca R kodu içeren sayfala
 
 | menü | adres | kaynak |
 |---|---|---|
+| hakkımızda | `/hakkimizda/` | `hakkimizda/index.qmd` |
 | proje | `/proje/` | `proje/*.qmd` |
 | ekip | `/ekip/` | `data/ekip.yml` |
 | çıktılar | `/ciktilar/` | `data/ciktilar.yml` |
@@ -53,6 +54,7 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
   | haberler, iletişim | Holbein — Elçiler |
   | veri ve kod, araçlar | Da Vinci — Vitruvius Adamı |
   | proje, çıktılar | Michelangelo — Adem'in Yaratılışı |
+  | hakkımızda | Rembrandt — Kumaşçılar Loncası Yöneticileri |
 
   Başlık `title`, alt satır `description` alanından gelir. İsteğe bağlı front matter: `hero: false`, `hero-eser`, `hero-baslik`, `hero-boyut: buyuk (16:9) | orta (21:9)`. Görseller `assets/sanat/` (kaynaklar `KAYNAK.md`).
 

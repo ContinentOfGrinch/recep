@@ -312,6 +312,9 @@ body:has(.recep-dhero) #title-block-header { display: none; }
   padding-bottom: .5rem;
 }
 
+// hero-meta ile verilen terminal etiketi: büyük harf korunur, neon vurgu
+.recep-dhero-meta--etiket span:first-child { color: $recep-green; text-transform: none; letter-spacing: .08em; }
+
 .recep-dhero-tuval {
   position: relative;
   isolation: isolate;                    // karışım yalnızca tuval zeminiyle
@@ -364,6 +367,17 @@ body:has(.recep-dhero) #title-block-header { display: none; }
 @media (max-width: 767.98px) {
   .recep-dhero-alt-satir { flex-direction: column; gap: .75rem; }
   .recep-dhero-kunye { margin: 0; text-align: left; }
+}
+
+// Katman 2 — uzun okuma metni (hakkımızda): Lora, geniş satır aralığı, paragraflar arası nefes
+.recep-metin {
+  max-width: 42rem;
+  p {
+    font-family: var(--font-editorial);
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem); line-height: 1.85;
+    margin: 0 0 1.6rem;
+  }
+  p:last-child { margin-bottom: 0; }
 }
 
 // ============ sidebar / toc ============

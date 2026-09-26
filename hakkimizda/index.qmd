@@ -1,0 +1,14 @@
+---
+title: "hakkımızda"
+hero-meta: '\> DIR_SYNDICS.exe // YTU_POLICY_MAKERS // EST. 2026'
+toc: false
+page-navigation: false
+---
+
+::: {.recep-metin}
+Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu (RECEP), Yıldız Teknik Üniversitesi'nde etkili bir akademik topluluktur. Sürdürülebilirlik, temiz enerji ve ekonomi politikalarına odaklanan RECEP, küresel sorunlara yanıt olarak sürdürülebilir politikalar oluşturmayı, ilgili bilgi birikimlerine katkı sunması ve yenilikleri teşvik etmeyi amaçlamaktadır.
+
+RECEP, bulunduğu faliyetlerle, araştırma çalışmaları ve işbirliklerinde uluslararası bir merkez haline gelmeyi hedeflemektedir. Grup, sürdürülebilir, temiz ve müreffeh bir gelecek için gereken değişikliklere katkı sunmak üzere dünya çapında bilim insanları, iş insanları ve politika yapıcıları bir araya getirmeyi ve bu işbirliklerinden hareketle çözümler üretmeyi amaçlamaktadır.
+
+RECEP, geniş bir konu yelpazesini araştırabilen, çok disiplinli bir araştırmacılar topluluğuna sahiptir. Bu toplulukta, iklim değişikliğinin etkilerini inceleyen, yenilenebilir enerji teknolojilerine odaklanan ve sürdürülebilir ekonomi politikalarını irdeleyen ve bu politikaları geliştiren araştırmacı ve iş insanları da mevcuttur. Bu ekibin yenilikçi, işbirlikçi ve disiplinler arası yaklaşımı, RECEP'in çıktılarını önemli ölçüde şekillendirmekte ve sürdürülebilir bir ekonomi ve refahı yüksek bir topluma olan dönüşümü sağlayacak politikaların belirlenmesine katkı sağlamaktadır.
+:::

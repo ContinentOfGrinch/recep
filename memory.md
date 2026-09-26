@@ -32,6 +32,7 @@ Kullanıcı: soluk filigran "yıkanmış, silik" — Digital Brutalism / Post-In
 - **1-bit görseller:** `assets/sanat/*.png` 720×405, Atkinson dither, kaynaktan 16:9 kırpma. Betik: scratchpad `sanat/dither2.html` + `dither2-surucu.mjs` (parametreler: genişlik, kontrast, parlaklık, cx, cy, yakınlaştırma). Vitruvius `2.4, 30, .5, .33, 1.06` (yakınlaştırma = kenardaki siyah şeritleri atar). WebP'ler SİLİNDİ.
 - **Renk:** img `grayscale(100%) contrast(200%)`, `image-rendering: pixelated`, `mix-blend-mode` tuval zemini ile: açık `#0033FF` + `screen` (kobalt/beyaz), gece `#ECEAE4` + `multiply` (zifiri/kırık beyaz). Değişkenler `$recep-tuval-zemin`, `$recep-tuval-karisim`.
 - **Başlık:** sol alt köşeye demirli, `translateY(--baslik × .42)` ile tuvalden taşar; `<span>` zemin renginde levha (`box-decoration-break: clone`). Boyut container query: `--baslik` buyuk `clamp(3.2rem,14cqi,9rem)`, orta `clamp(2.6rem,9cqi,6rem)`. Açıklama boşluğu `--baslik × .56 + 1.25rem`.
+- **`hero-meta`** front matter: tuval üstündeki sol etiketi ezer, neon yeşil, büyük harf korunur. Başında `>` varsa YAML tek tırnak + `\>` kaçışı gerekir (yoksa pandoc blockquote sayıp siler).
 - **Navbar küresi:** Quarto `.navbar-logo { padding-right: 4px }` + border-box küreyi yumurtaya çeviriyordu → `padding:0; flex-shrink:0; aspect-ratio:1/1`. Boyut artık CSS'ten okunur (42/36 px), küçük kürede 2× süper örnekleme.
 
 ## 2a. TASARIM v4 — "Elegant Cyber-Renaissance / High-End Editorial Brutalism" (2026-09-25; filigran/görsel/ana sayfa maddeleri 2b ile DEĞİŞTİ)
@@ -66,10 +67,11 @@ Kullanıcı: önceki neon kutular, pikselli yeşil çerçeveler, glitch/tarama �
 
 ## 3. site mimarisi (kalıcı adresler)
 
-**Şu an tüm kategoriler İSKELET (içerik bekliyor).**
+**Kategoriler İSKELET (içerik bekliyor); İSTİSNA: hakkımızda (kullanıcı metni, 2026-09-26) ve proje/index açıklaması (kullanıcı, f951b19).**
 
 | menü | adres | alt kategoriler (sayfa) | altyapı |
 |---|---|---|---|
+| hakkımızda | /hakkimizda/ | tek sayfa; metin kullanıcıdan birebir (yazım hataları dahil, kullanıcıya bildirildi) | eser syndics (Rembrandt); `hero-meta` terminal etiketi; `.recep-metin` Lora okuma bloğu; navbar SOL başta (4 · logo · 4) |
 | proje | /proje/ | amac-kapsam, yontem, is-paketleri, tubitak | sidebar |
 | ekip | /ekip/ | yürütücü, araştırmacılar, danışmanlar, bursiyerler (tek sayfa, gruplar) | `data/ekip.yml` (boş, `rol: yok` yer tutucu) + `_templates/ekip.ejs` |
 | çıktılar | /ciktilar/ | politika-notlari, tebligler-makaleler, sunumlar | `data/ciktilar.yml` (`bolum` ile süzülür) + `_templates/ciktilar.ejs` |

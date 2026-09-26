@@ -10,6 +10,7 @@ tam opak "art canvas" tuvalinde kullanılır (ana sayfada eser yok, dönen küre
 | ambassadors.png | Hans Holbein (Genç), *Elçiler*, 1533 | haberler, iletişim | Hans Holbein the Younger - The Ambassadors - Google Art Project.jpg |
 | vitruvian.png | Leonardo da Vinci, *Vitruvius Adamı*, y. 1490 | veri ve kod, araçlar | Da Vinci Vitruve Luc Viatour.jpg |
 | adam.png | Michelangelo, *Adem'in Yaratılışı*, y. 1508–1512 | proje, çıktılar | Michelangelo - Creation of Adam (cropped).jpg |
+| syndics.png | Rembrandt, *Kumaşçılar Loncası Yöneticileri (De Staalmeesters)*, 1662 | hakkımızda | Rembrandt - De Staalmeesters- het college van staalmeesters (waardijns) van het Amsterdamse lakenbereidersgilde - Google Art Project.jpg |
 
 İşleme: yüksek çözünürlüklü asıldan 16:9 kırpma → 720×405 → kontrast → Atkinson dither → 1-bit PNG (7–29 KB).
 Değiştirmek için dosyayı aynı adla bu klasöre koyun; renk tuval zemini ve `mix-blend-mode` ile verilir (`$recep-tuval-*`).

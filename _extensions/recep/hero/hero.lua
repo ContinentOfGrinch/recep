@@ -11,8 +11,9 @@
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
-    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam
+    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
+    hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
 ]]
 
 -- eser → dosya (720×405, 1-bit), odak noktası (object-position) ve künye
@@ -21,6 +22,7 @@ local ESER = {
   ambassadors = { dosya = "ambassadors.png", odak = "50% 30%", kunye = "hans holbein (genç) — elçiler, 1533" },
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
+  syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
 }
 
 -- sekme (klasör) → eser
@@ -29,6 +31,7 @@ local SEKME = {
   haberler = "ambassadors", iletisim = "ambassadors",
   ["veri-kod"] = "vitruvian", araclar = "vitruvian",
   proje = "adam", ciktilar = "adam",
+  hakkimizda = "syndics",
 }
 
 local function kacis(s)
@@ -103,12 +106,14 @@ function Pandoc(doc)
   elseif derinlik == 0 then yol = "/" .. dosya
   else yol = "/" .. table.concat(parcalar, "/", 1, #parcalar - 1) .. "/" .. dosya end
 
+  local etiket = yazi(m["hero-meta"])
+
   local ofset = derinlik == 0 and "." or string.rep("..", derinlik, "/")
   local src = ofset .. "/assets/sanat/" .. eser.dosya
 
   local html = string.format([[
 <section class="recep-dhero recep-dhero--%s" data-eser="%s" aria-labelledby="recep-dhero-baslik">
-  <div class="recep-dhero-meta"><span>%s</span><span>1-bit · 720×405</span></div>
+  <div class="recep-dhero-meta%s"><span>%s</span><span>1-bit · 720×405</span></div>
   <div class="recep-dhero-tuval">
     <img src="%s" alt="" width="720" height="405" style="object-position: %s" decoding="async" fetchpriority="high">
     <h1 id="recep-dhero-baslik" class="recep-dhero-baslik"><span>%s</span></h1>
@@ -118,7 +123,7 @@ function Pandoc(doc)
     <p class="recep-dhero-kunye">%s</p>
   </div>
 </section>]],
-    boyut, eserAdi, kacis(yol), src, eser.odak, kacis(baslik),
+    boyut, eserAdi, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), src, eser.odak, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "",
     kacis(eser.kunye))
 

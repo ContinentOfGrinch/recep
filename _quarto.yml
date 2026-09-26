@@ -10,6 +10,7 @@ project:
     - "araclar/*.qmd"
     - "haberler/**/*.qmd"
     - "iletisim/*.qmd"
+    - "hakkimizda/*.qmd"
   resources:
     - ".nojekyll"
     - "assets/fonts/"
@@ -20,7 +21,7 @@ project:
 lang: tr
 
 filters:
-  - hero          # _extensions/recep/hero — her sayfaya DynamicHero (filigran eser + dev başlık)
+  - hero          # _extensions/recep/hero — ana sayfada küre, diğer sayfalarda 1-bit sanat tuvali + dev başlık
 
 execute:
   freeze: auto   # R çıktıları _freeze/ içine yazılır ve commit edilir; CI'da R gerekmez
@@ -51,6 +52,8 @@ website:
     logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
     title: "recep"
     left:                                  # merkez logonun solu
+      - text: "hakkımızda"
+        href: hakkimizda/index.qmd
       - text: "proje"
         href: proje/index.qmd
       - text: "ekip"
