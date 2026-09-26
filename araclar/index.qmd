@@ -1,6 +1,7 @@
 ---
 title: "araçlar"
 description: "SKDM maliyet hesaplayıcısı, karbon fiyatı paneli."
+hero-meta: '\> DIR_PACIOLI.exe // CALC_ENGINE_NODE'
 order: 0
 toc: false
 ---

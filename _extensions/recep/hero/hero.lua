@@ -11,26 +11,29 @@
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
-    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics
+    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics|pacioli
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
     hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
 ]]
 
 -- eser → dosya (1-bit PNG; w/h verilmezse 720×405), odak noktası ve künye.
 -- ince = true: tuval genişliğinde (859 px) üretilmiş ince taneli dither; dar ekranda yumuşak ölçeklenir
+-- sabit = true: alt sayfalarda da 16:9 kalır (tablo kırpılmadan tuvale yerleştirildiyse)
 local ESER = {
   athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
   ambassadors = { dosya = "ambassadors.png", odak = "50% 50%", w = 859, h = 483, ince = true, kunye = "hans holbein (genç) — elçiler, 1533" },
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
   syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
+  pacioli     = { dosya = "pacioli.png",     odak = "50% 50%", w = 859, h = 483, ince = true, sabit = true,
+                  kunye = "jacopo de' barbari (atf.) — luca pacioli portresi, 1495" },
 }
 
 -- sekme (klasör) → eser
 local SEKME = {
   ekip = "athens", ["404"] = "athens",
   haberler = "ambassadors", iletisim = "ambassadors",
-  ["veri-kod"] = "vitruvian", araclar = "vitruvian",
+  ["veri-kod"] = "vitruvian", araclar = "pacioli",
   proje = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
 }
@@ -109,7 +112,7 @@ function Pandoc(doc)
 
   local etiket = yazi(m["hero-meta"])
   local w, h = eser.w or 720, eser.h or 405
-  local ekSinif = eser.ince and " recep-dhero--ince" or ""
+  local ekSinif = (eser.ince and " recep-dhero--ince" or "") .. (eser.sabit and " recep-dhero--sabit" or "")
 
   local ofset = derinlik == 0 and "." or string.rep("..", derinlik, "/")
   local src = ofset .. "/assets/sanat/" .. eser.dosya

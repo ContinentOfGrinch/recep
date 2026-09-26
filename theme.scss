@@ -335,23 +335,27 @@ body:has(.recep-dhero) #title-block-header { display: none; }
 @media (max-width: 1279.98px) {
   .recep-dhero--ince .recep-dhero-tuval img { image-rendering: auto; }
 }
+// kenar çubuklu sayfalarda sütun 859 px'ten dar (≈809): orada da yumuşak ölçekle
+body.nav-sidebar .recep-dhero--ince .recep-dhero-tuval img { image-rendering: auto; }
+// sabit eser (hero.lua: sabit = true): tablo kırpılmadan 16:9'a yerleştirildi → alt sayfada da 16:9
+.recep-dhero.recep-dhero--sabit { --tuval-oran: 16 / 9; }
+// alt sayfa başlıkları uzun olabilir: satıra kırılan başlık levhası tuvalin çoğunu örtmesin
+.recep-dhero--orta .recep-dhero-baslik { max-width: 64%; }
 
 // Katman 1 — dev başlık, sol alt köşe, tuvalden aşağı taşar
 .recep-dhero-baslik {
   position: absolute; left: 0; bottom: 0; z-index: 1;
-  max-width: 94%;
+  width: fit-content; max-width: 94%;
   transform: translateY(calc(var(--baslik) * .42));
   font-family: var(--font-brutal); font-weight: 900;
   font-size: var(--baslik);
   line-height: .9; letter-spacing: $brutal-tracking;
   text-transform: lowercase; color: $recep-ink;
-  margin: 0; border: none; padding: 0;
+  margin: 0; border: none;
   overflow-wrap: anywhere;
-  span {
-    background: $recep-paper;
-    padding: .06em .16em 0 0;
-    -webkit-box-decoration-break: clone; box-decoration-break: clone;
-  }
+  // levha tek blok: çok satırlı başlıkta satır zeminleri birbirinin harflerini örtmez
+  background: $recep-paper;
+  padding: .12em .16em 0 0;
 }
 
 .recep-dhero-alt-satir {
