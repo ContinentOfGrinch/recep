@@ -51,8 +51,7 @@ Başlıklar küçük harfle yazılır. **R kodu içeren sayfa** eklediyseniz yer
   | sekme | eser |
   |---|---|
   | ekip, 404 | Raphael — Atina Okulu |
-  | haberler | Holbein — Elçiler (tam tablo, kırpılmamış) |
-  | iletişim | Holbein — Elçiler (16:9) |
+  | haberler, iletişim | Holbein — Elçiler |
   | veri ve kod, araçlar | Da Vinci — Vitruvius Adamı |
   | proje, çıktılar | Michelangelo — Adem'in Yaratılışı |
   | hakkımızda | Rembrandt — Kumaşçılar Loncası Yöneticileri |
