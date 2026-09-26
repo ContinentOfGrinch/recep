@@ -330,6 +330,18 @@ body:has(.recep-dhero) #title-block-header { display: none; }
   }
 }
 
+// tam tablo (hero.lua: tam = true): kırpılmaz, kendi oranında, en fazla dither genişliğinde
+// (--tuval-max): masaüstünde 1:1, retinada tam 2× — nokta matrisi keskin, moiré yok.
+.recep-dhero--tam-eser {
+  max-width: var(--tuval-max, 44rem);
+  --baslik: clamp(3rem, 16cqi, 7.5rem);
+  .recep-dhero-tuval img { object-fit: contain; }
+}
+// tuval dither genişliğinden darsa (telefon) yumuşak küçültme: noktalar ince baskı dokusuna döner
+@media (max-width: 799.98px) {
+  .recep-dhero--tam-eser .recep-dhero-tuval img { image-rendering: auto; }
+}
+
 // Katman 1 — dev başlık, sol alt köşe, tuvalden aşağı taşar
 .recep-dhero-baslik {
   position: absolute; left: 0; bottom: 0; z-index: 1;

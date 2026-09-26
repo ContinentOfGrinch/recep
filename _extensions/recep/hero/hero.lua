@@ -11,15 +11,18 @@
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
-    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|vitruvian|adam|syndics
+    hero: false    → bu sayfada kapat  hero-eser: athens|ambassadors|elciler-tam|vitruvian|adam|syndics
     hero-baslik    → başlığı ez        hero-boyut: buyuk (16:9) | orta (21:9)
     hero-meta      → tuvalin üstündeki sol etiketi ez (Space Mono, neon; varsayılan: /yol)
 ]]
 
--- eser → dosya (720×405, 1-bit), odak noktası (object-position) ve künye
+-- eser → dosya (1-bit PNG; w/h verilmezse 720×405), odak noktası ve künye.
+-- tam = true: tablo KIRPILMADAN kendi oranında, en fazla w px genişlikte (dither 1:1; retinada 2×)
 local ESER = {
   athens      = { dosya = "athens.png",      odak = "50% 50%", kunye = "raphael — atina okulu, 1509–1511" },
   ambassadors = { dosya = "ambassadors.png", odak = "50% 30%", kunye = "hans holbein (genç) — elçiler, 1533" },
+  ["elciler-tam"] = { dosya = "ambassadors-tam.png", odak = "50% 50%", w = 704, h = 694, tam = true,
+                  kunye = "hans holbein (genç) — elçiler, 1533 · tam tablo" },
   vitruvian   = { dosya = "vitruvian.png",   odak = "50% 30%", kunye = "leonardo da vinci — vitruvius adamı, y. 1490" },
   adam        = { dosya = "adam.png",        odak = "50% 42%", kunye = "michelangelo — adem'in yaratılışı, y. 1508–1512" },
   syndics     = { dosya = "syndics.png",     odak = "50% 50%", kunye = "rembrandt — kumaşçılar loncası yöneticileri, 1662" },
@@ -28,7 +31,7 @@ local ESER = {
 -- sekme (klasör) → eser
 local SEKME = {
   ekip = "athens", ["404"] = "athens",
-  haberler = "ambassadors", iletisim = "ambassadors",
+  haberler = "elciler-tam", iletisim = "ambassadors",
   ["veri-kod"] = "vitruvian", araclar = "vitruvian",
   proje = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
@@ -107,15 +110,21 @@ function Pandoc(doc)
   else yol = "/" .. table.concat(parcalar, "/", 1, #parcalar - 1) .. "/" .. dosya end
 
   local etiket = yazi(m["hero-meta"])
+  local w, h = eser.w or 720, eser.h or 405
+  local tamSinif, stil = "", ""
+  if eser.tam then
+    tamSinif = " recep-dhero--tam-eser"
+    stil = string.format(' style="--tuval-oran: %d / %d; --tuval-max: %dpx"', w, h, w)
+  end
 
   local ofset = derinlik == 0 and "." or string.rep("..", derinlik, "/")
   local src = ofset .. "/assets/sanat/" .. eser.dosya
 
   local html = string.format([[
-<section class="recep-dhero recep-dhero--%s" data-eser="%s" aria-labelledby="recep-dhero-baslik">
-  <div class="recep-dhero-meta%s"><span>%s</span><span>1-bit · 720×405</span></div>
+<section class="recep-dhero recep-dhero--%s%s" data-eser="%s"%s aria-labelledby="recep-dhero-baslik">
+  <div class="recep-dhero-meta%s"><span>%s</span><span>1-bit · %d×%d</span></div>
   <div class="recep-dhero-tuval">
-    <img src="%s" alt="" width="720" height="405" style="object-position: %s" decoding="async" fetchpriority="high">
+    <img src="%s" alt="" width="%d" height="%d" style="object-position: %s" decoding="async" fetchpriority="high">
     <h1 id="recep-dhero-baslik" class="recep-dhero-baslik"><span>%s</span></h1>
   </div>
   <div class="recep-dhero-alt-satir">
@@ -123,7 +132,7 @@ function Pandoc(doc)
     <p class="recep-dhero-kunye">%s</p>
   </div>
 </section>]],
-    boyut, eserAdi, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), src, eser.odak, kacis(baslik),
+    boyut, tamSinif, eserAdi, stil, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), w, h, src, w, h, eser.odak, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "",
     kacis(eser.kunye))
 

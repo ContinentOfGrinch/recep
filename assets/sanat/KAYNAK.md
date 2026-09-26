@@ -14,3 +14,10 @@ tam opak "art canvas" tuvalinde kullanılır (ana sayfada eser yok, dönen küre
 
 İşleme: yüksek çözünürlüklü asıldan 16:9 kırpma → 720×405 → kontrast → Atkinson dither → 1-bit PNG (7–29 KB).
 Değiştirmek için dosyayı aynı adla bu klasöre koyun; renk tuval zemini ve `mix-blend-mode` ile verilir (`$recep-tuval-*`).
+
+## ambassadors-tam.png — haberler (tam tablo)
+
+Aynı Holbein asli (Google Art Project, kamu malı), **kırpılmadan**: 704×694, Floyd–Steinberg (serpantin)
++ hafif keskinleştirme, yumuşak ton eğrisi (sert eşik yok), 4 ince tarama satırı kayması (zarif glitch).
+704 px = sayfadaki tuval genişliği → masaüstünde 1:1, retinada 2×. İletişim sayfası 16:9 `ambassadors.png` ile kalır.
+Yeniden üretim: scratchpad `sanat/elciler.html` + `elciler-surucu.mjs` + `e2.json`.
