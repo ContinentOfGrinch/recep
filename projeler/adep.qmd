@@ -1,0 +1,8 @@
+---
+title: "adep"
+order: 2
+---
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

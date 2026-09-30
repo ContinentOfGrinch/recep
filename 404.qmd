@@ -10,6 +10,6 @@ repo-actions: false
 
 ::: {.recep-btns}
 [ana sayfa](/index.qmd){.birincil}
-[proje](/proje/index.qmd)
+[projeler](/projeler/index.qmd)
 [araçlar](/araclar/index.qmd)
 :::

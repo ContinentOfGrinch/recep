@@ -9,9 +9,9 @@ repo-actions: false
 ---
 
 ::: {.recep-btns}
-[proje](proje/index.qmd){.birincil}
+[hakkımızda](hakkimizda/index.qmd){.birincil}
+[projeler](projeler/index.qmd)
 [araçlar](araclar/index.qmd)
-[çıktılar](ciktilar/index.qmd)
 :::
 
 ## bölümler {.no-prefix}
@@ -19,20 +19,28 @@ repo-actions: false
 :::: {.recep-grid .dort}
 
 ::: {.recep-card}
-[/proje]{.recep-index}
+[/hakkimizda]{.recep-index}
 
-### [proje](proje/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [hakkımızda](hakkimizda/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-- amaç ve kapsam
-- yöntem özeti
-- iş paketleri ve takvim
-- tübitak destek bilgisi
+- araştırma grubu
+- yıldız teknik üniversitesi
 :::
 
 ::: {.recep-card}
-[/ekip]{.recep-index}
+[/projeler]{.recep-index}
 
-### [ekip](ekip/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [projeler](projeler/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- güncel projeler
+- geçmiş projeler
+- tübitak 1001 · adep · cetp intact
+:::
+
+::: {.recep-card}
+[/arastirmacilar]{.recep-index}
+
+### [araştırmacılar](arastirmacilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
 - yürütücü
 - araştırmacılar
@@ -51,6 +59,15 @@ repo-actions: false
 :::
 
 ::: {.recep-card}
+[/araclar]{.recep-index}
+
+### [araçlar](araclar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- skdm maliyet hesaplayıcısı
+- karbon fiyatı paneli
+:::
+
+::: {.recep-card}
 [/veri-kod]{.recep-index}
 
 ### [veri ve kod](veri-kod/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
@@ -61,22 +78,13 @@ repo-actions: false
 :::
 
 ::: {.recep-card}
-[/araclar]{.recep-index}
+[/konferans-calistay]{.recep-index}
 
-### [araçlar](araclar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [konferans ve çalıştaylar](konferans-calistay/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-- skdm maliyet hesaplayıcısı
-- karbon fiyatı paneli
-:::
-
-::: {.recep-card}
-[/haberler]{.recep-index}
-
-### [haberler](haberler/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
+- konferanslar
+- çalıştaylar
 - duyurular
-- etkinlikler
-- çalıştay haberleri
 :::
 
 ::: {.recep-card}

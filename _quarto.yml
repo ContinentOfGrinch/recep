@@ -41,7 +41,7 @@ website:
   navbar:
     background: dark
     pinned: true
-    collapse-below: xl
+    collapse-below: xxl                    # 8 menü öğesi + dil seçici tek satıra ancak ≥1400 px sığar
     logo: assets/marka/amblem-nav.svg
     logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
     title: "recep"

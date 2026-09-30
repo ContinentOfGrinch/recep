@@ -1,6 +1,8 @@
 ---
 title: "tübitak destek bilgisi"
 order: 4
+aliases:
+  - /proje/tubitak.html
 ---
 
 ::: {.recep-bekliyor}

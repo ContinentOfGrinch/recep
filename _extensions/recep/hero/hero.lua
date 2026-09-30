@@ -44,27 +44,30 @@ local ESER = {
 
 -- sekme (klasör) → eser
 local SEKME = {
-  ekip = "athens", ["404"] = "athens",
-  haberler = "ambassadors", iletisim = "ambassadors",
+  arastirmacilar = "athens", ["404"] = "athens",
+  ["konferans-calistay"] = "ambassadors", iletisim = "ambassadors",
   ["veri-kod"] = "codex", araclar = "pacioli",
-  proje = "adam", ciktilar = "adam",
+  projeler = "adam", ciktilar = "adam",
   hakkimizda = "syndics",
   -- İngilizce klasörler (_quarto-en.yml)
-  team = "athens", news = "ambassadors", contact = "ambassadors",
+  researchers = "athens", ["conferences-workshops"] = "ambassadors", contact = "ambassadors",
   ["data-code"] = "codex", tools = "pacioli",
-  project = "adam", outputs = "adam", about = "syndics",
+  projects = "adam", outputs = "adam", about = "syndics",
 }
 
 -- Türkçe kaynak ↔ İngilizce kaynak (proje köküne göre, uzantısız). Yeni sayfa eklerken buraya da ekleyin.
 local CEVIRI = {
   ["index"] = "index.en",
   ["hakkimizda/index"] = "about/index",
-  ["proje/index"] = "project/index",
-  ["proje/amac-kapsam"] = "project/aims-scope",
-  ["proje/yontem"] = "project/methodology",
-  ["proje/is-paketleri"] = "project/work-packages",
-  ["proje/tubitak"] = "project/tubitak",
-  ["ekip/index"] = "team/index",
+  ["projeler/index"] = "projects/index",
+  ["projeler/skdm/index"] = "projects/cbam/index",
+  ["projeler/skdm/amac-kapsam"] = "projects/cbam/aims-scope",
+  ["projeler/skdm/yontem"] = "projects/cbam/methodology",
+  ["projeler/skdm/is-paketleri"] = "projects/cbam/work-packages",
+  ["projeler/skdm/tubitak"] = "projects/cbam/tubitak",
+  ["projeler/adep"] = "projects/adep",
+  ["projeler/cetp-intact"] = "projects/cetp-intact",
+  ["arastirmacilar/index"] = "researchers/index",
   ["ciktilar/index"] = "outputs/index",
   ["ciktilar/politika-notlari"] = "outputs/policy-briefs",
   ["ciktilar/tebligler-makaleler"] = "outputs/working-papers",
@@ -76,7 +79,7 @@ local CEVIRI = {
   ["araclar/index"] = "tools/index",
   ["araclar/skdm-hesaplayici"] = "tools/cbam-calculator",
   ["araclar/karbon-fiyati"] = "tools/carbon-price",
-  ["haberler/index"] = "news/index",
+  ["konferans-calistay/index"] = "conferences-workshops/index",
   ["iletisim/index"] = "contact/index",
 }
 local TERS = {}
@@ -95,7 +98,7 @@ local function yazi(v)
   return s
 end
 
--- proje köküne göre göreli yol: "ekip/index.qmd" → { "ekip", "index" }
+-- proje köküne göre göreli yol: "projeler/skdm/index.qmd" → { "projeler", "skdm", "index" }
 local function konum()
   local girdi = (quarto.doc.input_file or ""):gsub("\\", "/")
   local kok = ((quarto.project and quarto.project.directory) or ""):gsub("\\", "/")
@@ -121,7 +124,7 @@ local function kureHero(baslik, alt)
   <div class="recep-kure recep-khero-kure" data-hiz="0.006" role="presentation"></div>
   <h1 id="recep-khero-baslik" class="recep-khero-baslik">%s</h1>
   %s
-  <p class="recep-khero-koord">lat 39.0 · lon 35.2 · <b>●</b> türkiye</p>
+  <p class="recep-khero-koord">lat 41.01 · lon 28.98 · <b>●</b> istanbul</p>
 </section>]],
     kacis(baslik),
     alt and ('<p class="recep-khero-alt">' .. kacis(alt) .. '</p>') or "")
@@ -181,11 +184,9 @@ function Pandoc(doc)
     boyut = (dosya == "index") and "buyuk" or "orta"
   end
 
-  -- yol: /ekip · /proje/yontem
-  local yol
-  if dosya == "index" then yol = "/" .. sekme
-  elseif derinlik == 0 then yol = "/" .. dosya
-  else yol = "/" .. table.concat(parcalar, "/", 1, #parcalar - 1) .. "/" .. dosya end
+  -- yol: /arastirmacilar · /projeler/skdm/yontem
+  local klasor = derinlik > 0 and ("/" .. table.concat(parcalar, "/", 1, #parcalar - 1)) or ""
+  local yol = (dosya == "index") and (klasor ~= "" and klasor or "/") or (klasor .. "/" .. dosya)
 
   local etiket = yazi(m["hero-meta"])
   local w, h = eser.w or 720, eser.h or 405

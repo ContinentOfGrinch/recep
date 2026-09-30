@@ -5,46 +5,46 @@ project:
     - "index.qmd"
     - "404.qmd"
     - "hakkimizda/*.qmd"
-    - "proje/*.qmd"
-    - "ekip/*.qmd"
+    - "projeler/**/*.qmd"
+    - "arastirmacilar/*.qmd"
     - "ciktilar/*.qmd"
     - "veri-kod/*.qmd"
     - "araclar/*.qmd"
-    - "haberler/**/*.qmd"
+    - "konferans-calistay/**/*.qmd"
     - "iletisim/*.qmd"
 
 lang: tr
 
 website:
-  description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu — AB Sınırda Karbon Düzenleme Mekanizması'nın (SKDM/CBAM) Türkiye ekonomisine etkileri."
+  description: "RECEP — Yıldız Teknik Üniversitesi Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu."
   site-url: "https://continentofgrinch.github.io/recep/"
 
   navbar:
     left:                                  # merkez logonun solu
       - text: "hakkımızda"
         href: hakkimizda/index.qmd
-      - text: "proje"
-        href: proje/index.qmd
-      - text: "ekip"
-        href: ekip/index.qmd
+      - text: "projeler"
+        href: projeler/index.qmd
+      - text: "araştırmacılar"
+        href: arastirmacilar/index.qmd
       - text: "çıktılar"
         href: ciktilar/index.qmd
     right:                                 # merkez logonun sağı
-      - text: "veri ve kod"
-        href: veri-kod/index.qmd
       - text: "araçlar"
         href: araclar/index.qmd
-      - text: "haberler"
-        href: haberler/index.qmd
+      - text: "veri ve kod"
+        href: veri-kod/index.qmd
+      - text: "konferans ve çalıştaylar"
+        href: konferans-calistay/index.qmd
       - text: "iletişim"
         href: iletisim/index.qmd
 
   sidebar:
-    - id: proje
-      title: "proje"
+    - id: projeler
+      title: "projeler"
       style: floating
       contents:
-        - auto: proje
+        - auto: projeler
     - id: ciktilar
       title: "çıktılar"
       style: floating
@@ -63,7 +63,7 @@ website:
 
   page-footer:
     border: true
-    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · [tübitak 1001](/proje/tubitak.qmd) destekli"
+    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · yıldız teknik üniversitesi"
     right:
       - icon: github
         href: "https://github.com/ContinentOfGrinch/recep"

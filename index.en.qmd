@@ -10,9 +10,9 @@ repo-actions: false
 ---
 
 ::: {.recep-btns}
-[project](project/index.qmd){.birincil}
+[about](about/index.qmd){.birincil}
+[projects](projects/index.qmd)
 [tools](tools/index.qmd)
-[outputs](outputs/index.qmd)
 :::
 
 ## sections {.no-prefix}
@@ -20,20 +20,28 @@ repo-actions: false
 :::: {.recep-grid .dort}
 
 ::: {.recep-card}
-[/project]{.recep-index}
+[/about]{.recep-index}
 
-### [project](project/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [about](about/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-- aims and scope
-- methodology summary
-- work packages and timeline
-- tübitak funding information
+- research group
+- yıldız technical university
 :::
 
 ::: {.recep-card}
-[/team]{.recep-index}
+[/projects]{.recep-index}
 
-### [team](team/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [projects](projects/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- current projects
+- past projects
+- tübitak 1001 · adep · cetp intact
+:::
+
+::: {.recep-card}
+[/researchers]{.recep-index}
+
+### [researchers](researchers/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
 - principal investigator
 - researchers
@@ -52,6 +60,15 @@ repo-actions: false
 :::
 
 ::: {.recep-card}
+[/tools]{.recep-index}
+
+### [tools](tools/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+- cbam cost calculator
+- carbon price dashboard
+:::
+
+::: {.recep-card}
 [/data-code]{.recep-index}
 
 ### [data & code](data-code/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
@@ -62,22 +79,13 @@ repo-actions: false
 :::
 
 ::: {.recep-card}
-[/tools]{.recep-index}
+[/conferences-workshops]{.recep-index}
 
-### [tools](tools/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [conferences & workshops](conferences-workshops/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-- cbam cost calculator
-- carbon price dashboard
-:::
-
-::: {.recep-card}
-[/news]{.recep-index}
-
-### [news](news/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
+- conferences
+- workshops
 - announcements
-- events
-- workshop news
 :::
 
 ::: {.recep-card}

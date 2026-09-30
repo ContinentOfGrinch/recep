@@ -1,0 +1,10 @@
+---
+title: "yöntem özeti"
+order: 2
+aliases:
+  - /proje/yontem.html
+---
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

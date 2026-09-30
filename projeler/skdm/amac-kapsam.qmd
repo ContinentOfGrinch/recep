@@ -1,6 +1,8 @@
 ---
 title: "amaç ve kapsam"
 order: 1
+aliases:
+  - /proje/amac-kapsam.html
 ---
 
 ::: {.recep-bekliyor}

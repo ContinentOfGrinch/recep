@@ -4,14 +4,18 @@
  * Yerleşim:
  *   - navbar: .navbar-logo <img> bir <canvas> ile değiştirilir; boyut CSS'ten (neon palet, sabit)
  *   - sayfa:  <div class="recep-kure" data-hiz="…"> içine yerleşir (renkler CSS değişkenlerinden)
- * prefers-reduced-motion: tek kare çizilir, döndürülmez.
+ *             büyük küre fareyle / dokunarak sürüklenir: küre YERİNDE kalır, yalnızca kendi
+ *             ekseni etrafında döner (yatay = boylam, dikey = eğim); bırakınca atalet ile yavaşlar,
+ *             eğim yumuşakça varsayılana döner ve otomatik dönüş sürer. Klavye: ok tuşları.
+ * Kırmızı nokta: İstanbul (28.98°D, 41.01°K).
+ * prefers-reduced-motion: otomatik dönüş yok; sürükleme yine çalışır.
  */
 (() => {
   "use strict";
   const KARA = /*KARA*/[]/*KARA*/;               // [[lon*10, lat*10, ...], ...]
-  const TURKIYE = [35.2, 39.0];                   // lon, lat
+  const ISTANBUL = [28.98, 41.01];                // lon, lat — kırmızı nokta
   const DERECE = Math.PI / 180;
-  const EGIM = 24;                                // bakış enlemi: kuzeyden, Türkiye merkeze yakın
+  const EGIM = 30;                                // varsayılan bakış enlemi: İstanbul merkeze yakın
   const azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const halkalar = KARA.map(h => { const r = new Float32Array(h.length); for (let i = 0; i < h.length; i++) r[i] = h[i] / 10; return r; });
@@ -33,7 +37,9 @@
     const ctx = canvas.getContext("2d");
     let kucuk = false;                             // navbar boyutu (< 80 px): ince çizgiler, halka yok
     let renk = secenek.renk ? secenek.renk() : NEON;
-    let lambda0 = TURKIYE[0];                      // Türkiye önde başlar
+    let lambda0 = ISTANBUL[0];                     // İstanbul önde başlar
+    let phi0 = EGIM;                               // bakış enlemi (sürüklemeyle değişir)
+    let surukleniyor = false, vx = 0, vy = 0;      // sürükleme hızı (derece / ms) → atalet
     let son = performance.now(), gorunur = true, dpr = 1, boyut = 0;
 
     function olcekle() {
@@ -48,7 +54,7 @@
     function ciz(zaman) {
       const R = boyut / 2 - (kucuk ? 3 : boyut * 0.09);
       const cx = boyut / 2, cy = boyut / 2;
-      const l0 = lambda0 * DERECE, p0 = EGIM * DERECE;
+      const l0 = lambda0 * DERECE, p0 = phi0 * DERECE;
       const sinp0 = Math.sin(p0), cosp0 = Math.cos(p0);
 
       // izdüşüm: görünürse [x,y], değilse null
@@ -98,8 +104,8 @@
         ctx.restore(); ctx.setLineDash([]);
       }
 
-      // Türkiye: yanıp sönen neon kırmızı nokta
-      const t = izd(TURKIYE[0], TURKIYE[1]);
+      // İstanbul: yanıp sönen neon kırmızı nokta
+      const t = izd(ISTANBUL[0], ISTANBUL[1]);
       if (t) {
         const faz = (zaman % 1600) / 1600;                    // 0 → 1
         const nabiz = 0.5 + 0.5 * Math.sin(faz * 2 * Math.PI);
@@ -116,11 +122,63 @@
     function dongu(zaman) {
       if (gorunur && !document.hidden) {
         const dt = Math.min(zaman - son, 100);
-        if (!azHareket) lambda0 -= dt * (secenek.hiz || 0.012);   // derece / ms (batıdan doğuya dönüş)
+        if (!surukleniyor) {
+          // atalet: bırakıldıktan sonra sürükleme hızı üstel olarak söner
+          const sonum = Math.exp(-dt / 450);
+          lambda0 -= vx * dt; phi0 = sinirla(phi0 + vy * dt); vx *= sonum; vy *= sonum;
+          // atalet bitince eğim yavaşça varsayılana, dönüş otomatik hıza döner
+          if (Math.abs(vx) + Math.abs(vy) < 0.002) {
+            phi0 += (EGIM - phi0) * Math.min(1, dt / 1400);
+            if (!azHareket) lambda0 -= dt * (secenek.hiz || 0.012);   // derece / ms (batıdan doğuya dönüş)
+          }
+        }
         ciz(zaman);
       }
       son = zaman;
-      if (!azHareket) requestAnimationFrame(dongu);
+      requestAnimationFrame(dongu);
+    }
+
+    const sinirla = p => Math.max(-80, Math.min(80, p));
+
+    // sürükleme: küre yerinde kalır, yalnızca döner. Yüzey imleci izler: 1 px ≈ (180/π)/R derece
+    function surukle() {
+      canvas.classList.add("recep-kure-surukle");
+      canvas.tabIndex = 0;
+      let sonX = 0, sonY = 0, sonT = 0;
+      const derecePx = () => 57.2958 / Math.max(40, boyut / 2 - boyut * 0.09);
+      canvas.addEventListener("pointerdown", e => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;   // yalnızca sol tık
+        surukleniyor = true; vx = vy = 0;
+        sonX = e.clientX; sonY = e.clientY; sonT = performance.now();
+        canvas.setPointerCapture(e.pointerId);
+        canvas.classList.add("tutuluyor");
+        e.preventDefault();
+      });
+      canvas.addEventListener("pointermove", e => {
+        if (!surukleniyor) return;
+        const simdi = performance.now(), dt = Math.max(1, simdi - sonT), k = derecePx();
+        const dl = (e.clientX - sonX) * k, dp = (e.clientY - sonY) * k;
+        lambda0 -= dl; phi0 = sinirla(phi0 + dp);
+        // son hareketin hızı (yumuşatılmış) → bırakınca atalet
+        vx = 0.6 * vx + 0.4 * (dl / dt); vy = 0.6 * vy + 0.4 * (dp / dt);
+        sonX = e.clientX; sonY = e.clientY; sonT = simdi;
+        ciz(simdi);
+      });
+      const birak = e => {
+        if (!surukleniyor) return;
+        surukleniyor = false; canvas.classList.remove("tutuluyor");
+        if (performance.now() - sonT > 80) vx = vy = 0;          // durup bırakıldıysa atalet yok
+        try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+      };
+      canvas.addEventListener("pointerup", birak);
+      canvas.addEventListener("pointercancel", birak);
+      // klavye: ok tuşları 10° döndürür
+      canvas.addEventListener("keydown", e => {
+        const adim = { ArrowLeft: [10, 0], ArrowRight: [-10, 0], ArrowUp: [0, -10], ArrowDown: [0, 10] }[e.key];
+        if (!adim) return;
+        e.preventDefault(); vx = vy = 0;
+        lambda0 += adim[0]; phi0 = sinirla(phi0 + adim[1]); ciz(performance.now());
+      });
     }
 
     olcekle();
@@ -132,8 +190,9 @@
       new IntersectionObserver(e => { gorunur = e[0].isIntersecting; }).observe(canvas);
     }
     window.addEventListener("resize", () => { if (Math.round(canvas.clientWidth) !== boyut) { olcekle(); ciz(performance.now()); } });
+    if (secenek.surukle) surukle();
     ciz(performance.now());
-    if (!azHareket) requestAnimationFrame(dongu);
+    requestAnimationFrame(dongu);
   }
 
   function baslat() {
@@ -147,18 +206,21 @@
       const c = document.createElement("canvas");
       c.className = "navbar-logo recep-kure-canvas";
       c.setAttribute("role", "img");
-      c.setAttribute("aria-label", "dönen dünya küresi; Türkiye kırmızı noktayla işaretli");
+      c.setAttribute("aria-label", "dönen dünya küresi; İstanbul kırmızı noktayla işaretli");
       img.replaceWith(c);
       kur(c, { hiz: 0.018 });
     });
     // sayfa içi büyük küre(ler)
     document.querySelectorAll(".recep-kure").forEach(kap => {
       const c = document.createElement("canvas");
+      const en = (document.documentElement.lang || "").startsWith("en");
       c.setAttribute("role", "img");
-      c.setAttribute("aria-label", "dönen dünya küresi; Türkiye kırmızı noktayla işaretli");
+      c.setAttribute("aria-label", en
+        ? "rotating globe, İstanbul marked with a red dot; drag or use the arrow keys to turn it"
+        : "dönen dünya küresi, İstanbul kırmızı noktayla işaretli; sürükleyerek ya da ok tuşlarıyla döndürün");
       kap.querySelectorAll("img").forEach(i => i.remove());
       kap.appendChild(c);
-      kur(c, { hiz: parseFloat(kap.dataset.hiz) || 0.01, renk: cssRenkler });
+      kur(c, { hiz: parseFloat(kap.dataset.hiz) || 0.01, renk: cssRenkler, surukle: true });
     });
   }
 

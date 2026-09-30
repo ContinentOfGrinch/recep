@@ -212,11 +212,11 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   font-family: var(--font-terminal);
   font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; white-space: nowrap;
   color: $recep-night-muted !important;
-  padding: .5rem .8rem !important;
+  padding: .5rem .62rem !important;
   border: none;
   transition: color .15s ease;
   &::after {
-    content: ""; position: absolute; left: .8rem; right: .8rem; bottom: .2rem; height: 1px;
+    content: ""; position: absolute; left: .62rem; right: .62rem; bottom: .2rem; height: 1px;
     background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
   }
   &:hover { color: $recep-night-ink !important; }
@@ -255,10 +255,15 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   a.aktif { background: $recep-neon; color: $recep-night; }
   a:focus-visible { outline: 1px solid $recep-neon; outline-offset: 2px; }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .navbar .navbar-nav.ms-auto { padding-right: 9rem; }   // sağ menü seçiciye taşmasın
+  // uzun menü öğesi (konferans ve çalıştaylar / conferences & workshops) iki satır: menü sığsın
+  .navbar .nav-link[href*="konferans-calistay"] .menu-text,
+  .navbar .nav-link[href*="conferences-workshops"] .menu-text {
+    display: inline-block; white-space: normal; max-width: 8.4em; line-height: 1.2; vertical-align: middle;   // harf aralığı dahil ~12 karakter
+  }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1399.98px) {
   .navbar .recep-dil { top: 34px; right: 6.2rem; }        // tema + arama ikonlarının solu
 }
 // menü içi kopya: yalnızca dar ekranda (logo ile ikonlar arasında yer kalmadığında)
@@ -271,14 +276,14 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .navbar .navbar-toggler { display: none; }
   .navbar .navbar-collapse { display: contents !important; }
   .navbar .navbar-nav { flex-direction: row; align-items: center; gap: .25rem; margin: 0 !important; }
   .navbar .navbar-nav.me-auto { grid-area: sol; justify-self: end; padding-left: 5.5rem; }
   .navbar .navbar-nav.ms-auto { grid-area: sag; justify-self: start; padding-right: 3.5rem; }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1399.98px) {
   .navbar .navbar-container { grid-template-areas: "sol marka sag" "menu menu menu"; }
   .navbar .navbar-toggler { grid-area: sol; justify-self: start; }
   .navbar .navbar-collapse { grid-area: menu; }
@@ -302,8 +307,16 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   text-align: center;
   padding: clamp(1.5rem, 4vh, 3rem) 0 clamp(2rem, 6vh, 4rem);
 }
-.recep-khero-kure { width: min(56vh, 540px, 86vw); aspect-ratio: 1 / 1; }
+.recep-khero-kure { width: min(66vh, 660px, 94vw); aspect-ratio: 1 / 1; }
 .recep-khero-kure canvas { width: 100% !important; height: 100% !important; display: block; }
+// sürüklenebilir küre (assets/js/kure.js): tut-döndür imleci; dokunmatikte dikey kaydırma
+// sayfaya kalır (pan-y), yatay sürükleme küreyi döndürür. Metin seçimi ve sürükle-bırak kapalı.
+.recep-kure-surukle {
+  cursor: grab; touch-action: pan-y;
+  user-select: none; -webkit-user-select: none; -webkit-user-drag: none;
+  &.tutuluyor { cursor: grabbing; }
+  &:focus-visible { outline: 1px dashed $recep-green; outline-offset: 6px; border-radius: 50% !important; }
+}
 .recep-khero-baslik {
   font-family: var(--font-brutal); font-weight: 900;
   font-size: clamp(3.4rem, 9vw, 7.5rem);

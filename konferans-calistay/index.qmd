@@ -1,0 +1,33 @@
+---
+title: "konferans ve çalıştaylar"
+description: "Konferanslar, çalıştaylar ve duyurular."
+toc: false
+aliases:
+  - /haberler/index.html
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### konferanslar {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### çalıştaylar {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### duyurular {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

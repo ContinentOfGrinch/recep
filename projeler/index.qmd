@@ -1,0 +1,36 @@
+---
+title: "projeler"
+description: "Güncel ve geçmiş araştırma projeleri."
+order: 0
+toc: false
+---
+
+## güncel projeler {.no-prefix}
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [tübitak 1001 — skdm projesi](skdm/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [adep](adep.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [cetp intact](cetp-intact.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+## geçmiş projeler {.no-prefix}
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::

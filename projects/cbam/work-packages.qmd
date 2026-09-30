@@ -1,6 +1,8 @@
 ---
 title: "work packages and timeline"
 order: 3
+aliases:
+  - /project/work-packages.html
 ---
 
 ::: {.recep-bekliyor}

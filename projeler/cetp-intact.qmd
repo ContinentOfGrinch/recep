@@ -1,6 +1,6 @@
 ---
-title: "yöntem özeti"
-order: 2
+title: "cetp intact"
+order: 3
 ---
 
 ::: {.recep-bekliyor}

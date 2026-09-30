@@ -1,8 +1,10 @@
 ---
-title: "proje"
+title: "tübitak 1001 — skdm projesi"
 description: "SKDM’nin Türkiye ekonomisine etkilerini, sektörel veriler ve kanıta dayalı politika analiziyle inceliyoruz."
-order: 0
+order: 1
 toc: false
+aliases:
+  - /proje/index.html
 ---
 
 Bu proje, Avrupa Birliği’nin Sınırda Karbon Düzenleme Mekanizması’nın (SKDM) Türkiye ekonomisi üzerindeki olası etkilerini incelemektedir. Çalışma; dış ticaret, üretim yapısı ve sektörel emisyon yoğunlukları arasındaki ilişkileri değerlendirerek, karbon düzenlemesinin farklı sektörler ve ekonomik aktörler üzerindeki etkilerini bütüncül bir çerçevede ele almayı amaçlar.

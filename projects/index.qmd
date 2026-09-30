@@ -1,0 +1,36 @@
+---
+title: "projects"
+description: "Current and past research projects."
+order: 0
+toc: false
+---
+
+## current projects {.no-prefix}
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### [tübitak 1001 — cbam project](cbam/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### [adep](adep.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [cetp intact](cetp-intact.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+## past projects {.no-prefix}
+
+::: {.recep-bekliyor}
+content in preparation.
+:::

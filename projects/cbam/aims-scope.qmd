@@ -1,0 +1,10 @@
+---
+title: "aims and scope"
+order: 1
+aliases:
+  - /project/aims-scope.html
+---
+
+::: {.recep-bekliyor}
+content in preparation.
+:::

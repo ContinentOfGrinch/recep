@@ -1,5 +1,5 @@
 ---
-title: "ekip"
+title: "araştırmacılar"
 description: "Yürütücü, araştırmacılar, danışmanlar, bursiyerler."
 toc: false
 hero-meta: '\> DIR_ATHENS.exe // RESEARCH_SYNDICATE_NODE'
@@ -7,6 +7,8 @@ listing:
   id: ekip
   contents: ../data/ekip.yml
   template: ../_templates/ekip.ejs
+aliases:
+  - /ekip/index.html
 ---
 
 ::: {#ekip}

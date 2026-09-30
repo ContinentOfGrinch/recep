@@ -1,5 +1,5 @@
 ---
-title: "team"
+title: "researchers"
 description: "Principal investigator, researchers, advisors, research fellows."
 toc: false
 hero-meta: '\> DIR_ATHENS.exe // RESEARCH_SYNDICATE_NODE'
@@ -9,6 +9,8 @@ listing:
   template: ../_templates/ekip.ejs
   template-params:
     dil: en
+aliases:
+  - /team/index.html
 ---
 
 ::: {#ekip}

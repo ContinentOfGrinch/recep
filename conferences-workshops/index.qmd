@@ -1,0 +1,33 @@
+---
+title: "conferences & workshops"
+description: "Conferences, workshops and announcements."
+toc: false
+aliases:
+  - /news/index.html
+---
+
+:::: {.recep-grid}
+
+::: {.recep-card}
+[01]{.recep-index}
+
+### conferences {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[02]{.recep-index}
+
+### workshops {.unnumbered .unlisted .no-anchor}
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### announcements {.unnumbered .unlisted .no-anchor}
+:::
+
+::::
+
+::: {.recep-bekliyor}
+content in preparation.
+:::

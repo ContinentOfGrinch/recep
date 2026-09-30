@@ -1,6 +1,8 @@
 ---
 title: "iş paketleri ve takvim"
 order: 3
+aliases:
+  - /proje/is-paketleri.html
 ---
 
 ::: {.recep-bekliyor}
