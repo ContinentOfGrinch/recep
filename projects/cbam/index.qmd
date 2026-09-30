@@ -7,6 +7,20 @@ aliases:
   - /project/index.html
 ---
 
+::: {.recep-proje-kunye}
+programme
+: TÜBİTAK 1001 — Scientific and Technological Research Projects Funding Programme
+
+project title
+: Effects of the EU Carbon Border Adjustment Mechanism on the Turkish Economy: Analysis of Sectoral Cost Burden, Price Effects and Socio-Economic Implications with a Hybrid Input-Output Model
+
+role
+: Prof. Tunç Durmaz — principal investigator / coordinator
+
+status
+: [forthcoming]{.recep-tag .recep-tag--yakinda}
+:::
+
 This project examines the potential effects of the European Union's Carbon Border Adjustment Mechanism (CBAM) on the Turkish economy. By assessing the relationships between foreign trade, production structure and sectoral emission intensities, the study aims to address the effects of carbon regulation on different sectors and economic actors within a holistic framework.
 
 The research combines quantitative economic analysis with institutional and policy assessments. The findings are intended to contribute to the design of Türkiye's low-carbon transition and to the development of evidence-based policy options regarding CBAM.

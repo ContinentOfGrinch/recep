@@ -27,8 +27,9 @@ const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
 <% if (k.foto) { %><img class="recep-avatar" src="<%- k.foto %>" alt="<%= k.ad %>" loading="lazy" width="64" height="64"><% } else { %><div class="recep-avatar" aria-hidden="true"><%= basHarf(k.ad) %></div><% } %>
 <div class="recep-person-body">
 <div class="recep-person-name"><%= k.ad %></div>
-<div class="recep-person-role"><%= k.unvan %><% if (k.kurum) { %> · <%= k.kurum %><% } %></div>
-<% if (k.alan) { %><div class="recep-person-area"><%= k.alan %></div><% } %>
+<% const unvan = (en && k.unvan_en) || k.unvan, kurum = (en && k.kurum_en) || k.kurum, alan = (en && k.alan_en) || k.alan; %>
+<div class="recep-person-role"><%= unvan %><% if (kurum) { %> · <%= kurum %><% } %></div>
+<% if (alan) { %><div class="recep-person-area"><%= alan %></div><% } %>
 <div class="recep-person-links">
 <% if (k.eposta) { %><a href="mailto:<%- k.eposta %>" aria-label="<%= en ? "E-mail" : "E-posta" %>"><i class="bi bi-envelope"></i></a><% } %>
 <% if (k.web) { %><a href="<%- k.web %>" aria-label="Web"><i class="bi bi-globe2"></i></a><% } %>

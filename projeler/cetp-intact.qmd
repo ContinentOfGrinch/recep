@@ -1,8 +1,22 @@
 ---
 title: "cetp intact"
+description: "CO₂ safsızlıklarına karşı zincir toleransının bütünleşik değerlendirmesi — CETPartnership / Horizon Europe."
 order: 3
+toc: false
 ---
 
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
+::: {.recep-proje-kunye}
+program
+: CETPartnership Joint Call / Horizon Europe & TÜBİTAK
+
+proje adı
+: INTACT: Integrated Assessment of Chain Tolerance to CO₂ Impurities
+
+rol
+: Prof. Dr. Tunç Durmaz — iş paketi lideri (İP6) ve YTÜ yürütücüsü
+
+durum
+: [yakında başlıyor]{.recep-tag .recep-tag--yakinda}
 :::
+
+Karbon yakalama ve depolama (CCS) altyapısında yaşam döngüsü varlık yönetimini ve yatırım stratejilerini optimize etmek için Stokastik Dinamik Programlama ve Monte Carlo simülasyonlarını kullanan INTACT-RISKAID karar destek aracının geliştirilmesine liderlik edilmektedir.

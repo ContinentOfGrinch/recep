@@ -1,8 +1,24 @@
 ---
-title: "adep"
+title: "adep — ai-dio modeli"
+description: "Büyük veri ve yapay zeka destekli dinamik girdi-çıktı modeliyle SKDM'nin yapısal dönüşüm etkilerinin 2035 projeksiyonu."
 order: 2
+toc: false
 ---
 
+::: {.recep-proje-kunye}
+program
+: Araştırma Üniversiteleri Destek Programı (ADEP)
+
+proje adı
+: Büyük Veri ve Yapay Zeka Destekli Dinamik Girdi-Çıktı (AI-DIO) Modeli ile SKDM'nin Türkiye Ekonomisindeki Yapısal Dönüşüm Etkilerinin 2035 Projeksiyonu
+
+rol
+: Prof. Dr. Tunç Durmaz — yürütücü / koordinatör
+
+durum
+: [yakında başlıyor]{.recep-tag .recep-tag--yakinda}
+:::
+
 ::: {.recep-bekliyor}
-içerik hazırlanıyor.
+ayrıntılı proje açıklaması hazırlanıyor.
 :::

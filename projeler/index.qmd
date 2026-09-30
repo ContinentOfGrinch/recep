@@ -13,18 +13,24 @@ toc: false
 [01]{.recep-index}
 
 ### [tübitak 1001 — skdm projesi](skdm/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+[yakında başlıyor]{.recep-tag .recep-tag--yakinda} TÜBİTAK 1001
 :::
 
 ::: {.recep-card}
 [02]{.recep-index}
 
-### [adep](adep.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+### [adep — ai-dio modeli](adep.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+[yakında başlıyor]{.recep-tag .recep-tag--yakinda} ADEP
 :::
 
 ::: {.recep-card}
 [03]{.recep-index}
 
 ### [cetp intact](cetp-intact.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+[yakında başlıyor]{.recep-tag .recep-tag--yakinda} CETPartnership · Horizon Europe
 :::
 
 ::::

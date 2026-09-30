@@ -7,6 +7,20 @@ aliases:
   - /proje/index.html
 ---
 
+::: {.recep-proje-kunye}
+program
+: TÜBİTAK 1001 — Bilimsel ve Teknolojik Araştırma Projelerini Destekleme Programı
+
+proje adı
+: AB Sınırda Karbon Düzenleme Mekanizmasının Türkiye Ekonomisine Etkileri: Sektörel Maliyet Yükü, Fiyat Etkileri ve Sosyo-Ekonomik Yansımaların Hibrit Girdi-Çıktı Modeli ile Analizi
+
+rol
+: Prof. Dr. Tunç Durmaz — yürütücü / koordinatör
+
+durum
+: [yakında başlıyor]{.recep-tag .recep-tag--yakinda}
+:::
+
 Bu proje, Avrupa Birliği’nin Sınırda Karbon Düzenleme Mekanizması’nın (SKDM) Türkiye ekonomisi üzerindeki olası etkilerini incelemektedir. Çalışma; dış ticaret, üretim yapısı ve sektörel emisyon yoğunlukları arasındaki ilişkileri değerlendirerek, karbon düzenlemesinin farklı sektörler ve ekonomik aktörler üzerindeki etkilerini bütüncül bir çerçevede ele almayı amaçlar.
 
 Araştırma kapsamında nicel ekonomik analiz, kurumsal ve politika değerlendirmeleriyle bir araya getirilir. Elde edilen bulguların, Türkiye’de düşük karbonlu dönüşümün tasarlanmasına ve SKDM’ye yönelik kanıta dayalı politika seçeneklerinin geliştirilmesine katkı sunması hedeflenmektedir.

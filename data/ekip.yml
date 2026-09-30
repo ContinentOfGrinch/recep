@@ -2,7 +2,7 @@
 # rol: yurutucu | arastirmaci | danisman | bursiyer   ·   sira: grup içi sıra
 # Örnek blok (başındaki # işaretlerini kaldırın):
 # - ad: "Ad Soyad"
-#   unvan: "araştırmacı"
+#   unvan: "araştırmacı"          # unvan_en / kurum_en / alan_en: İngilizce sayfa için (isteğe bağlı)
 #   rol: arastirmaci
 #   sira: 1
 #   kurum: ""
@@ -11,5 +11,14 @@
 #   orcid: ""
 #   foto: ""
 
-- ad: "_yer-tutucu"
-  rol: yok
+- ad: "Prof. Dr. Tunç Durmaz"
+  unvan: "profesör"
+  unvan_en: "professor of economics"
+  rol: yurutucu
+  sira: 1
+  kurum: "Yıldız Teknik Üniversitesi, İktisat Bölümü"
+  kurum_en: "Yıldız Technical University, Department of Economics"
+  alan: "enerji ekonomisi, karbon yakalama, kullanma ve depolama (CCUS), yeşil büyüme"
+  alan_en: "energy economics, CCUS, green growth"
+  web: "https://www.tuncdurmaz.com/"
+  scholar: "https://scholar.google.com.tr/citations?user=HYWXaoQAAAAJ"

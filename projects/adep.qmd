@@ -1,8 +1,24 @@
 ---
-title: "adep"
+title: "adep — ai-dio model"
+description: "Projecting the structural transformation effects of CBAM to 2035 with a big data and AI-supported dynamic input-output model."
 order: 2
+toc: false
 ---
 
+::: {.recep-proje-kunye}
+programme
+: Research Universities Support Programme (ADEP)
+
+project title
+: Projection to 2035 of the Structural Transformation Effects of CBAM on the Turkish Economy with a Big Data and AI-Supported Dynamic Input-Output (AI-DIO) Model
+
+role
+: Prof. Tunç Durmaz — principal investigator / coordinator
+
+status
+: [forthcoming]{.recep-tag .recep-tag--yakinda}
+:::
+
 ::: {.recep-bekliyor}
-content in preparation.
+detailed project description in preparation.
 :::

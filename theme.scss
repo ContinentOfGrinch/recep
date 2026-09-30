@@ -468,6 +468,24 @@ body.nav-sidebar .recep-dhero--ince .recep-dhero-tuval img { image-rendering: au
   padding: .1rem .5rem; border: 1px solid $recep-line; color: $recep-muted;
   text-decoration: none !important;
 }
+// proje durumu: yakında başlıyor / forthcoming (neon yeşil çerçeve)
+.recep-tag--yakinda { color: $recep-green; border-color: $recep-green; margin-right: .5rem; }
+.recep-card .recep-tag--yakinda + * , .recep-card p:has(.recep-tag--yakinda) {
+  font-family: var(--font-terminal); font-size: .7rem; letter-spacing: .04em; color: $recep-muted;
+}
+
+// proje künyesi: tanım listesi — etiket Space Mono (soluk), değer Lora
+.recep-proje-kunye {
+  margin: 0 0 2.25rem; padding: 1rem 0; border-top: 1px solid $recep-line; border-bottom: 1px solid $recep-line;
+  dl { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: .55rem 1.25rem; margin: 0; }
+  dt { font-family: var(--font-terminal); font-size: .7rem; font-weight: 400; letter-spacing: .06em;
+       text-transform: lowercase; color: $recep-muted; padding-top: .28rem; }
+  dd { margin: 0; font-family: var(--font-editorial); line-height: 1.55; }
+}
+@media (max-width: 575.98px) {
+  .recep-proje-kunye dl { grid-template-columns: 1fr; gap: .15rem; }
+  .recep-proje-kunye dd { margin-bottom: .6rem; }
+}
 
 // kart ızgarası: kutu yok — üstte saç çizgisi, bol boşluk
 .recep-grid {
