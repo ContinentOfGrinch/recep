@@ -83,7 +83,8 @@ format:
           (function () {
             var m = document.querySelector('meta[name="quarto:offset"]');
             var s = document.createElement("script");
-            s.src = (m ? m.content : "./") + "assets/js/kure.js";
+            // ?v= sürüm etiketi: kure.js her değiştiğinde artırın (tarayıcı önbelleği eski betiği tutmasın)
+            s.src = (m ? m.content : "./") + "assets/js/kure.js?v=6";
             s.defer = true;
             document.body.appendChild(s);
           })();
