@@ -67,9 +67,6 @@ website:
     border: true
     left: "© 2026 recep · environment, clean energy and economic policies research group · yıldız technical university"
     right:
-      - icon: github
-        href: "https://github.com/ContinentOfGrinch/recep"
-        aria-label: GitHub
       - icon: envelope
         href: contact/index.qmd
         aria-label: Contact

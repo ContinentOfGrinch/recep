@@ -24,8 +24,6 @@ execute:
 
 website:
   title: "recep"
-  repo-url: "https://github.com/ContinentOfGrinch/recep"
-  repo-actions: [edit, issue]
   favicon: assets/favicon.svg
   image: assets/og.png
   open-graph: true
@@ -45,10 +43,6 @@ website:
     logo: assets/marka/amblem-nav.svg
     logo-alt: "recep amblemi: dünya küresi ve AB–Türkiye bağlantısı"
     title: "recep"
-    tools:
-      - icon: github
-        href: "https://github.com/ContinentOfGrinch/recep"
-        aria-label: GitHub
 
 format:
   html:

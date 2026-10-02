@@ -65,9 +65,6 @@ website:
     border: true
     left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · yıldız teknik üniversitesi"
     right:
-      - icon: github
-        href: "https://github.com/ContinentOfGrinch/recep"
-        aria-label: GitHub
       - icon: envelope
         href: iletisim/index.qmd
         aria-label: İletişim
